@@ -1,6 +1,4 @@
 package com.company;
 
-
-public class Member {
-
+public class Result {
 }
