@@ -38,8 +38,6 @@ TeamList teamList = new TeamList();
                         if(choice.equals("ja")){
                             isCompetitive = true;
                         }
-                        //else{}
-
                         LocalDate dateOfMembership= LocalDate.now();
                         UI.printMessage(dateOfMembership.toString());
                         String trainerName = null;
@@ -52,9 +50,17 @@ TeamList teamList = new TeamList();
                         break;
 
                     case "slet medlem" :
+                        memberList.showMembers();
+                        UI.printMessage("Skriv medlems ID for at slette medlem");
+                        String idNumDelete = UI.getInputString();
+                        memberList.deleteMember(idNumDelete);
                         break;
 
                     case "rediger medlem" :
+                        memberList.showMembers();
+                        UI.printMessage("Skriv medlems ID for at redigere medlem");
+                        String idNumEdit = UI.getInputString();
+                        memberList.editMember(idNumEdit);
                         break;
 
                     case "medlemsliste" :

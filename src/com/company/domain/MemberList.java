@@ -13,13 +13,18 @@ public class MemberList {
         members.add(member);
     }
 
-    public void deleteMember(){
-
+    public void deleteMember(String idNumDelete){
+        for (int i = 0; i < members.size(); i++)
+        if(members.get(i).getIdNum().toString().equals(idNumDelete)){
+            members.remove(i);
+        }
     }
 
-    public void editMember(){
+    public void editMember(String idNumEdit){
+        for (int i = 0; i < members.size(); i++)
+            if(members.get(i).getIdNum().toString().equals(idNumEdit)){
 
-    }
+    }}
 
     public void showMembers(){
         for (int i = 0; i < members.size(); i++) {
