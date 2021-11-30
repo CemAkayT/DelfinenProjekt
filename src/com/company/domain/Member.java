@@ -2,6 +2,7 @@ package com.company.domain;
 
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.UUID;
 
 public class Member {
@@ -12,6 +13,7 @@ public class Member {
     private LocalDate dateOfMembership;
     private boolean isCompetitive;
     private String trainerName;
+    private double membershipFee;
 
     public Member(String name, UUID idNum, LocalDate dateOfBirth, boolean hasPaid, LocalDate dateOfMembership, boolean isCompetitive, String trainerName) {
         this.name = name;
@@ -21,6 +23,7 @@ public class Member {
         this.dateOfMembership = dateOfMembership;
         this.isCompetitive = isCompetitive;
         this.trainerName = trainerName;
+        setMembershipFee();
     }
 
     public String getName() {
@@ -41,6 +44,10 @@ public class Member {
 
     public UUID getIdNum() {
         return idNum;
+    }
+
+    public double getMembershipFee() {
+        return membershipFee;
     }
 
     public boolean isCompetitive() {
@@ -65,5 +72,19 @@ public class Member {
 
     public void setTrainerName(String trainerName) {
         this.trainerName = trainerName;
+    }
+
+    public void setMembershipFee() {
+        Period currentAge = Period.between(dateOfBirth, LocalDate.now());
+        if(currentAge.getYears() >= 18 && currentAge.getYears() < 60){
+            this.membershipFee = 1600;
+        }
+        if(currentAge.getYears() > 60){
+            this.membershipFee = 1600*0.75;
+        }
+        if(currentAge.getYears() < 18){
+            this.membershipFee = 1000;
+        }
+
     }
 }
