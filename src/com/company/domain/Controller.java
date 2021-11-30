@@ -98,7 +98,7 @@ TeamList teamList = new TeamList();
                     break;
                 case "træner", "4":
                     if(memberList.memberSwimmerStatus(idNumEdit) == true) {
-                        UI.printMessage("Skriv ny træner");
+                        UI.printMessage("Skriv ny træner navn");
                         String trainerName = UI.getInputString();
                         memberList.editMemberTrainer(idNumEdit,trainerName);
                     } else {UI.printMessage("Dette medlem er ikke konkurenccesvømmer");}
