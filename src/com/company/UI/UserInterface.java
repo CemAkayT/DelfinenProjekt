@@ -4,15 +4,17 @@ import java.util.Scanner;
 
 public class UserInterface {
 Scanner sc = new Scanner(System.in);
+
+
     public void printMessage(String message){
 
         System.out.println(message);
     }
-public String getInputString(){
+    public String getInputString(){
 
         return sc.nextLine();
 }
-public int getInputInt(){
+    public int getInputInt(){
 
         return sc.nextInt();
 }

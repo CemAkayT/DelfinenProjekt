@@ -17,8 +17,19 @@ TeamList teamList = new TeamList();
 
         String choice;
         boolean active = true;
-
+            UI.printMessage("VELKOMMEN TIL DELFINNEN!" +
+                    "\n");
             while(active){
+                UI.printMessage("Vælg funktion" +
+                        "\n1. opret medlem" +
+                        "\n2. slet medlem" +
+                        "\n3. rediger medlem" +
+                        "\n4. medlemsliste" +
+                        "\n5. restanceliste" +
+                        "\n6. Budget" +
+                        "\n7. " +
+                        "\n8. " +
+                        "\n9. ");
                 choice = UI.getInputString().toLowerCase();
                 switch (choice) {
 
@@ -32,7 +43,7 @@ TeamList teamList = new TeamList();
                         break;
 
                     case "rediger medlem" :
-                        memberEditing();
+                        memberEditing(choice);
                         break;
 
                     case "medlemsliste" :
@@ -40,22 +51,66 @@ TeamList teamList = new TeamList();
                         break;
                     //Casher Use case
 
-                    case "" :
+                    case "restanceliste" :
+                        UI.printMessage("LISTE AF MEDLEMMER I RESTANCE");
+                        memberList.arrearslist();
+                        break;
+
 
 
                     default:
-                        System.out.println("Der skete en fejl, prøv noget igen.");
+                        UI.printMessage("Der skete en fejl, prøv noget igen.");
                         break;
 
                 }
             }
         }
 
-    private void memberEditing() {
+    private void memberEditing(String choice) {
         memberList.showMembers();
         UI.printMessage("Skriv medlems ID for at redigere medlem");
         String idNumEdit = UI.getInputString();
-        memberList.editMember(idNumEdit);
+        boolean editActive = true;
+        while(editActive) {
+            UI.printMessage("Skriv nu hvad der skal redigeres" +
+                    "\n 1. medlems navn" +
+                    "\n 2. medlems svømme status" +
+                    "\n 3. medlems kontigent" +
+                    "\n 4. medlems træner(hvis medlem er konkurenccesvømmer)" +
+                    "\n 5. afslut redigering");
+            choice = UI.getInputString();
+            switch (choice) {
+                case "navn", "1":
+                    UI.printMessage("Skriv nyt navn");
+                String memberName = UI.getInputString();
+                    memberList.editMemberName(idNumEdit, memberName);
+                    break;
+
+                case "status", "2":
+                    memberList.editMemberStatus(idNumEdit);
+                    UI.printMessage("Medlems restance status er nu ændret til "+memberList.memberSwimmerStatus(idNumEdit));
+                    if(memberList.memberSwimmerStatus(idNumEdit) == true)
+                    {UI.printMessage("Husk at tilføj træner");}
+                    break;
+                case "kontingent", "3":
+                    memberList.editMemberArrears(idNumEdit);
+                    UI.printMessage("Medlems restance status er nu ændret til "+memberList.memberArrearsStatus(idNumEdit));
+                    break;
+                case "træner", "4":
+                    if(memberList.memberSwimmerStatus(idNumEdit) == true) {
+                        UI.printMessage("Skriv ny træner");
+                        String trainerName = UI.getInputString();
+                        memberList.editMemberTrainer(idNumEdit,trainerName);
+                    } else {UI.printMessage("Dette medlem er ikke konkurenccesvømmer");}
+                    break;
+                case "afslut", "5":
+                editActive = false;
+                break;
+
+                default: UI.printMessage("Der skete en fejl, prøv noget andet.");
+
+            }
+        }
     }
 
     private void memberDeletion() {

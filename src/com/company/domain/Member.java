@@ -50,4 +50,20 @@ public class Member {
     public boolean isHasPaid() {
         return hasPaid;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setHasPaid(boolean hasPaid) {
+        this.hasPaid = hasPaid;
+    }
+
+    public void setCompetitive(boolean competitive) {
+        isCompetitive = competitive;
+    }
+
+    public void setTrainerName(String trainerName) {
+        this.trainerName = trainerName;
+    }
 }
