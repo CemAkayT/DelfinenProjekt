@@ -22,85 +22,74 @@ TeamList teamList = new TeamList();
                 choice = UI.getInputString().toLowerCase();
                 switch (choice) {
 
+                    //Chairman Use Case
                     case "opret medlem" :
-                        //memberCreation();
-                        UI.printMessage("Skriv navn:");
-                        String name = UI.getInputString();
-                        UUID idNum = UUID.randomUUID();
-                        UI.printMessage("medlem id er "+idNum);
-                        UI.printMessage("Skriv fødselsdato år/måned/dag");
-                        LocalDate dateOfBirth = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
-                        UI.printMessage(dateOfBirth.toString());
-                        boolean isCompetitive = false;
-                        UI.printMessage("Er medlemmet konkurrencesvømmer?");
-                        UI.getInputString();
-                        choice = UI.getInputString();
-                        if(choice.equals("ja")){
-                            isCompetitive = true;
-                        }
-                        LocalDate dateOfMembership= LocalDate.now();
-                        UI.printMessage(dateOfMembership.toString());
-                        String trainerName = null;
-                        if(isCompetitive){
-                            UI.printMessage("Skriv medlems træner:");
-                            trainerName = UI.getInputString();
-                        }
-                        boolean hasPaid = true;
-                        memberList.createMember(name, idNum, dateOfBirth,hasPaid,dateOfMembership,isCompetitive,trainerName);
+                        memberCreation(choice);
                         break;
 
                     case "slet medlem" :
-                        memberList.showMembers();
-                        UI.printMessage("Skriv medlems ID for at slette medlem");
-                        String idNumDelete = UI.getInputString();
-                        memberList.deleteMember(idNumDelete);
+                        memberDeletion();
                         break;
 
                     case "rediger medlem" :
-                        memberList.showMembers();
-                        UI.printMessage("Skriv medlems ID for at redigere medlem");
-                        String idNumEdit = UI.getInputString();
-                        memberList.editMember(idNumEdit);
+                        memberEditing();
                         break;
 
                     case "medlemsliste" :
                         memberList.showMembers();
                         break;
+                    //Casher Use case
+
+                    case "" :
+
 
                     default:
-                        System.out.println("...");
+                        System.out.println("Der skete en fejl, prøv noget igen.");
                         break;
 
                 }
             }
         }
 
-    /*private void memberCreation() {
+    private void memberEditing() {
+        memberList.showMembers();
+        UI.printMessage("Skriv medlems ID for at redigere medlem");
+        String idNumEdit = UI.getInputString();
+        memberList.editMember(idNumEdit);
+    }
+
+    private void memberDeletion() {
+        memberList.showMembers();
+        UI.printMessage("Skriv medlems ID for at slette medlem");
+        String idNumDelete = UI.getInputString();
+        memberList.deleteMember(idNumDelete);
+    }
+
+    private void memberCreation(String choice) {
         UI.printMessage("Skriv navn:");
-        String name = input.nextLine();
+        String name = UI.getInputString();
         UUID idNum = UUID.randomUUID();
         UI.printMessage("medlem id er "+idNum);
         UI.printMessage("Skriv fødselsdato år/måned/dag");
-        LocalDate dateOfBirth = LocalDate.of(input.nextInt(), input.nextInt(), input.nextInt());
+        LocalDate dateOfBirth = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
         UI.printMessage(dateOfBirth.toString());
         boolean isCompetitive = false;
         UI.printMessage("Er medlemmet konkurrencesvømmer?");
-        choice = input.nextLine();
+        UI.getInputString();
+        choice = UI.getInputString();
         if(choice.equals("ja")){
             isCompetitive = true;
         }
-        //else{}
-
         LocalDate dateOfMembership= LocalDate.now();
         UI.printMessage(dateOfMembership.toString());
         String trainerName = null;
         if(isCompetitive){
             UI.printMessage("Skriv medlems træner:");
-            trainerName = input.nextLine();
+            trainerName = UI.getInputString();
         }
         boolean hasPaid = true;
         memberList.createMember(name, idNum, dateOfBirth,hasPaid,dateOfMembership,isCompetitive,trainerName);
-    }*/
+    }
 
 }
 
