@@ -52,12 +52,12 @@ public class MemberList {
 
     public void showMembers(){
         for (int i = 0; i < members.size(); i++) {
-            System.out.println("MEDLEMSNAVN: "+members.get(i).getName()+
+            System.out.println("\n MEDLEMSNAVN: "+members.get(i).getName()+
                     "\n ID: "+members.get(i).getIdNum() +
                     "\n FØDSELSDATO: "+members.get(i).getDateOfBirth()+
                     "\n OPRETTELSESDATO: "+members.get(i).getDateOfMembership()+
                     "\n TRÆNER: "+members.get(i).getTrainerName()+
-                    "\n MEDLEMSSTATUS: "+members.get(i).getMembershipStatus());
+                    "\n MEDLEMSSTATUS: "+members.get(i).getMembershipStatus()+"\n");
         }
 
     }
