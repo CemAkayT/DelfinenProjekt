@@ -8,8 +8,8 @@ public class MemberList {
     private ArrayList<Member> members = new ArrayList<>();
 
 
-    public void createMember(String name, UUID idNum, LocalDate dateOfBirth, boolean hasPaid, LocalDate dateOfMembership, boolean isCompetitive, String trainerName){
-        Member member = new Member(name, idNum, dateOfBirth,hasPaid,dateOfMembership,isCompetitive,trainerName);
+    public void createMember(String name, UUID idNum, LocalDate dateOfBirth, LocalDate dateOfMembership, boolean isCompetitive, String trainerName){
+        Member member = new Member(name, idNum, dateOfBirth,dateOfMembership,isCompetitive,trainerName);
         members.add(member);
     }
 
@@ -57,7 +57,9 @@ public class MemberList {
                     "\n FØDSELSDATO: "+members.get(i).getDateOfBirth()+
                     "\n OPRETTELSESDATO: "+members.get(i).getDateOfMembership()+
                     "\n TRÆNER: "+members.get(i).getTrainerName()+
-                    "\n MEDLEMSSTATUS: "+members.get(i).getMembershipStatus()+"\n");
+                    "\n MEDLEMSSTATUS: "+members.get(i).getMembershipStatus()+
+                    "\n AKTIVSTATUS: "+members.get(i).isActive()+
+                    "\n");
         }
 
     }
@@ -81,6 +83,27 @@ public class MemberList {
             }
         return false;
     }
-
+    public double showIncome(){
+        double income = 0;
+        for (int i = 0; i < members.size(); i++){
+            income = income + members.get(i).getMembershipFee();
+        }
+         return income;
+    }
+    public void editActiveStatus(String idNumEdit){
+        for (int i = 0; i < members.size(); i++)
+            if(members.get(i).getIdNum().toString().equals(idNumEdit)){
+                if(members.get(i).isActive() == true){
+                    members.get(i).setActive(false);
+                }else members.get(i).setActive(true);
+            }
+    }
+    public boolean memberActiveStatus(String idNumEdit){
+        for (int i = 0; i < members.size(); i++)
+            if(members.get(i).getIdNum().toString().equals(idNumEdit)){
+                return members.get(i).isActive();
+            }
+        return false;
+    }
 
 }

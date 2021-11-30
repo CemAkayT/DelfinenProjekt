@@ -9,19 +9,19 @@ public class Member {
     private String name;
     private UUID idNum;
     private LocalDate dateOfBirth;
-    private boolean hasPaid;
+    private boolean hasPaid = true;
     private LocalDate dateOfMembership;
     private boolean isCompetitive;
     private String trainerName;
     private double membershipFee;
     private boolean junior = false;
     private boolean senior = false;
+    private boolean active = true;
 
-    public Member(String name, UUID idNum, LocalDate dateOfBirth, boolean hasPaid, LocalDate dateOfMembership, boolean isCompetitive, String trainerName) {
+    public Member(String name, UUID idNum, LocalDate dateOfBirth, LocalDate dateOfMembership, boolean isCompetitive, String trainerName) {
         this.name = name;
         this.idNum = idNum;
         this.dateOfBirth = dateOfBirth;
-        this.hasPaid = hasPaid;
         this.dateOfMembership = dateOfMembership;
         this.isCompetitive = isCompetitive;
         this.trainerName = trainerName;
@@ -89,6 +89,14 @@ public class Member {
         this.trainerName = trainerName;
     }
 
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
     public void setMembership() {
         Period currentAge = Period.between(dateOfBirth, LocalDate.now());
         if(currentAge.getYears() >= 18 && currentAge.getYears() < 60){
@@ -106,6 +114,8 @@ public class Member {
             junior = true;
             senior = false;
         }
-
+        if(active == false){
+            this.membershipFee = 500;
+        }
     }
 }

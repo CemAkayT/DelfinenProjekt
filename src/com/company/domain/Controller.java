@@ -20,13 +20,13 @@ TeamList teamList = new TeamList();
             UI.printMessage("VELKOMMEN TIL DELFINNEN!" +
                     "\n");
             while(active){
-                UI.printMessage("Vælg funktion" +
+                UI.printMessage("vælg funktion" +
                         "\n1. opret medlem" +
                         "\n2. slet medlem" +
                         "\n3. rediger medlem" +
                         "\n4. medlemsliste" +
                         "\n5. restanceliste" +
-                        "\n6. Budget" +
+                        "\n6. budget" +
                         "\n7. " +
                         "\n8. " +
                         "\n9. ");
@@ -34,28 +34,33 @@ TeamList teamList = new TeamList();
                 switch (choice) {
 
                     //Chairman Use Case
-                    case "opret medlem" :
+                    case "opret medlem","1" :
                         memberCreation(choice);
                         break;
 
-                    case "slet medlem" :
+                    case "slet medlem","2" :
                         memberDeletion();
                         break;
 
-                    case "rediger medlem" :
+                    case "rediger medlem","3" :
                         memberEditing(choice);
                         break;
 
-                    case "medlemsliste" :
+                    case "medlemsliste","4" :
                         memberList.showMembers();
                         break;
                     //Casher Use case
 
-                    case "restanceliste" :
+                    case "restanceliste","5" :
                         UI.printMessage("LISTE AF MEDLEMMER I RESTANCE");
                         memberList.arrearslist();
                         break;
 
+                    case "budget","6" :
+                        UI.printMessage("TOTAL KONTINGENT");
+                        UI.printDouble(memberList.showIncome());
+
+                        break;
 
 
                     default:
@@ -77,8 +82,9 @@ TeamList teamList = new TeamList();
                     "\n 2. medlems svømme status" +
                     "\n 3. medlems kontigent" +
                     "\n 4. medlems træner(hvis medlem er konkurenccesvømmer)" +
-                    "\n 5. afslut redigering");
-            choice = UI.getInputString();
+                    "\n 5. medlems aktiv/passiv" +
+                    "\n . afslut redigering");
+            choice = UI.getInputString().toLowerCase();
             switch (choice) {
                 case "navn", "1":
                     UI.printMessage("Skriv nyt navn");
@@ -86,7 +92,7 @@ TeamList teamList = new TeamList();
                     memberList.editMemberName(idNumEdit, memberName);
                     break;
 
-                case "status", "2":
+                case "svømmerstatus", "2":
                     memberList.editMemberStatus(idNumEdit);
                     UI.printMessage("Medlems restance status er nu ændret til "+memberList.memberSwimmerStatus(idNumEdit));
                     if(memberList.memberSwimmerStatus(idNumEdit) == true)
@@ -103,7 +109,13 @@ TeamList teamList = new TeamList();
                         memberList.editMemberTrainer(idNumEdit,trainerName);
                     } else {UI.printMessage("Dette medlem er ikke konkurenccesvømmer");}
                     break;
-                case "afslut", "5":
+
+                case "aktiv/passiv", "5" :
+                    memberList.editActiveStatus(idNumEdit);
+                    UI.printMessage("Medlems aktivitets status er nu ændret til "+memberList.memberActiveStatus(idNumEdit));
+                break;
+
+                case "afslut", "":
                 editActive = false;
                 break;
 
@@ -142,8 +154,7 @@ TeamList teamList = new TeamList();
             UI.printMessage("Skriv medlems træner:");
             trainerName = UI.getInputString();
         }
-        boolean hasPaid = true;
-        memberList.createMember(name, idNum, dateOfBirth,hasPaid,dateOfMembership,isCompetitive,trainerName);
+        memberList.createMember(name, idNum, dateOfBirth,dateOfMembership,isCompetitive,trainerName);
     }
 
 }
