@@ -56,37 +56,44 @@ public class Controller {
         while (editActive) {
             UI.printMessage("Hvad skal redigeres? " +
                     "\n1. medlemmets navn" +
-                    "\n2. medlemmets efternavn" +
-                    "\n3. medlemmets svømmestatus" +
-                    "\n4. medlemmets kontingent" +
-                    "\n5. medlems træner(hvis medlem er konkurrencesvømmer)" +
-                    "\n6. ændre aktiv/passiv status" +
-                    "\n7. afslut redigering");
+                    "\n2. medlemmets mellemnavn" +
+                    "\n3. medlemmets efternavn" +
+                    "\n4. medlemmets svømmestatus" +
+                    "\n5. medlemmets kontingent" +
+                    "\n6. medlems træner(hvis medlem er konkurrencesvømmer)" +
+                    "\n7. ændre aktiv/passiv status" +
+                    "\n8. afslut redigering");
             String choice = UI.getInputString().toLowerCase();
             switch (choice) {
-                case "navn", "1":
+                case "navn", "1" -> {
                     UI.printMessage("Skriv nyt navn: ");
                     String memberName = UI.getInputString();
                     memberList.editMemberName(idNumEdit, memberName);
-                    break;
-                case "efternavn", "2":
+                }
+                case "mellemnavn", "2" -> {
+                    UI.printMessage("Skriv nyt mellemnavn: ");
+                    String memberMiddleName = UI.getInputString();
+                    memberList.editMemberMiddleName(idNumEdit, memberMiddleName);
+                }
+                case "efternavn", "3"-> {
                     UI.printMessage("Skriv nyt efternavn: ");
                     String memberLastName = UI.getInputString();
                     memberList.editMemberLastName(idNumEdit, memberLastName);
-                    break;
-                case "svømmerstatus", "3":
+                }
+                case "svømmerstatus", "4"-> {
                     memberList.editMemberStatus(idNumEdit);
                     UI.printMessage("Medlems restance status er nu ændret til " + memberList.memberSwimmerStatus(idNumEdit));
                     if (memberList.memberSwimmerStatus(idNumEdit)) {
                         UI.printMessage("Husk at tilføje træner");
                     }
-                    break;
-                case "kontingent", "4":
+                }
+
+                case "kontingent", "5"-> {
                     memberList.editMemberArrears(idNumEdit);
                     UI.printMessage("Medlems restance status er nu ændret til " + memberList.memberArrearsStatus(idNumEdit));
-                    break;
+                }
 
-                case "træner", "5":
+                case "træner", "6"-> {
                     if (memberList.memberSwimmerStatus(idNumEdit)) {
                         UI.printMessage("Skriv nyt navn på træner");
                         String trainerName = UI.getInputString();
@@ -94,19 +101,18 @@ public class Controller {
                     } else {
                         UI.printMessage("Dette medlem er ikke konkurrencesvømmer");// ??
                     }
-                    break;
+                }
 
-                case "aktiv/passiv", "6":
+
+                case "aktiv/passiv", "7"-> {
                     memberList.editActiveStatus(idNumEdit);
                     UI.printMessage("Medlemmets aktivitetsstatus er nu ændret til " + memberList.memberActiveStatus(idNumEdit));
-                    break;
+                }
 
-                case "afslut", "7":
-                    editActive = false;
-                    break;
+                case "afslut", "8"-> editActive = false;
 
-                default:
-                    UI.printMessage("Der skete en fejl, prøv noget andet.");
+
+                default-> UI.printMessage("Der skete en fejl, prøv noget andet.");
             }
         }
     }
@@ -121,6 +127,8 @@ public class Controller {
     private void memberCreation() {
         UI.printMessage("Skriv navn: ");
         String name = UI.getInputString();
+        UI.printMessage("Skriv mellemnavn: ");
+        String middleName = UI.getInputString();
         UI.printMessage("Skriv efternavn: ");
         String lastName = UI.getInputString();
         UUID idNum = UUID.randomUUID();
@@ -137,11 +145,11 @@ public class Controller {
             String trainerName = UI.getInputString();
             LocalDate dateOfMembership = LocalDate.now();
             UI.printMessage("Medlem oprettet: " + dateOfMembership + "\n");
-            memberList.createMember(name, lastName, idNum, dateOfBirth, dateOfMembership, true, trainerName);
+            memberList.createMember(name, middleName, lastName, idNum, dateOfBirth, dateOfMembership, true, trainerName);
         } else {
             LocalDate dateOfMembership = LocalDate.now();
             UI.printMessage("Medlem oprettet: " + dateOfMembership + "\n");
-            memberList.createMember(name, lastName, idNum, dateOfBirth, dateOfMembership, false, null);
+            memberList.createMember(name,middleName, lastName, idNum, dateOfBirth, dateOfMembership, false, null);
         }
     }
 }

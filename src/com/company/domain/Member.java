@@ -7,6 +7,7 @@ import java.util.UUID;
 
 public class Member {
     private String name;
+    private String middleName;
     private String lastName;
     private UUID idNum;
     private LocalDate dateOfBirth;
@@ -19,8 +20,9 @@ public class Member {
     private boolean senior = false;
     private boolean active = true;
 
-    public Member(String name, String lastName, UUID idNum, LocalDate dateOfBirth, LocalDate dateOfMembership, boolean isCompetitive, String trainerName) {
+    public Member(String name,String middleName, String lastName, UUID idNum, LocalDate dateOfBirth, LocalDate dateOfMembership, boolean isCompetitive, String trainerName) {
         this.name = name;
+        this.middleName = middleName;
         this.lastName = lastName;
         this.idNum = idNum;
         this.dateOfBirth = dateOfBirth;
@@ -32,6 +34,9 @@ public class Member {
 
     public String getName() {
         return name;
+    }
+    public String getMiddleName() {
+        return middleName;
     }
     public String getLastName(){
         return lastName;
@@ -81,6 +86,10 @@ public class Member {
     public void setName(String name) {
         this.name = name;
     }
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
     public void setLastName(String newLastName){
         this.lastName = newLastName;
     }

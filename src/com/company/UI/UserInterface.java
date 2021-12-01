@@ -1,5 +1,6 @@
 package com.company.UI;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -16,7 +17,7 @@ Scanner sc = new Scanner(System.in);
     }
     public String getInputString(){
 
-        return sc.nextLine();
+        return sc.nextLine().toLowerCase(Locale.ROOT);
 }
     public int getInputInt(){
 

@@ -8,8 +8,8 @@ public class MemberList {
     private ArrayList<Member> members = new ArrayList<>();
 
 
-    public void createMember(String name, String lastName, UUID idNum, LocalDate dateOfBirth, LocalDate dateOfMembership, boolean isCompetitive, String trainerName){
-        Member member = new Member(name, lastName,idNum, dateOfBirth,dateOfMembership,isCompetitive,trainerName);
+    public void createMember(String name,String middleName, String lastName, UUID idNum, LocalDate dateOfBirth, LocalDate dateOfMembership, boolean isCompetitive, String trainerName){
+        Member member = new Member(name,middleName, lastName,idNum, dateOfBirth,dateOfMembership,isCompetitive,trainerName);
         members.add(member);
     }
 
@@ -20,11 +20,17 @@ public class MemberList {
         }
     }
     public void editMemberName(String idNumEdit, String name){
-        for (int i = 0; i < members.size(); i++)
-            if(members.get(i).getIdNum().toString().equals(idNumEdit)){
-                members.get(i).setName(name);
+        for (Member member : members)
+            if(member.getIdNum().toString().equals(idNumEdit)){
+                member.setName(name);
                 }
 
+    }
+    public void editMemberMiddleName(String idNumEdit, String memberMiddleName) {
+        for (Member member : members)
+            if(member.getIdNum().toString().equals(idNumEdit)){
+                member.setMiddleName(memberMiddleName);
+            }
     }
     public void editMemberLastName(String idNumEdit, String memberLastName){
         for (int i = 0; i <members.size() ; i++)
@@ -58,7 +64,7 @@ public class MemberList {
 
     public void showMembers(){
         for (Member member : members) {
-            System.out.println("\nMEDLEMSNAVN: " + member.getName() + " " + member.getLastName() +
+            System.out.println("\nMEDLEMSNAVN: " + member.getName() + " "+member.getMiddleName()+" " + member.getLastName() +
                     "\nID: " + member.getIdNum() +
                     "\nFØDSELSDATO: " + member.getDateOfBirth() +
                     "\nOPRETTELSESDATO: " + member.getDateOfMembership() +
@@ -109,5 +115,14 @@ public class MemberList {
             }
         return false;
     }
+    public void CompetitiveList(){
+        for (Member member : members)
+            if (member.isCompetitive()) {
+                System.out.println(member.getName()+
+                "");
+            }
+
+}
+
 
 }
