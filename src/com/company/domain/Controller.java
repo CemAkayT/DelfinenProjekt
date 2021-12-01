@@ -8,12 +8,15 @@ import java.util.UUID;
 
 public class Controller {
     UserInterface UI = new UserInterface();
-    FileHandler fileHandler = new FileHandler();
+    FileHandler fh = new FileHandler();
     MemberList memberList = new MemberList();
     TeamList teamList = new TeamList();
 
 
     public void run() {
+
+        fh.readListOfMembers();
+        fh.writeListOfMembers();
 
         String choice;
         UI.printMessage("VELKOMMEN TIL DELFINEN! \uD83D\uDC2C" +

@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class FileHandler {
 
-    File membersList = new File("data/memberslist.csv");
+    File membersList = new File("src/com/company/data/memberlist.csv");
     ArrayList<String> listOfMembers = new ArrayList<>();
 
     //try to read list of members file
@@ -33,7 +33,7 @@ public class FileHandler {
         PrintStream ps;
         {
             try {
-                ps = new PrintStream(new FileOutputStream("data/memberslisttest.csv", false));
+                ps = new PrintStream(new FileOutputStream("src/com/company/data/memberlisttest.csv", false));
                 if (listOfMembers == null) {
                     System.out.println("No members to save");
                 } else {
