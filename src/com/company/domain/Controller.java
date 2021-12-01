@@ -26,8 +26,8 @@ public class Controller {
                     "\n4. se medlemsliste" +
                     "\n5. se restance liste" +
                     "\n6. se kontingent til dato" +
-                    "\n7. " +
-                    "\n8. " +
+                    "\n7. opret hold" +
+                    "\n8. slet hold" +
                     "\n9. ");
             choice = UI.getInputString().toLowerCase();
             switch (choice) {
@@ -44,10 +44,28 @@ public class Controller {
                     UI.printDouble(memberList.showIncome());
                     UI.printMessage("");
                 }
+                case "opret hold", "7"-> {
+                    teamCreation();
+                }
+                case "slet hold", "8"->{
+
+                }
                 default -> UI.printMessage("Hov der skete en fejl, prøv igen.");
             }
         }
     }
+
+    private void teamCreation() {
+        UI.printMessage("Skriv navn på holdet");
+        String teamName = UI.getInputString();
+        UI.printMessage("Er det et juniorhold?");
+        String choice = UI.getInputString();
+        boolean isJunior;
+        isJunior = choice.equals("ja");
+        teamList.createTeam(teamName,isJunior);
+
+    }
+
     private void memberEditing() {
         memberList.showMembers();
         UI.printMessage("Skriv medlemmets ID for at redigere medlem: ");

@@ -7,10 +7,9 @@ public class Team {
     private boolean isJunior;
     private ArrayList<Member> teamMemberlist = new ArrayList<>();
 
-    public Team(String teamName, boolean isJunior, ArrayList<Member> teamMemberlist) {
+    public Team(String teamName, boolean isJunior) {
         this.teamName = teamName;
-        this.isJunior = isJunior;
-        this.teamMemberlist = teamMemberlist;
+        this.isJunior=isJunior;
     }
 
     public void addMember(Member member){

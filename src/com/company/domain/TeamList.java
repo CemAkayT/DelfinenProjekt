@@ -5,11 +5,12 @@ import java.util.ArrayList;
 public class TeamList {
     private ArrayList<Team> teams = new ArrayList<>();
 
-    public void createTeam(){
-        Team team = new Team()
+    public void createTeam(String name, boolean isJunior){
+        Team team = new Team(name,isJunior);
+        teams.add(team);
+
     }
 
-    public void addTeam(){
-        teams.add()
-    }
+
+
 }
