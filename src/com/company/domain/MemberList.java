@@ -8,8 +8,8 @@ public class MemberList {
     private ArrayList<Member> members = new ArrayList<>();
 
 
-    public void createMember(String name, UUID idNum, LocalDate dateOfBirth, LocalDate dateOfMembership, boolean isCompetitive, String trainerName){
-        Member member = new Member(name, idNum, dateOfBirth,dateOfMembership,isCompetitive,trainerName);
+    public void createMember(String name, String lastName, UUID idNum, LocalDate dateOfBirth, LocalDate dateOfMembership, boolean isCompetitive, String trainerName){
+        Member member = new Member(name, lastName,idNum, dateOfBirth,dateOfMembership,isCompetitive,trainerName);
         members.add(member);
     }
 
@@ -19,54 +19,60 @@ public class MemberList {
             members.remove(i);
         }
     }
-
     public void editMemberName(String idNumEdit, String name){
         for (int i = 0; i < members.size(); i++)
             if(members.get(i).getIdNum().toString().equals(idNumEdit)){
                 members.get(i).setName(name);
                 }
+
+    }
+    public void editMemberLastName(String idNumEdit, String memberLastName){
+        for (int i = 0; i <members.size() ; i++)
+          if (members.get(i).getIdNum().toString().equals(idNumEdit)) {
+              members.get(i).setLastName(memberLastName);
+        }
     }
     public void editMemberArrears(String idNumEdit){
         for (int i = 0; i < members.size(); i++)
             if(members.get(i).getIdNum().toString().equals(idNumEdit)){
-            if(members.get(i).isHasPaid() == true){
+            if(members.get(i).isHasPaid()){
                 members.get(i).setHasPaid(false);
             }else members.get(i).setHasPaid(true);
             }
     }
     public void editMemberTrainer(String idNumEdit, String trainerName){
-        for (int i = 0; i < members.size(); i++)
-            if(members.get(i).getIdNum().toString().equals(idNumEdit)){
-                members.get(i).setTrainerName(trainerName);
+        for (Member member : members)
+            if (member.getIdNum().toString().equals(idNumEdit)) {
+                member.setTrainerName(trainerName);
             }
     }
     public void editMemberStatus(String idNumEdit){
-        for (int i = 0; i < members.size(); i++)
-            if(members.get(i).getIdNum().toString().equals(idNumEdit)){
-                if(members.get(i).isCompetitive() == true){
-                    members.get(i).setCompetitive(false);
-                    members.get(i).setTrainerName(null);
-                }else members.get(i).setCompetitive(true);
+        for (Member member : members)
+            if (member.getIdNum().toString().equals(idNumEdit)) {
+                if (member.isCompetitive()) {
+                    member.setCompetitive(false);
+                    member.setTrainerName(null);
+                } else member.setCompetitive(true);
             }
             }
 
     public void showMembers(){
-        for (int i = 0; i < members.size(); i++) {
-            System.out.println("\n MEDLEMSNAVN: "+members.get(i).getName()+
-                    "\n ID: "+members.get(i).getIdNum() +
-                    "\n FØDSELSDATO: "+members.get(i).getDateOfBirth()+
-                    "\n OPRETTELSESDATO: "+members.get(i).getDateOfMembership()+
-                    "\n TRÆNER: "+members.get(i).getTrainerName()+
-                    "\n MEDLEMSSTATUS: "+members.get(i).getMembershipStatus()+
-                    "\n AKTIVSTATUS: "+members.get(i).isActive()+
+        for (Member member : members) {
+            System.out.println("\nMEDLEMSNAVN: " + member.getName() + " " + member.getLastName() +
+                    "\nID: " + member.getIdNum() +
+                    "\nFØDSELSDATO: " + member.getDateOfBirth() +
+                    "\nOPRETTELSESDATO: " + member.getDateOfMembership() +
+                    "\nTRÆNER: " + member.getTrainerName() +
+                    "\nMEDLEMSSTATUS: " + member.getMembershipStatus() +
+                    "\nAKTIVSTATUS: " + member.isActive() +
                     "\n");
         }
 
     }
-    public void arrearslist(){
-        for (int i = 0; i < members.size(); i++)
-            if (members.get(i).isHasPaid() == false){
-                System.out.println(members.get(i).getName());
+    public void arrearsList(){
+        for (Member member : members)
+            if (!member.isHasPaid()) {
+                System.out.println(member.getName());
             }
     }
     public boolean memberArrearsStatus(String idNumEdit){
@@ -85,23 +91,21 @@ public class MemberList {
     }
     public double showIncome(){
         double income = 0;
-        for (int i = 0; i < members.size(); i++){
-            income = income + members.get(i).getMembershipFee();
+        for (Member member : members) {
+            income = income + member.getMembershipFee();
         }
          return income;
     }
     public void editActiveStatus(String idNumEdit){
-        for (int i = 0; i < members.size(); i++)
-            if(members.get(i).getIdNum().toString().equals(idNumEdit)){
-                if(members.get(i).isActive() == true){
-                    members.get(i).setActive(false);
-                }else members.get(i).setActive(true);
+        for (Member member : members)
+            if (member.getIdNum().toString().equals(idNumEdit)) {
+                member.setActive(!member.isActive());
             }
     }
     public boolean memberActiveStatus(String idNumEdit){
-        for (int i = 0; i < members.size(); i++)
-            if(members.get(i).getIdNum().toString().equals(idNumEdit)){
-                return members.get(i).isActive();
+        for (Member member : members)
+            if (member.getIdNum().toString().equals(idNumEdit)) {
+                return member.isActive();
             }
         return false;
     }

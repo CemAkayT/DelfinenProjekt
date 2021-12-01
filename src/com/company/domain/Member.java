@@ -7,6 +7,7 @@ import java.util.UUID;
 
 public class Member {
     private String name;
+    private String lastName;
     private UUID idNum;
     private LocalDate dateOfBirth;
     private boolean hasPaid = true;
@@ -18,8 +19,9 @@ public class Member {
     private boolean senior = false;
     private boolean active = true;
 
-    public Member(String name, UUID idNum, LocalDate dateOfBirth, LocalDate dateOfMembership, boolean isCompetitive, String trainerName) {
+    public Member(String name, String lastName, UUID idNum, LocalDate dateOfBirth, LocalDate dateOfMembership, boolean isCompetitive, String trainerName) {
         this.name = name;
+        this.lastName = lastName;
         this.idNum = idNum;
         this.dateOfBirth = dateOfBirth;
         this.dateOfMembership = dateOfMembership;
@@ -30,6 +32,9 @@ public class Member {
 
     public String getName() {
         return name;
+    }
+    public String getLastName(){
+        return lastName;
     }
 
     public LocalDate getDateOfBirth() {
@@ -76,6 +81,9 @@ public class Member {
     public void setName(String name) {
         this.name = name;
     }
+    public void setLastName(String newLastName){
+        this.lastName = newLastName;
+    }
 
     public void setHasPaid(boolean hasPaid) {
         this.hasPaid = hasPaid;
@@ -114,8 +122,8 @@ public class Member {
             junior = true;
             senior = false;
         }
-        if(active == false){
-            this.membershipFee = 500;
+        if(!active){
+            this.membershipFee = 500; // mangler vi else?
         }
     }
 }
