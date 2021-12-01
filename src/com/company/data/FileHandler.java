@@ -10,12 +10,13 @@ import java.util.Scanner;
 public class FileHandler {
 
     File membersList = new File("src/com/company/data/memberlist.csv");
+    File teamsList = new File("src/com/company/data/teamlist.csv");
     ArrayList<String> listOfMembers = new ArrayList<>();
+    ArrayList<String> listOfTeams = new ArrayList<>();
 
     //try to read list of members file
     public void readListOfMembers() {
         String line;
-        //String data;
         try {
             Scanner input = new Scanner(membersList);
             while (input.hasNext()) {
@@ -57,4 +58,27 @@ public class FileHandler {
             System.out.println();
         }
     }
+
+    //try to read list of teams file
+    public void readListOfTeams() {
+        String line;
+        try {
+            Scanner input = new Scanner(teamsList);
+            while (input.hasNext()) {
+                line = input.nextLine();
+                listOfTeams.add(line);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println(teamsList + " not found");
+        }
+        for (String newline : listOfTeams) {
+            String[] lineData = newline.split(";");
+            for (String d : lineData) {
+                System.out.print(d + " ");
+            }
+            System.out.println();
+        }
+    }
+
+
 }

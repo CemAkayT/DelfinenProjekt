@@ -17,6 +17,7 @@ public class Controller {
 
         fh.readListOfMembers();
         fh.writeListOfMembers();
+        fh.readListOfTeams();
 
         String choice;
         UI.printMessage("VELKOMMEN TIL DELFINEN! \uD83D\uDC2C" +
