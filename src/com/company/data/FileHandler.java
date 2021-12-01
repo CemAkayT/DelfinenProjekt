@@ -9,10 +9,10 @@ import java.util.Scanner;
 
 public class FileHandler {
 
-    File membersList = new File("src/com/company/data/memberlist.csv");
-    File teamsList = new File("src/com/company/data/teamlist.csv");
-    ArrayList<String> listOfMembers = new ArrayList<>();
-    ArrayList<String> listOfTeams = new ArrayList<>();
+    private File membersList = new File("src/com/company/data/memberlist.csv");
+    private File teamsList = new File("src/com/company/data/teamlist.csv");
+    private ArrayList<String> listOfMembers = new ArrayList<>();
+    private ArrayList<String> listOfTeams = new ArrayList<>();
 
     //try to read list of members file
     public void readListOfMembers() {
