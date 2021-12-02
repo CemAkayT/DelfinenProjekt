@@ -6,10 +6,12 @@ public class Team {
     private String teamName;
     private boolean isJunior;
     private ArrayList<Member> teamMemberlist = new ArrayList<>();
+    private boolean isDeleteable;
 
-    public Team(String teamName, boolean isJunior) {
+    public Team(String teamName, boolean isJunior, boolean isDeleteable) {
         this.teamName = teamName;
         this.isJunior=isJunior;
+        this.isDeleteable=isDeleteable;
     }
 
     public void addMember(Member member){
@@ -28,11 +30,14 @@ public class Team {
         return teamName;
     }
 
+    public boolean isDeleteable() {
+        return isDeleteable;
+    }
 
     enum Discipline{
         BUTTERFLY,
         CRAWL,
-        BAGCRAWL,
+        BACKCRAWL,
         BREASTSTROKE;
     }
 }

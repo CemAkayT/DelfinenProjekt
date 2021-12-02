@@ -11,7 +11,7 @@ public class Result {
     enum Discipline{
         BUTTERFLY,
         CRAWL,
-        BAGCRAWL,
+        BACKCRAWL,
         BREASTSTROKE;
     }
 

@@ -90,13 +90,41 @@ public class Controller2 {
                 Vælg funktion:
                 1. Opret hold
                 2. Slet hold
+                3. Registrering(Træning)
+                4. Registrering(Konkurence)
+                5. TOP 5 svømmerer
                                     
                 0. Tilbage til hoved menu
                 """);
         choice = UI.getInputInt();
         switch (choice) {
             case 1 -> teamCreation();
-            case 2 -> UI.printMessage("To do");
+            case 2 -> teamDeletion();
+            case 3 -> registerTraining();
+            case 4 -> registerCompetitive();
+            case 5 -> top5Swimmers();
+        }
+    }
+
+    private void top5Swimmers() {
+    }
+
+    private void registerCompetitive() {
+    }
+
+    private void registerTraining() {
+    }
+
+    private void teamDeletion() {
+        teamList.listOfTeams();
+        UI.printMessage("Skriv navn på holdet");
+        String teamName = UI.getInputString();
+        UI.printMessage("Er du sikker på at du vil slette "+teamName+"?");
+        String choice = UI.getInputString();
+        if(choice.equals("ja")){
+            teamList.deleteTeam(teamName);
+        }else{
+        UI.printMessage(teamName+" bliver IKKE slette");
         }
     }
 
@@ -107,7 +135,8 @@ public class Controller2 {
         String choice = UI.getInputString();
         boolean isJunior;
         isJunior = choice.equals("ja");
-        teamList.createTeam(teamName, isJunior);
+        boolean isDeleteable = false;
+        teamList.createTeam(teamName, isJunior,isDeleteable);
 
     }
 

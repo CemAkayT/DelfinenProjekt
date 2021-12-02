@@ -66,7 +66,8 @@ public class Controller {
         String choice = UI.getInputString();
         boolean isJunior;
         isJunior = choice.equals("ja");
-        teamList.createTeam(teamName,isJunior);
+        boolean isDeleteable = false;
+        teamList.createTeam(teamName,isJunior, isDeleteable);
 
     }
 
