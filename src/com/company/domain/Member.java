@@ -9,7 +9,7 @@ public class Member {
     private String name;
     private String middleName;
     private String lastName;
-    private UUID idNum;
+    private String idNum;
     private LocalDate dateOfBirth;
     private boolean hasPaid = true;
     private LocalDate dateOfMembership;
@@ -20,7 +20,7 @@ public class Member {
     private boolean senior = false;
     private boolean active = true;
 
-    public Member(String name,String middleName, String lastName, UUID idNum, LocalDate dateOfBirth, LocalDate dateOfMembership, boolean isCompetitive, String trainerName) {
+    public Member(String name,String middleName, String lastName, String idNum, LocalDate dateOfBirth, LocalDate dateOfMembership, boolean isCompetitive, String trainerName) {
         this.name = name;
         this.middleName = middleName;
         this.lastName = lastName;
@@ -54,7 +54,7 @@ public class Member {
         return trainerName;
     }
 
-    public UUID getIdNum() {
+    public String getIdNum() {
         return idNum;
     }
 

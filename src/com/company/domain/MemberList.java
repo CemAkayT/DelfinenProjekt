@@ -8,7 +8,7 @@ public class MemberList {
     private ArrayList<Member> members = new ArrayList<>();
 
 
-    public void createMember(String name,String middleName, String lastName, UUID idNum, LocalDate dateOfBirth, LocalDate dateOfMembership, boolean isCompetitive, String trainerName){
+    public void createMember(String name,String middleName, String lastName, String idNum, LocalDate dateOfBirth, LocalDate dateOfMembership, boolean isCompetitive, String trainerName){
         Member member = new Member(name,middleName, lastName,idNum, dateOfBirth,dateOfMembership,isCompetitive,trainerName);
         members.add(member);
     }
@@ -118,8 +118,14 @@ public class MemberList {
     public void CompetitiveList(){
         for (Member member : members)
             if (member.isCompetitive()) {
-                System.out.println(member.getName()+
-                "");
+                System.out.println("\nMEDLEMSNAVN: " + member.getName() + " "+member.getMiddleName()+" " + member.getLastName() +
+                        "\nID: " + member.getIdNum() +
+                        "\nFØDSELSDATO: " + member.getDateOfBirth() +
+                        "\nOPRETTELSESDATO: " + member.getDateOfMembership() +
+                        "\nTRÆNER: " + member.getTrainerName() +
+                        "\nMEDLEMSSTATUS: " + member.getMembershipStatus() +
+                        "\nAKTIVSTATUS: " + member.isActive() +
+                        "\n");
             }
 
 }

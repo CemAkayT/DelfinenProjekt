@@ -36,7 +36,7 @@ public class Controller2 {
                 case 0 -> running = false;
                 case 1 -> membersMenu();
                 case 2 -> accountMenu();
-                case 3 -> trainingMenu();
+                //case 3 -> trainingMenu();
             }
         }
     }
@@ -84,7 +84,7 @@ public class Controller2 {
         }
     }
 
-    private void trainingMenu() {
+   /* private void trainingMenu() {
         int choice;
         UI.printMessage("""
                 Vælg funktion:
@@ -107,12 +107,55 @@ public class Controller2 {
     }
 
     private void top5Swimmers() {
+
     }
 
     private void registerCompetitive() {
-    }
+        int choice;
+        UI.printMessage("""
+                Vælg funktion:
+                1. Registrer butterfly(Konkurence)
+                2. Registrer crawl(Konkurence)
+                3. Registrer rygcrawl(Konkurence)
+                4. Registrer brystsvømning(Konkurence)
+                5. Registrer stævne(Konkurence)
+                                    
+                0. Tilbage til hoved menu
+                """);
+        choice = UI.getInputInt();
+        switch (choice) {
+            case 1 -> registerCompetitiveButterfly();
+            case 2 -> registerCompetitiveCrawl();
+            case 3 -> registerCompetitiveBackcrawl();
+            case 4 -> registerCompetitiveBreaststroke();
+            case 5 -> registerCompetitiveTournament();
+    }}
 
     private void registerTraining() {
+        int choice;
+        UI.printMessage("""
+                Vælg funktion:
+                1. Registrer butterfly(Konkurence)
+                2. Registrer crawl(Konkurence)
+                3. Registrer rygcrawl(Konkurence)
+                4. Registrer brystsvømning(Konkurence)
+                5. Registrer stævne(Konkurence)
+                                    
+                0. Tilbage til hoved menu
+                """);
+        choice = UI.getInputInt();
+        switch (choice) {
+            case 1 -> registerTrainingButterfly();
+            case 2 -> registerTrainingCrawl();
+            case 3 -> registerTrainingBackcrawl();
+            case 4 -> registerTrainingBreaststroke();
+        }
+    }*/
+
+    private void registerTrainingBreaststroke() {
+        memberList.CompetitiveList();
+        UI.printMessage("Skriv medlems ID");
+        String idNum = UI.getInputString();
     }
 
     private void teamDeletion() {
@@ -224,7 +267,7 @@ public class Controller2 {
         String middleName = UI.getInputString();
         UI.printMessage("Skriv efternavn: ");
         String lastName = UI.getInputString();
-        UUID idNum = UUID.randomUUID();
+        String idNum = UUID.randomUUID().toString();
         UI.printMessage("\n" + "Medlemmets ID er: " + idNum + "\n");
         UI.printMessage("Skriv fødselsdato år/måned/dag: ");
         LocalDate dateOfBirth = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
