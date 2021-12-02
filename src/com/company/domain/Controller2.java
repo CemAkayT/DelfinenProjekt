@@ -36,7 +36,7 @@ public class Controller2 {
                 case 0 -> running = false;
                 case 1 -> membersMenu();
                 case 2 -> accountMenu();
-                //case 3 -> trainingMenu();
+                case 3 -> trainingMenu();
             }
         }
     }
@@ -84,7 +84,7 @@ public class Controller2 {
         }
     }
 
-   /* private void trainingMenu() {
+    private void trainingMenu() {
         int choice;
         UI.printMessage("""
                 Vælg funktion:
@@ -131,6 +131,46 @@ public class Controller2 {
             case 5 -> registerCompetitiveTournament();
     }}
 
+    private void registerCompetitiveButterfly() {
+        memberList.CompetitiveList();
+        UI.printMessage("Skriv medlems ID");
+        String idNum = UI.getInputString();
+        UI.printMessage("Svømmerens nuværende bedste tid er: ");
+        UI.printMessage("Vil du ændre den?");
+    }
+
+    private void registerCompetitiveCrawl() {
+        memberList.CompetitiveList();
+        UI.printMessage("Skriv medlems ID");
+        String idNum = UI.getInputString();
+        UI.printMessage("Svømmerens nuværende bedste tid er: ");
+        UI.printMessage("Vil du ændre den?");
+    }
+
+    private void registerCompetitiveBackcrawl() {
+        memberList.CompetitiveList();
+        UI.printMessage("Skriv medlems ID");
+        String idNum = UI.getInputString();
+        UI.printMessage("Svømmerens nuværende bedste tid er: ");
+        UI.printMessage("Vil du ændre den?");
+    }
+
+    private void registerCompetitiveBreaststroke() {
+        memberList.CompetitiveList();
+        UI.printMessage("Skriv medlems ID");
+        String idNum = UI.getInputString();
+        UI.printMessage("Svømmerens nuværende bedste tid er: ");
+        UI.printMessage("Vil du ændre den?");
+    }
+
+    private void registerCompetitiveTournament() {
+        memberList.CompetitiveList();
+        UI.printMessage("Skriv medlems ID");
+        String idNum = UI.getInputString();
+        UI.printMessage("Svømmerens nuværende bedste tid er: ");
+        UI.printMessage("Vil du ændre den?");
+    }
+
     private void registerTraining() {
         int choice;
         UI.printMessage("""
@@ -150,12 +190,47 @@ public class Controller2 {
             case 3 -> registerTrainingBackcrawl();
             case 4 -> registerTrainingBreaststroke();
         }
-    }*/
+    }
+
+    private void registerTrainingButterfly() {
+        memberList.CompetitiveList();
+        UI.printMessage("Skriv medlems ID");
+        String idNum = UI.getInputString();
+        UI.printMessage("Svømmerens nuværende bedste tid er: ");
+        UI.printMessage("Vil du ændre den?");
+        String choice = UI.getInputString();
+    }
+
+    private void registerTrainingCrawl() {
+        memberList.CompetitiveList();
+        UI.printMessage("Skriv medlems ID");
+        String idNum = UI.getInputString();
+        UI.printMessage("Svømmerens nuværende bedste tid er: ");
+        UI.printMessage("Vil du ændre den?");
+        String choice = UI.getInputString();
+    }
+
+    private void registerTrainingBackcrawl() {
+        memberList.CompetitiveList();
+        UI.printMessage("Skriv medlems ID");
+        String idNum = UI.getInputString();
+        UI.printMessage("Svømmerens nuværende bedste tid er: ");
+        UI.printMessage("Vil du ændre den?");
+        String choice = UI.getInputString();
+        if(choice.equals("ja")){
+            UI.printMessage("Skriv ny tid");
+            UI.getInputDouble();
+
+        }
+    }
 
     private void registerTrainingBreaststroke() {
         memberList.CompetitiveList();
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
+        UI.printMessage("Svømmerens nuværende bedste tid er: ");
+        UI.printMessage("Vil du ændre den?");
+        String choice = UI.getInputString();
     }
 
     private void teamDeletion() {

@@ -19,6 +19,12 @@ Scanner sc = new Scanner(System.in);
 
         return sc.nextLine().toLowerCase(Locale.ROOT);
 }
+
+    public double getInputDouble(){
+
+        return sc.nextDouble();
+    }
+
     public int getInputInt(){
 
         return sc.nextInt();
