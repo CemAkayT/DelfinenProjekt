@@ -15,7 +15,7 @@ public class FileHandler {
     private ArrayList<String> listOfTeams = new ArrayList<>();
 
     //try to read list of members file
-    public void readListOfMembers() {
+    public ArrayList<String> readListOfMembers() {
         String line;
         try {
             Scanner input = new Scanner(membersList);
@@ -26,7 +26,8 @@ public class FileHandler {
         } catch (FileNotFoundException e) {
             System.out.println(membersList + " not found");
         }
-        outputListOfMembers();
+        //outputListOfMembers();
+        return listOfMembers;
     }
 
     //try to write list of members file
@@ -71,13 +72,14 @@ public class FileHandler {
         } catch (FileNotFoundException e) {
             System.out.println(teamsList + " not found");
         }
-        for (String newline : listOfTeams) {
+
+        /*for (String newline : listOfTeams) {
             String[] lineData = newline.split(";");
             for (String d : lineData) {
                 System.out.print(d + " ");
             }
             System.out.println();
-        }
+        }*/
     }
 
 

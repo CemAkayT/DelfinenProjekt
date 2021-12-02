@@ -1,3 +1,4 @@
+/*
 package com.company.domain;
 
 import com.company.UI.UserInterface;
@@ -147,7 +148,8 @@ public class Controller {
         UI.printMessage("Medlem slettet"+"\n");
     }
 
-    private void memberCreation() {
+    */
+/*private void memberCreation() {
         UI.printMessage("Skriv navn: ");
         String name = UI.getInputString();
         UI.printMessage("Skriv mellemnavn: ");
@@ -174,8 +176,10 @@ public class Controller {
             UI.printMessage("Medlem oprettet: " + dateOfMembership + "\n");
             memberList.createMember(name,middleName, lastName, idNum, dateOfBirth, dateOfMembership, false, null);
         }
-    }
+    }*//*
+
 }
+*/
 
 
 

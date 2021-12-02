@@ -29,11 +29,8 @@ public class MemberList {
 
                 Member member = new Member(name,middleName, lastName,idNum, dateOfBirth,dateOfMembership,isCompetitive,trainerName);
                 members.add(member);
-
             }
-            System.out.println();
         }
-
     }
 
 

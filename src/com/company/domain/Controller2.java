@@ -4,6 +4,7 @@ import com.company.UI.UserInterface;
 import com.company.data.FileHandler;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class Controller2 {
@@ -15,7 +16,8 @@ public class Controller2 {
 
     public void run() {
 
-        fh.readListOfMembers();
+        ArrayList<String> listOfMembers = fh.readListOfMembers();
+        memberCreationFromFile(listOfMembers);
         fh.writeListOfMembers();
         fh.readListOfTeams();
 
@@ -363,8 +365,9 @@ public class Controller2 {
             memberList.createMember(name, middleName, lastName, idNum, dateOfBirth, dateOfMembership, false, null);
         }
     }
+
+    private void memberCreationFromFile(ArrayList<String> list) {
+        memberList.createMember(list);
+    }
 }
-
-
-
 
