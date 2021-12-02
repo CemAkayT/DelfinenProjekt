@@ -1,11 +1,40 @@
 package com.company.domain;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.UUID;
 
 public class MemberList {
     private ArrayList<Member> members = new ArrayList<>();
+
+    public void createMember(ArrayList<String> listOfMembers) {
+        for (String line : listOfMembers) {
+            String[] lineData = line.split(";");
+            for (int i = 0; i < lineData.length; i++) {
+                String name = lineData[0];
+                String middleName = lineData[1];
+                String lastName = lineData[2];
+                String idNum = lineData[3];
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                LocalDate dateOfBirth = LocalDate.parse(lineData[4], formatter);
+                LocalDate dateOfMembership = LocalDate.parse(lineData[5], formatter);
+                boolean isCompetitive;
+                if (lineData[6] == "true") {
+                    isCompetitive = true;
+                } else {
+                    isCompetitive = false;
+                }
+                String trainerName = lineData[7];
+
+                Member member = new Member(name,middleName, lastName,idNum, dateOfBirth,dateOfMembership,isCompetitive,trainerName);
+                members.add(member);
+
+            }
+            System.out.println();
+        }
+
+    }
 
 
     public void createMember(String name,String middleName, String lastName, String idNum, LocalDate dateOfBirth, LocalDate dateOfMembership, boolean isCompetitive, String trainerName){
