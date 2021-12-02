@@ -1,5 +1,7 @@
 package com.company.data;
 
+import com.company.UI.UserInterface;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -9,6 +11,7 @@ import java.util.Scanner;
 
 public class FileHandler {
 
+    UserInterface UI = new UserInterface();
     private File membersList = new File("src/com/company/data/memberlisttest.csv");
     private File teamsList = new File("src/com/company/data/teamlist.csv");
     private ArrayList<String> listOfMembers = new ArrayList<>();
@@ -24,9 +27,9 @@ public class FileHandler {
                 listOfMembers.add(line);
             }
         } catch (FileNotFoundException e) {
-            System.out.println(membersList + " not found");
+            UI.printMessage(membersList + " not found");
         }
-        //outputListOfMembers();
+        UI.printMessage("Members List loaded");
         return listOfMembers;
     }
 
@@ -37,7 +40,7 @@ public class FileHandler {
             try {
                 ps = new PrintStream(new FileOutputStream("src/com/company/data/memberlisttest.csv", false));
                 if (list == null) {
-                    System.out.println("No members to save");
+                    UI.printMessage("No members to save");
                 } else {
                     for (String member : list) {
                         ps.println(member);
@@ -59,7 +62,7 @@ public class FileHandler {
                 listOfTeams.add(line);
             }
         } catch (FileNotFoundException e) {
-            System.out.println(teamsList + " not found");
+            UI.printMessage(teamsList + " not found");
         }
     }
 }
