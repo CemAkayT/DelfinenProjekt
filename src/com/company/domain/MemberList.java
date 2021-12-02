@@ -3,6 +3,7 @@ package com.company.domain;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.UUID;
 
 public class MemberList {
@@ -10,7 +11,8 @@ public class MemberList {
 
     public void createMember(ArrayList<String> listOfMembers) {
         for (String line : listOfMembers) {
-            String[] lineData = line.split(";");
+            {
+                String[] lineData = line.split(";");
                 String name = lineData[0];
                 String middleName = lineData[1];
                 String lastName = lineData[2];
@@ -19,7 +21,7 @@ public class MemberList {
                 LocalDate dateOfBirth = LocalDate.parse(lineData[4], formatter);
                 LocalDate dateOfMembership = LocalDate.parse(lineData[5], formatter);
                 boolean isCompetitive;
-                if (lineData[6] == "true") {
+                if (Objects.equals(lineData[6], "true")) {
                     isCompetitive = true;
                 } else {
                     isCompetitive = false;
@@ -28,7 +30,9 @@ public class MemberList {
 
                 Member member = new Member(name,middleName, lastName,idNum, dateOfBirth,dateOfMembership,isCompetitive,trainerName);
                 members.add(member);
+            }
         }
+        membersListToString();
     }
 
 
@@ -152,6 +156,11 @@ public class MemberList {
                         "\n");
             }
 
+}
+public void membersListToString() {
+        for (Member m : members) {
+            System.out.println(m);
+        }
 }
 
 

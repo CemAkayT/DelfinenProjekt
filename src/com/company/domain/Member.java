@@ -135,4 +135,20 @@ public class Member {
             this.membershipFee = 500; // mangler vi else?
         }
     }
+
+    public String buildStringForCSV() {
+        return name + ";" + middleName + ";" + lastName + ";" +
+                idNum + ";" + dateOfBirth + ";" + dateOfMembership + ";" + isCompetitive + ";" + trainerName + ";";
+    }
+
+    @Override
+    public String toString() {
+        return "Member: " + name + " " + middleName + " " + lastName +
+                ", id Num: " + idNum +
+                ", Date of birth: " + dateOfBirth +
+                ", Paid: " + hasPaid +
+                ", Subscription date: " + dateOfMembership +
+                ", Is competitive: " + isCompetitive +
+                ", Assigned trainer: " + trainerName;
+    }
 }

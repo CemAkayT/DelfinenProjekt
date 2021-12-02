@@ -34,6 +34,7 @@ public class Controller2 {
                     0. Afslut
                     """);
             choice = UI.getInputInt();
+            UI.getInputString();
             switch (choice) {
                 case 0 -> running = false;
                 case 1 -> membersMenu();
@@ -55,6 +56,7 @@ public class Controller2 {
                 0. Tilbage til hoved menu
                 """);
         choice = UI.getInputInt();
+        UI.getInputString();
         switch (choice) {
             case 1 -> memberCreation();
             case 2 -> memberDeletion();
@@ -73,6 +75,7 @@ public class Controller2 {
                 0. Tilbage til hoved menu
                 """);
         choice = UI.getInputInt();
+        UI.getInputString();
         switch (choice) {
             case 1 -> {
                 UI.printMessage("LISTE AF MEDLEMMER I RESTANCE: " + "\n");
@@ -99,6 +102,7 @@ public class Controller2 {
                 0. Tilbage til hoved menu
                 """);
         choice = UI.getInputInt();
+        UI.getInputString();
         switch (choice) {
             case 1 -> teamCreation();
             case 2 -> teamDeletion();
@@ -119,8 +123,7 @@ public class Controller2 {
                 1. Registrer butterfly(Konkurence)
                 2. Registrer crawl(Konkurence)
                 3. Registrer rygcrawl(Konkurence)
-                4. Registrer brystsvømning(Konkurence)
-                5. Registrer stævne(Konkurence)
+                4. Registrer brystsvømning(Konkurence)            
                                     
                 0. Tilbage til hoved menu
                 """);
@@ -130,7 +133,6 @@ public class Controller2 {
             case 2 -> registerCompetitiveCrawl();
             case 3 -> registerCompetitiveBackcrawl();
             case 4 -> registerCompetitiveBreaststroke();
-            case 5 -> registerCompetitiveTournament();
     }}
 
     private void registerCompetitiveButterfly() {
@@ -139,6 +141,11 @@ public class Controller2 {
         String idNum = UI.getInputString();
         UI.printMessage("Svømmerens nuværende bedste tid er: ");
         UI.printMessage("Vil du ændre den?");
+        String choice = UI.getInputString();
+        if(choice.equals("ja")){
+            UI.printMessage("Skriv ny tid");
+            UI.getInputDouble();
+        }else{UI.printMessage("tiden blevet ikke ændret");}
     }
 
     private void registerCompetitiveCrawl() {
@@ -147,6 +154,11 @@ public class Controller2 {
         String idNum = UI.getInputString();
         UI.printMessage("Svømmerens nuværende bedste tid er: ");
         UI.printMessage("Vil du ændre den?");
+        String choice = UI.getInputString();
+        if(choice.equals("ja")){
+            UI.printMessage("Skriv ny tid");
+            UI.getInputDouble();
+        }else{UI.printMessage("tiden blevet ikke ændret");}
     }
 
     private void registerCompetitiveBackcrawl() {
@@ -155,6 +167,11 @@ public class Controller2 {
         String idNum = UI.getInputString();
         UI.printMessage("Svømmerens nuværende bedste tid er: ");
         UI.printMessage("Vil du ændre den?");
+        String choice = UI.getInputString();
+        if(choice.equals("ja")){
+            UI.printMessage("Skriv ny tid");
+            UI.getInputDouble();
+        }else{UI.printMessage("tiden blevet ikke ændret");}
     }
 
     private void registerCompetitiveBreaststroke() {
@@ -163,14 +180,11 @@ public class Controller2 {
         String idNum = UI.getInputString();
         UI.printMessage("Svømmerens nuværende bedste tid er: ");
         UI.printMessage("Vil du ændre den?");
-    }
-
-    private void registerCompetitiveTournament() {
-        memberList.CompetitiveList();
-        UI.printMessage("Skriv medlems ID");
-        String idNum = UI.getInputString();
-        UI.printMessage("Svømmerens nuværende bedste tid er: ");
-        UI.printMessage("Vil du ændre den?");
+        String choice = UI.getInputString();
+        if(choice.equals("ja")){
+            UI.printMessage("Skriv ny tid");
+            UI.getInputDouble();
+        }else{UI.printMessage("tiden blevet ikke ændret");}
     }
 
     private void registerTraining() {
@@ -180,8 +194,7 @@ public class Controller2 {
                 1. Registrer butterfly(Konkurence)
                 2. Registrer crawl(Konkurence)
                 3. Registrer rygcrawl(Konkurence)
-                4. Registrer brystsvømning(Konkurence)
-                5. Registrer stævne(Konkurence)
+                4. Registrer brystsvømning(Konkurence)            
                                     
                 0. Tilbage til hoved menu
                 """);
@@ -201,6 +214,10 @@ public class Controller2 {
         UI.printMessage("Svømmerens nuværende bedste tid er: ");
         UI.printMessage("Vil du ændre den?");
         String choice = UI.getInputString();
+        if(choice.equals("ja")){
+            UI.printMessage("Skriv ny tid");
+            UI.getInputDouble();
+        }else{UI.printMessage("tiden blevet ikke ændret");}
     }
 
     private void registerTrainingCrawl() {
@@ -210,6 +227,10 @@ public class Controller2 {
         UI.printMessage("Svømmerens nuværende bedste tid er: ");
         UI.printMessage("Vil du ændre den?");
         String choice = UI.getInputString();
+        if(choice.equals("ja")){
+            UI.printMessage("Skriv ny tid");
+            UI.getInputDouble();
+        }else{UI.printMessage("tiden blevet ikke ændret");}
     }
 
     private void registerTrainingBackcrawl() {
@@ -222,8 +243,7 @@ public class Controller2 {
         if(choice.equals("ja")){
             UI.printMessage("Skriv ny tid");
             UI.getInputDouble();
-
-        }
+        }else{UI.printMessage("tiden blevet ikke ændret");}
     }
 
     private void registerTrainingBreaststroke() {
@@ -233,6 +253,10 @@ public class Controller2 {
         UI.printMessage("Svømmerens nuværende bedste tid er: ");
         UI.printMessage("Vil du ændre den?");
         String choice = UI.getInputString();
+        if(choice.equals("ja")){
+            UI.printMessage("Skriv ny tid");
+            UI.getInputDouble();
+        }else{UI.printMessage("tiden blevet ikke ændret");}
     }
 
     private void teamDeletion() {

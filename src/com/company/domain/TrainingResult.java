@@ -4,7 +4,9 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 public class TrainingResult extends Result{
-    public TrainingResult(double resultTime, UUID idNum, LocalDate dateOfReult) {
-        super(resultTime, idNum, dateOfReult);
+
+    public TrainingResult(double resultTime, String idNum, LocalDate dateOfResult) {
+        super(resultTime, idNum, dateOfResult);
+
     }
 }

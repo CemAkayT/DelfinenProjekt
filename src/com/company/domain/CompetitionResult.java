@@ -4,7 +4,9 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 public class CompetitionResult extends Result{
-    public CompetitionResult(double resultTime, UUID idNum, LocalDate dateOfReult) {
-        super(resultTime, idNum, dateOfReult);
+    private String tournament;
+    public CompetitionResult(double resultTime, String idNum, LocalDate dateOfResult, String tournament) {
+        super(resultTime, idNum, dateOfResult);
+        this.tournament = tournament;
     }
 }

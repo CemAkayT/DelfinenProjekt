@@ -5,17 +5,11 @@ import java.util.UUID;
 
 public class Result {
     private double resultTime;
-    private UUID idNum;
+    private String idNum;
     private LocalDate dateOfResult;
 
-    enum Discipline{
-        BUTTERFLY,
-        CRAWL,
-        BACKCRAWL,
-        BREASTSTROKE;
-    }
 
-    public Result(double resultTime, UUID idNum, LocalDate dateOfResult) {
+    public Result(double resultTime, String idNum, LocalDate dateOfResult) {
         this.resultTime = resultTime;
         this.idNum = idNum;
         this.dateOfResult = dateOfResult;
@@ -29,11 +23,11 @@ public class Result {
         this.resultTime = resultTime;
     }
 
-    public UUID getIdNum() {
+    public String getIdNum() {
         return idNum;
     }
 
-    public void setIdNum(UUID idNum) {
+    public void setIdNum(String idNum) {
         this.idNum = idNum;
     }
 
