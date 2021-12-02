@@ -20,7 +20,7 @@ public class UserInterface {
 
     public String getInputString() {
 
-        return sc.nextLine().toLowerCase(Locale.ROOT);
+        return sc.nextLine();
     }
 
     public double getInputDouble() {
