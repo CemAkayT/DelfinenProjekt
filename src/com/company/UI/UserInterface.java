@@ -4,29 +4,32 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class UserInterface {
-Scanner sc = new Scanner(System.in);
+    Scanner sc = new Scanner(System.in);
 
 
-    public void printMessage(String message){
+    public void printMessage(String message) {
 
         System.out.println(message);
     }
-    public void printDouble(double doub){
+
+    public void printDouble(double doub) {
 
         System.out.println(doub);
     }
-    public String getInputString(){
+
+    public String getInputString() {
 
         return sc.nextLine().toLowerCase(Locale.ROOT);
-}
+    }
 
-    public double getInputDouble(){
+    public double getInputDouble() {
 
         return sc.nextDouble();
     }
 
-    public int getInputInt(){
-
-        return sc.nextInt();
-}
+    public int getInputInt() {
+        int choice = sc.nextInt();
+        sc.nextLine();
+        return choice;
+    }
 }

@@ -18,8 +18,8 @@ public class Controller {
 
         ArrayList<String> listOfMembers = fh.readListOfMembers();
         memberCreationFromFile(listOfMembers);
-        fh.writeListOfMembers();
         fh.readListOfTeams();
+
 
         int choice;
         UI.printMessage("\nVELKOMMEN TIL DELFINEN! \uD83D\uDC2C\n");
@@ -35,12 +35,19 @@ public class Controller {
                     """);
             choice = UI.getInputInt();
             switch (choice) {
-                case 0 -> running = false;
+                case 0 -> running = closeFiles();
                 case 1 -> membersMenu();
                 case 2 -> accountMenu();
                 case 3 -> trainingMenu();
             }
+
         }
+    }
+
+    private boolean closeFiles() {
+        ArrayList<String> list = memberList.membersListToString();
+        fh.writeListOfMembers(list);
+        return false;
     }
 
     private void membersMenu() {
@@ -131,7 +138,8 @@ public class Controller {
             case 3 -> registerCompetitiveBackcrawl();
             case 4 -> registerCompetitiveBreaststroke();
             case 5 -> registerCompetitiveTournament();
-    }}
+    }
+    }
 
     private void registerCompetitiveButterfly() {
         memberList.CompetitiveList();
@@ -368,6 +376,10 @@ public class Controller {
 
     private void memberCreationFromFile(ArrayList<String> list) {
         memberList.createMember(list);
+    }
+
+    private void getMemberListToSaveToFile () {
+
     }
 }
 
