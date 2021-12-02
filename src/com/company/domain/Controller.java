@@ -1,10 +1,10 @@
-/*
 package com.company.domain;
 
 import com.company.UI.UserInterface;
 import com.company.data.FileHandler;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class Controller {
@@ -16,47 +16,235 @@ public class Controller {
 
     public void run() {
 
-        fh.readListOfMembers();
+        ArrayList<String> listOfMembers = fh.readListOfMembers();
+        memberCreationFromFile(listOfMembers);
         fh.writeListOfMembers();
         fh.readListOfTeams();
 
-        String choice;
-        UI.printMessage("VELKOMMEN TIL DELFINEN! \uD83D\uDC2C" +
-                "\n");
-        while (true) {
-            UI.printMessage("Vælg funktion:" +
-                    "\n1. opret medlem" +
-                    "\n2. slet medlem" +
-                    "\n3. rediger medlem" +
-                    "\n4. se medlemsliste" +
-                    "\n5. se restance liste" +
-                    "\n6. se kontingent til dato" +
-                    "\n7. opret hold" +
-                    "\n8. slet hold" +
-                    "\n9. ");
-            choice = UI.getInputString().toLowerCase();
+        int choice;
+        UI.printMessage("\nVELKOMMEN TIL DELFINEN! \uD83D\uDC2C\n");
+        boolean running = true;
+        while (running) {
+            UI.printMessage("""
+                    Vælg funktion:
+                    1. Medlemmer
+                    2. Kontigent
+                    3. Træning
+                                        
+                    0. Afslut
+                    """);
+            choice = UI.getInputInt();
             switch (choice) {
-                case "opret medlem", "1" -> memberCreation();
-                case "slet medlem", "2" -> memberDeletion();
-                case "rediger medlem", "3" -> memberEditing();
-                case "se medlemsliste", "4" -> memberList.showMembers();
-                case "se restance liste", "5" -> {
-                    UI.printMessage("LISTE AF MEDLEMMER I RESTANCE: "+"\n");
-                    memberList.arrearsList();
-                }
-                case "kontingent", "6" -> {
-                    UI.printMessage("TOTAL KONTINGENT: ");
-                    UI.printDouble(memberList.showIncome());
-                    UI.printMessage("");
-                }
-                case "opret hold", "7"-> {
-                    teamCreation();
-                }
-                case "slet hold", "8"->{
-
-                }
-                default -> UI.printMessage("Hov der skete en fejl, prøv igen.");
+                case 0 -> running = false;
+                case 1 -> membersMenu();
+                case 2 -> accountMenu();
+                case 3 -> trainingMenu();
             }
+        }
+    }
+
+    private void membersMenu() {
+        int choice;
+        UI.printMessage("""
+                Vælg funktion:
+                1. Opret medlem
+                2. Slet medlem
+                3. rediger medlem
+                4. Se medlemsliste
+                                    
+                0. Tilbage til hoved menu
+                """);
+        choice = UI.getInputInt();
+        switch (choice) {
+            case 1 -> memberCreation();
+            case 2 -> memberDeletion();
+            case 3 -> memberEditing();
+            case 4 -> memberList.showMembers();
+        }
+    }
+
+    private void accountMenu() {
+        int choice;
+        UI.printMessage("""
+                Vælg funktion:
+                1. Se restance liste
+                2. Se kontingent til dato
+                                    
+                0. Tilbage til hoved menu
+                """);
+        choice = UI.getInputInt();
+        switch (choice) {
+            case 1 -> {
+                UI.printMessage("LISTE AF MEDLEMMER I RESTANCE: " + "\n");
+                memberList.arrearsList();
+            }
+            case 2 -> {
+                UI.printMessage("TOTAL KONTINGENT: ");
+                UI.printDouble(memberList.showIncome());
+                UI.printMessage("");
+            }
+        }
+    }
+
+    private void trainingMenu() {
+        int choice;
+        UI.printMessage("""
+                Vælg funktion:
+                1. Opret hold
+                2. Slet hold
+                3. Registrering(Træning)
+                4. Registrering(Konkurence)
+                5. TOP 5 svømmerer
+                                    
+                0. Tilbage til hoved menu
+                """);
+        choice = UI.getInputInt();
+        switch (choice) {
+            case 1 -> teamCreation();
+            case 2 -> teamDeletion();
+            case 3 -> registerTraining();
+            case 4 -> registerCompetitive();
+            case 5 -> top5Swimmers();
+        }
+    }
+
+    private void top5Swimmers() {
+
+    }
+
+    private void registerCompetitive() {
+        int choice;
+        UI.printMessage("""
+                Vælg funktion:
+                1. Registrer butterfly(Konkurence)
+                2. Registrer crawl(Konkurence)
+                3. Registrer rygcrawl(Konkurence)
+                4. Registrer brystsvømning(Konkurence)
+                5. Registrer stævne(Konkurence)
+                                    
+                0. Tilbage til hoved menu
+                """);
+        choice = UI.getInputInt();
+        switch (choice) {
+            case 1 -> registerCompetitiveButterfly();
+            case 2 -> registerCompetitiveCrawl();
+            case 3 -> registerCompetitiveBackcrawl();
+            case 4 -> registerCompetitiveBreaststroke();
+            case 5 -> registerCompetitiveTournament();
+    }}
+
+    private void registerCompetitiveButterfly() {
+        memberList.CompetitiveList();
+        UI.printMessage("Skriv medlems ID");
+        String idNum = UI.getInputString();
+        UI.printMessage("Svømmerens nuværende bedste tid er: ");
+        UI.printMessage("Vil du ændre den?");
+    }
+
+    private void registerCompetitiveCrawl() {
+        memberList.CompetitiveList();
+        UI.printMessage("Skriv medlems ID");
+        String idNum = UI.getInputString();
+        UI.printMessage("Svømmerens nuværende bedste tid er: ");
+        UI.printMessage("Vil du ændre den?");
+    }
+
+    private void registerCompetitiveBackcrawl() {
+        memberList.CompetitiveList();
+        UI.printMessage("Skriv medlems ID");
+        String idNum = UI.getInputString();
+        UI.printMessage("Svømmerens nuværende bedste tid er: ");
+        UI.printMessage("Vil du ændre den?");
+    }
+
+    private void registerCompetitiveBreaststroke() {
+        memberList.CompetitiveList();
+        UI.printMessage("Skriv medlems ID");
+        String idNum = UI.getInputString();
+        UI.printMessage("Svømmerens nuværende bedste tid er: ");
+        UI.printMessage("Vil du ændre den?");
+    }
+
+    private void registerCompetitiveTournament() {
+        memberList.CompetitiveList();
+        UI.printMessage("Skriv medlems ID");
+        String idNum = UI.getInputString();
+        UI.printMessage("Svømmerens nuværende bedste tid er: ");
+        UI.printMessage("Vil du ændre den?");
+    }
+
+    private void registerTraining() {
+        int choice;
+        UI.printMessage("""
+                Vælg funktion:
+                1. Registrer butterfly(Konkurence)
+                2. Registrer crawl(Konkurence)
+                3. Registrer rygcrawl(Konkurence)
+                4. Registrer brystsvømning(Konkurence)
+                5. Registrer stævne(Konkurence)
+                                    
+                0. Tilbage til hoved menu
+                """);
+        choice = UI.getInputInt();
+        switch (choice) {
+            case 1 -> registerTrainingButterfly();
+            case 2 -> registerTrainingCrawl();
+            case 3 -> registerTrainingBackcrawl();
+            case 4 -> registerTrainingBreaststroke();
+        }
+    }
+
+    private void registerTrainingButterfly() {
+        memberList.CompetitiveList();
+        UI.printMessage("Skriv medlems ID");
+        String idNum = UI.getInputString();
+        UI.printMessage("Svømmerens nuværende bedste tid er: ");
+        UI.printMessage("Vil du ændre den?");
+        String choice = UI.getInputString();
+    }
+
+    private void registerTrainingCrawl() {
+        memberList.CompetitiveList();
+        UI.printMessage("Skriv medlems ID");
+        String idNum = UI.getInputString();
+        UI.printMessage("Svømmerens nuværende bedste tid er: ");
+        UI.printMessage("Vil du ændre den?");
+        String choice = UI.getInputString();
+    }
+
+    private void registerTrainingBackcrawl() {
+        memberList.CompetitiveList();
+        UI.printMessage("Skriv medlems ID");
+        String idNum = UI.getInputString();
+        UI.printMessage("Svømmerens nuværende bedste tid er: ");
+        UI.printMessage("Vil du ændre den?");
+        String choice = UI.getInputString();
+        if(choice.equals("ja")){
+            UI.printMessage("Skriv ny tid");
+            UI.getInputDouble();
+
+        }
+    }
+
+    private void registerTrainingBreaststroke() {
+        memberList.CompetitiveList();
+        UI.printMessage("Skriv medlems ID");
+        String idNum = UI.getInputString();
+        UI.printMessage("Svømmerens nuværende bedste tid er: ");
+        UI.printMessage("Vil du ændre den?");
+        String choice = UI.getInputString();
+    }
+
+    private void teamDeletion() {
+        teamList.listOfTeams();
+        UI.printMessage("Skriv navn på holdet");
+        String teamName = UI.getInputString();
+        UI.printMessage("Er du sikker på at du vil slette "+teamName+"?");
+        String choice = UI.getInputString();
+        if(choice.equals("ja")){
+            teamList.deleteTeam(teamName);
+        }else{
+        UI.printMessage(teamName+" bliver IKKE slette");
         }
     }
 
@@ -68,7 +256,7 @@ public class Controller {
         boolean isJunior;
         isJunior = choice.equals("ja");
         boolean isDeleteable = false;
-        teamList.createTeam(teamName,isJunior, isDeleteable);
+        teamList.createTeam(teamName, isJunior,isDeleteable);
 
     }
 
@@ -99,12 +287,12 @@ public class Controller {
                     String memberMiddleName = UI.getInputString();
                     memberList.editMemberMiddleName(idNumEdit, memberMiddleName);
                 }
-                case "efternavn", "3"-> {
+                case "efternavn", "3" -> {
                     UI.printMessage("Skriv nyt efternavn: ");
                     String memberLastName = UI.getInputString();
                     memberList.editMemberLastName(idNumEdit, memberLastName);
                 }
-                case "svømmerstatus", "4"-> {
+                case "svømmerstatus", "4" -> {
                     memberList.editMemberStatus(idNumEdit);
                     UI.printMessage("Medlems restance status er nu ændret til " + memberList.memberSwimmerStatus(idNumEdit));
                     if (memberList.memberSwimmerStatus(idNumEdit)) {
@@ -112,12 +300,12 @@ public class Controller {
                     }
                 }
 
-                case "kontingent", "5"-> {
+                case "kontingent", "5" -> {
                     memberList.editMemberArrears(idNumEdit);
                     UI.printMessage("Medlems restance status er nu ændret til " + memberList.memberArrearsStatus(idNumEdit));
                 }
 
-                case "træner", "6"-> {
+                case "træner", "6" -> {
                     if (memberList.memberSwimmerStatus(idNumEdit)) {
                         UI.printMessage("Skriv nyt navn på træner");
                         String trainerName = UI.getInputString();
@@ -128,35 +316,35 @@ public class Controller {
                 }
 
 
-                case "aktiv/passiv", "7"-> {
+                case "aktiv/passiv", "7" -> {
                     memberList.editActiveStatus(idNumEdit);
                     UI.printMessage("Medlemmets aktivitetsstatus er nu ændret til " + memberList.memberActiveStatus(idNumEdit));
                 }
 
-                case "afslut", "8"-> editActive = false;
+                case "afslut", "8" -> editActive = false;
 
 
-                default-> UI.printMessage("Der skete en fejl, prøv noget andet.");
+                default -> UI.printMessage("Der skete en fejl, prøv noget andet.");
             }
         }
     }
+
     private void memberDeletion() {
         memberList.showMembers();
         UI.printMessage("Skriv medlemmets ID for at slette medlem");
         String idNumDelete = UI.getInputString();
         memberList.deleteMember(idNumDelete);
-        UI.printMessage("Medlem slettet"+"\n");
+        UI.printMessage("Medlem slettet" + "\n");
     }
 
-    */
-/*private void memberCreation() {
+    private void memberCreation() {
         UI.printMessage("Skriv navn: ");
         String name = UI.getInputString();
         UI.printMessage("Skriv mellemnavn: ");
         String middleName = UI.getInputString();
         UI.printMessage("Skriv efternavn: ");
         String lastName = UI.getInputString();
-        UUID idNum = UUID.randomUUID();
+        String idNum = UUID.randomUUID().toString();
         UI.printMessage("\n" + "Medlemmets ID er: " + idNum + "\n");
         UI.printMessage("Skriv fødselsdato år/måned/dag: ");
         LocalDate dateOfBirth = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
@@ -174,13 +362,12 @@ public class Controller {
         } else {
             LocalDate dateOfMembership = LocalDate.now();
             UI.printMessage("Medlem oprettet: " + dateOfMembership + "\n");
-            memberList.createMember(name,middleName, lastName, idNum, dateOfBirth, dateOfMembership, false, null);
+            memberList.createMember(name, middleName, lastName, idNum, dateOfBirth, dateOfMembership, false, null);
         }
-    }*//*
+    }
 
+    private void memberCreationFromFile(ArrayList<String> list) {
+        memberList.createMember(list);
+    }
 }
-*/
-
-
-
 
