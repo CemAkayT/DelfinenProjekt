@@ -72,15 +72,5 @@ public class FileHandler {
         } catch (FileNotFoundException e) {
             System.out.println(teamsList + " not found");
         }
-
-        /*for (String newline : listOfTeams) {
-            String[] lineData = newline.split(";");
-            for (String d : lineData) {
-                System.out.print(d + " ");
-            }
-            System.out.println();
-        }*/
     }
-
-
 }
