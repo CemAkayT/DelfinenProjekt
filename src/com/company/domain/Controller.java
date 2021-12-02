@@ -26,14 +26,14 @@ public class Controller {
         boolean running = true;
         while (running) {
             UI.printMessage("""
-                    Vælg funktion:
+                    Hoved menu - Vælg funktion:
                     1. Medlemmer
                     2. Kontigent
                     3. Træning
                                         
                     0. Afslut
                     """);
-            choice = UI.getInputInt();
+            choice = UI.getValidInt(3);
             switch (choice) {
                 case 0 -> running = closeFiles();
                 case 1 -> membersMenu();
@@ -52,66 +52,78 @@ public class Controller {
 
     private void membersMenu() {
         int choice;
-        UI.printMessage("""
-                Vælg funktion:
-                1. Opret medlem
-                2. Slet medlem
-                3. rediger medlem
-                4. Se medlemsliste
-                                    
-                0. Tilbage til hoved menu
-                """);
-        choice = UI.getInputInt();
-        switch (choice) {
-            case 1 -> memberCreation();
-            case 2 -> memberDeletion();
-            case 3 -> memberEditing();
-            case 4 -> memberList.showMembers();
+        boolean running = true;
+        while (running) {
+            UI.printMessage("""
+                    Meddlems menu - Vælg funktion:
+                    1. Opret medlem
+                    2. Slet medlem
+                    3. rediger medlem
+                    4. Se medlemsliste
+                                        
+                    0. Tilbage til hoved menu
+                    """);
+            choice = UI.getValidInt(4);
+            switch (choice) {
+                case 0 -> running = false;
+                case 1 -> memberCreation();
+                case 2 -> memberDeletion();
+                case 3 -> memberEditing();
+                case 4 -> memberList.showMembers();
+            }
         }
     }
 
     private void accountMenu() {
         int choice;
-        UI.printMessage("""
-                Vælg funktion:
-                1. Se restance liste
-                2. Se kontingent til dato
-                                    
-                0. Tilbage til hoved menu
-                """);
-        choice = UI.getInputInt();
-        switch (choice) {
-            case 1 -> {
-                UI.printMessage("LISTE AF MEDLEMMER I RESTANCE: " + "\n");
-                memberList.arrearsList();
-            }
-            case 2 -> {
-                UI.printMessage("TOTAL KONTINGENT: ");
-                UI.printDouble(memberList.showIncome());
-                UI.printMessage("");
+        boolean running = true;
+        while (running) {
+            UI.printMessage("""
+                    Kontigent menu - Vælg funktion:
+                    1. Se restance liste
+                    2. Se kontingent til dato
+                                        
+                    0. Tilbage til hoved menu
+                    """);
+            choice = UI.getValidInt(2);
+            switch (choice) {
+                case 0 -> running = false;
+                case 1 -> {
+                    UI.printMessage("LISTE AF MEDLEMMER I RESTANCE: " + "\n");
+                    memberList.arrearsList();
+                }
+                case 2 -> {
+                    UI.printMessage("TOTAL KONTINGENT: ");
+                    UI.printDouble(memberList.showIncome());
+                    UI.printMessage("");
+                }
             }
         }
     }
 
     private void trainingMenu() {
         int choice;
-        UI.printMessage("""
-                Vælg funktion:
-                1. Opret hold
-                2. Slet hold
-                3. Registrering(Træning)
-                4. Registrering(Konkurence)
-                5. TOP 5 svømmerer
-                                    
-                0. Tilbage til hoved menu
-                """);
-        choice = UI.getInputInt();
-        switch (choice) {
-            case 1 -> teamCreation();
-            case 2 -> teamDeletion();
-            case 3 -> registerTraining();
-            case 4 -> registerCompetitive();
-            case 5 -> top5Swimmers();
+        boolean running = true;
+        while (running) {
+            UI.printMessage("""
+                    Træning menu - Vælg funktion:
+                    1. Opret hold
+                    2. Slet hold
+                    3. Registrering(Træning)
+                    4. Registrering(Konkurence)
+                    5. TOP 5 svømmerer
+                                        
+                    0. Tilbage til hoved menu
+                    """);
+            choice = UI.getValidInt(5);
+            switch (choice) {
+                case 0 -> running = false;
+                case 1 -> teamCreation();
+                case 2 -> teamDeletion();
+                case 3 -> registerTraining();
+                case 4 -> registerCompetitive();
+                case 5 -> top5Swimmers();
+            }
         }
     }
 
@@ -138,7 +150,7 @@ public class Controller {
             case 3 -> registerCompetitiveBackcrawl();
             case 4 -> registerCompetitiveBreaststroke();
             case 5 -> registerCompetitiveTournament();
-    }
+        }
     }
 
     private void registerCompetitiveButterfly() {
@@ -227,7 +239,7 @@ public class Controller {
         UI.printMessage("Svømmerens nuværende bedste tid er: ");
         UI.printMessage("Vil du ændre den?");
         String choice = UI.getInputString();
-        if(choice.equals("ja")){
+        if (choice.equals("ja")) {
             UI.printMessage("Skriv ny tid");
             UI.getInputDouble();
 
@@ -247,12 +259,12 @@ public class Controller {
         teamList.listOfTeams();
         UI.printMessage("Skriv navn på holdet");
         String teamName = UI.getInputString();
-        UI.printMessage("Er du sikker på at du vil slette "+teamName+"?");
+        UI.printMessage("Er du sikker på at du vil slette " + teamName + "?");
         String choice = UI.getInputString();
-        if(choice.equals("ja")){
+        if (choice.equals("ja")) {
             teamList.deleteTeam(teamName);
-        }else{
-        UI.printMessage(teamName+" bliver IKKE slette");
+        } else {
+            UI.printMessage(teamName + " bliver IKKE slette");
         }
     }
 
@@ -264,7 +276,7 @@ public class Controller {
         boolean isJunior;
         isJunior = choice.equals("ja");
         boolean isDeleteable = false;
-        teamList.createTeam(teamName, isJunior,isDeleteable);
+        teamList.createTeam(teamName, isJunior, isDeleteable);
 
     }
 
@@ -378,7 +390,7 @@ public class Controller {
         memberList.createMember(list);
     }
 
-    private void getMemberListToSaveToFile () {
+    private void getMemberListToSaveToFile() {
 
     }
 }
