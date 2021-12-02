@@ -11,7 +11,6 @@ public class MemberList {
     public void createMember(ArrayList<String> listOfMembers) {
         for (String line : listOfMembers) {
             String[] lineData = line.split(";");
-            for (int i = 0; i < lineData.length; i++) {
                 String name = lineData[0];
                 String middleName = lineData[1];
                 String lastName = lineData[2];
@@ -29,7 +28,6 @@ public class MemberList {
 
                 Member member = new Member(name,middleName, lastName,idNum, dateOfBirth,dateOfMembership,isCompetitive,trainerName);
                 members.add(member);
-            }
         }
     }
 
