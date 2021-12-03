@@ -1,3 +1,4 @@
+/*
 package com.company.domain;
 
 import com.company.UI.UserInterface;
@@ -30,7 +31,7 @@ public class Controller {
                     1. Medlemmer
                     2. Kontigent
                     3. Træning
-                                        
+
                     0. Afslut
                     """);
             choice = UI.getInputInt();
@@ -52,7 +53,7 @@ public class Controller {
                 2. Slet medlem
                 3. rediger medlem
                 4. Se medlemsliste
-                                    
+
                 0. Tilbage til hoved menu
                 """);
         choice = UI.getInputInt();
@@ -71,7 +72,7 @@ public class Controller {
                 Vælg funktion:
                 1. Se restance liste
                 2. Se kontingent til dato
-                                    
+
                 0. Tilbage til hoved menu
                 """);
         choice = UI.getInputInt();
@@ -98,7 +99,7 @@ public class Controller {
                 3. Registrering(Træning)
                 4. Registrering(Konkurence)
                 5. TOP 5 svømmerer
-                                    
+
                 0. Tilbage til hoved menu
                 """);
         choice = UI.getInputInt();
@@ -123,8 +124,8 @@ public class Controller {
                 1. Registrer butterfly(Konkurence)
                 2. Registrer crawl(Konkurence)
                 3. Registrer rygcrawl(Konkurence)
-                4. Registrer brystsvømning(Konkurence)            
-                                    
+                4. Registrer brystsvømning(Konkurence)
+
                 0. Tilbage til hoved menu
                 """);
         choice = UI.getInputInt();
@@ -194,8 +195,8 @@ public class Controller {
                 1. Registrer butterfly(Konkurence)
                 2. Registrer crawl(Konkurence)
                 3. Registrer rygcrawl(Konkurence)
-                4. Registrer brystsvømning(Konkurence)            
-                                    
+                4. Registrer brystsvømning(Konkurence)
+
                 0. Tilbage til hoved menu
                 """);
         choice = UI.getInputInt();
@@ -280,7 +281,7 @@ public class Controller {
         boolean isJunior;
         isJunior = choice.equals("ja");
         boolean isDeleteable = false;
-        teamList.createTeam(teamName, isJunior,isDeleteable);
+        teamList.createTeam(teamName,isJunior, isDeleteable);
 
     }
 
@@ -311,12 +312,12 @@ public class Controller {
                     String memberMiddleName = UI.getInputString();
                     memberList.editMemberMiddleName(idNumEdit, memberMiddleName);
                 }
-                case "efternavn", "3" -> {
+                case "efternavn", "3"-> {
                     UI.printMessage("Skriv nyt efternavn: ");
                     String memberLastName = UI.getInputString();
                     memberList.editMemberLastName(idNumEdit, memberLastName);
                 }
-                case "svømmerstatus", "4" -> {
+                case "svømmerstatus", "4"-> {
                     memberList.editMemberStatus(idNumEdit);
                     UI.printMessage("Medlems restance status er nu ændret til " + memberList.memberSwimmerStatus(idNumEdit));
                     if (memberList.memberSwimmerStatus(idNumEdit)) {
@@ -324,12 +325,12 @@ public class Controller {
                     }
                 }
 
-                case "kontingent", "5" -> {
+                case "kontingent", "5"-> {
                     memberList.editMemberArrears(idNumEdit);
                     UI.printMessage("Medlems restance status er nu ændret til " + memberList.memberArrearsStatus(idNumEdit));
                 }
 
-                case "træner", "6" -> {
+                case "træner", "6"-> {
                     if (memberList.memberSwimmerStatus(idNumEdit)) {
                         UI.printMessage("Skriv nyt navn på træner");
                         String trainerName = UI.getInputString();
@@ -340,35 +341,35 @@ public class Controller {
                 }
 
 
-                case "aktiv/passiv", "7" -> {
+                case "aktiv/passiv", "7"-> {
                     memberList.editActiveStatus(idNumEdit);
                     UI.printMessage("Medlemmets aktivitetsstatus er nu ændret til " + memberList.memberActiveStatus(idNumEdit));
                 }
 
-                case "afslut", "8" -> editActive = false;
+                case "afslut", "8"-> editActive = false;
 
 
-                default -> UI.printMessage("Der skete en fejl, prøv noget andet.");
+                default-> UI.printMessage("Der skete en fejl, prøv noget andet.");
             }
         }
     }
-
     private void memberDeletion() {
         memberList.showMembers();
         UI.printMessage("Skriv medlemmets ID for at slette medlem");
         String idNumDelete = UI.getInputString();
         memberList.deleteMember(idNumDelete);
-        UI.printMessage("Medlem slettet" + "\n");
+        UI.printMessage("Medlem slettet"+"\n");
     }
 
-    private void memberCreation() {
+    */
+/*private void memberCreation() {
         UI.printMessage("Skriv navn: ");
         String name = UI.getInputString();
         UI.printMessage("Skriv mellemnavn: ");
         String middleName = UI.getInputString();
         UI.printMessage("Skriv efternavn: ");
         String lastName = UI.getInputString();
-        String idNum = UUID.randomUUID().toString();
+        UUID idNum = UUID.randomUUID();
         UI.printMessage("\n" + "Medlemmets ID er: " + idNum + "\n");
         UI.printMessage("Skriv fødselsdato år/måned/dag: ");
         LocalDate dateOfBirth = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
@@ -386,12 +387,16 @@ public class Controller {
         } else {
             LocalDate dateOfMembership = LocalDate.now();
             UI.printMessage("Medlem oprettet: " + dateOfMembership + "\n");
-            memberList.createMember(name, middleName, lastName, idNum, dateOfBirth, dateOfMembership, false, null);
+            memberList.createMember(name,middleName, lastName, idNum, dateOfBirth, dateOfMembership, false, null);
         }
     }
 
     private void memberCreationFromFile(ArrayList<String> list) {
         memberList.createMember(list);
+    }
+
+    private void getMemberListToSaveToFile() {
+
     }
 }
 

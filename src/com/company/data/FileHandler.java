@@ -1,5 +1,7 @@
 package com.company.data;
 
+import com.company.UI.UserInterface;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -9,7 +11,8 @@ import java.util.Scanner;
 
 public class FileHandler {
 
-    private File membersList = new File("src/com/company/data/memberlist.csv");
+    UserInterface UI = new UserInterface();
+    private File membersList = new File("src/com/company/data/memberlisttest.csv");
     private File teamsList = new File("src/com/company/data/teamlist.csv");
     private ArrayList<String> listOfMembers = new ArrayList<>();
     private ArrayList<String> listOfTeams = new ArrayList<>();
@@ -24,39 +27,28 @@ public class FileHandler {
                 listOfMembers.add(line);
             }
         } catch (FileNotFoundException e) {
-            System.out.println(membersList + " not found");
+            UI.printMessage(membersList + " not found");
         }
-        //outputListOfMembers();
+        UI.printMessage("Members List loaded");
         return listOfMembers;
     }
 
     //try to write list of members file
-    public void writeListOfMembers() {
+    public void writeListOfMembers(ArrayList<String> list) {
         PrintStream ps;
         {
             try {
                 ps = new PrintStream(new FileOutputStream("src/com/company/data/memberlisttest.csv", false));
-                if (listOfMembers == null) {
-                    System.out.println("No members to save");
+                if (list == null) {
+                    UI.printMessage("No members to save");
                 } else {
-                    for (String member : listOfMembers) {
+                    for (String member : list) {
                         ps.println(member);
                     }
                 }
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-        }
-    }
-
-    public void outputListOfMembers() {
-        for (String line : listOfMembers) {
-            //Member member = new Member(line); //conflict in member constructor
-            String[] lineData = line.split(";");
-            for (String d : lineData) {
-                System.out.print(d + " ");
-            }
-            System.out.println();
         }
     }
 
@@ -70,7 +62,7 @@ public class FileHandler {
                 listOfTeams.add(line);
             }
         } catch (FileNotFoundException e) {
-            System.out.println(teamsList + " not found");
+            UI.printMessage(teamsList + " not found");
         }
     }
 }
