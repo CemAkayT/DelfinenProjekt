@@ -16,8 +16,7 @@ public class Member {
     private boolean isCompetitive;
     private String trainerName;
     private double membershipFee;
-    private boolean junior = false;
-    private boolean senior = false;
+    private boolean isJunior;
     private boolean active = true;
 
     public Member(String name,String middleName, String lastName, String idNum, LocalDate dateOfBirth, LocalDate dateOfMembership, boolean isCompetitive, String trainerName) {
@@ -118,18 +117,18 @@ public class Member {
         Period currentAge = Period.between(dateOfBirth, LocalDate.now());
         if(currentAge.getYears() >= 18 && currentAge.getYears() < 60){
             this.membershipFee = 1600;
-            junior = false;
-            senior = true;
+            isJunior = false;
+
         }
         if(currentAge.getYears() > 60){
             this.membershipFee = 1600*0.75;
-            junior = false;
-            senior = true;
+            isJunior = false;
+
         }
         if(currentAge.getYears() < 18){
             this.membershipFee = 1000;
-            junior = true;
-            senior = false;
+            isJunior = true;
+
         }
         if(!active){
             this.membershipFee = 500; // mangler vi else?

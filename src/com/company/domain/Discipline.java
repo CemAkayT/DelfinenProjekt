@@ -1,8 +1,14 @@
 package com.company.domain;
 
-public enum Discipline {
+enum Discipline {
     BUTTERFLY,
     CRAWL,
     BACKCRAWL,
-    BREASTSTROKE
+    BREASTSTROKE;
+
+
+    public String getDiscipline(){
+
+        return "";
+    }
 }

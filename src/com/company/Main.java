@@ -1,12 +1,12 @@
 package com.company;
 
-import com.company.domain.Controller2;
+import com.company.domain.Controller;
 
 public class Main {
 
     public static void main(String[] args) {
-    Controller2 controller = new Controller2();
+    Controller controller = new Controller();
 
-    controller.run();
+    controller.start();
     }
 }

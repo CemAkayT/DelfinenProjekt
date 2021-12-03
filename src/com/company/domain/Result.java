@@ -9,6 +9,7 @@ public class Result {
     private LocalDate dateOfResult;
 
 
+
     public Result(double resultTime, String idNum, LocalDate dateOfResult) {
         this.resultTime = resultTime;
         this.idNum = idNum;

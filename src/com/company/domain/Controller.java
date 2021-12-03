@@ -7,14 +7,14 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.UUID;
 
-public class Controller2 {
+public class Controller {
     UserInterface UI = new UserInterface();
     FileHandler fh = new FileHandler();
     MemberList memberList = new MemberList();
     TeamList teamList = new TeamList();
 
 
-    public void run() {
+    public void start() {
 
         ArrayList<String> listOfMembers = fh.readListOfMembers();
         memberCreationFromFile(listOfMembers);
