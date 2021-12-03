@@ -1,4 +1,3 @@
-/*
 package com.company.domain;
 
 import com.company.UI.UserInterface;
@@ -19,7 +18,7 @@ public class Controller {
 
         ArrayList<String> listOfMembers = fh.readListOfMembers();
         memberCreationFromFile(listOfMembers);
-        fh.writeListOfMembers();
+        fh.writeListOfMembers(listOfMembers);
         fh.readListOfTeams();
 
         int choice;
@@ -361,15 +360,15 @@ public class Controller {
         UI.printMessage("Medlem slettet"+"\n");
     }
 
-    */
-/*private void memberCreation() {
+
+private void memberCreation() {
         UI.printMessage("Skriv navn: ");
         String name = UI.getInputString();
         UI.printMessage("Skriv mellemnavn: ");
         String middleName = UI.getInputString();
         UI.printMessage("Skriv efternavn: ");
         String lastName = UI.getInputString();
-        UUID idNum = UUID.randomUUID();
+        String idNum = UUID.randomUUID().toString();
         UI.printMessage("\n" + "Medlemmets ID er: " + idNum + "\n");
         UI.printMessage("Skriv fødselsdato år/måned/dag: ");
         LocalDate dateOfBirth = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
