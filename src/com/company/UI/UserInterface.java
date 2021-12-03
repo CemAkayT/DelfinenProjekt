@@ -42,10 +42,10 @@ public class UserInterface {
                 if (choice <= max && choice >= 0) {
                     break;
                 } else {
-                    System.out.println("Dette er ikke muligt, prøv igen.");
+                    System.out.println("Du kan kun taste et tal mellem 0 og " + max);
                 }
             } catch (InputMismatchException e) {
-                System.out.println("Dette er ikke muligt, prøv igen.");
+                System.out.println("Du kan kun taste et tal mellem 0 og " + max);
                 sc.nextLine();
             }
         }
