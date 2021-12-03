@@ -46,9 +46,10 @@ public class UserInterface {
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Dette er ikke muligt");
+                sc.nextLine();
             }
         }
-        sc.nextLine();
+
         return choice;
     }
 }
