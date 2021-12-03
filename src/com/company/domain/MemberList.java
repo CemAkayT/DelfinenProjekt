@@ -173,4 +173,16 @@ public class MemberList {
         }
         return listOfMembers;
     }
+
+    //Needed to create team list from file which only stores UUID as string.
+    public Member getMemberFromUUID(String idNum) {
+        //try to get name as test
+        Member foundMember = null;
+        for (Member m : members) {
+            if (Objects.equals(m.getIdNum(), idNum)) {
+               foundMember = m;
+            }
+        }
+        return foundMember;
+    }
 }

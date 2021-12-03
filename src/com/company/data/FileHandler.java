@@ -53,7 +53,7 @@ public class FileHandler {
     }
 
     //try to read list of teams file
-    public void readListOfTeams() {
+    public ArrayList<String> readListOfTeams() {
         String line;
         try {
             Scanner input = new Scanner(teamsList);
@@ -64,5 +64,12 @@ public class FileHandler {
         } catch (FileNotFoundException e) {
             UI.printMessage(teamsList + " not found");
         }
+        UI.printMessage("Teams List loaded");
+        return listOfTeams;
+    }
+
+    //Try to write list of teams file
+    public void writeListOfTeams() {
+
     }
 }

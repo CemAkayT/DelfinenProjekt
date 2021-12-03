@@ -5,6 +5,7 @@ import com.company.data.FileHandler;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.UUID;
 
 public class Controller {
@@ -18,7 +19,9 @@ public class Controller {
 
         ArrayList<String> listOfMembers = fh.readListOfMembers();
         memberCreationFromFile(listOfMembers);
-        fh.readListOfTeams();
+        ArrayList<String> listOfTeams = fh.readListOfTeams();
+        teamCreationFromFile(listOfTeams);
+        //teamList.listOfTeams();
 
 
         int choice;
@@ -390,7 +393,19 @@ public class Controller {
         memberList.createMember(list);
     }
 
-    private void getMemberListToSaveToFile() {
-
+    private void teamCreationFromFile(ArrayList<String> list) {
+        ArrayList<Member> listOfMembers = new ArrayList<>();
+        for (String s : list) {
+            String[] lineData = s.split(";");
+            String teamName = lineData[0];
+            boolean isJunior = (Objects.equals(lineData[1], "true"));
+            boolean isDeleteable = (Objects.equals(lineData[2], "true"));
+            Member member;
+            for (int i = 3; i < lineData.length; i++) {
+                member = memberList.getMemberFromUUID(lineData[i]);
+                listOfMembers.add(member);
+            }
+            teamList.createTeam(teamName, isJunior, isDeleteable, listOfMembers);
+        }
     }
 }
