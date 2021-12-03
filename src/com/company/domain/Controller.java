@@ -33,7 +33,7 @@ public class Controller {
 
                     0. Afslut
                     """);
-            choice = UI.getInputInt();
+            choice = UI.getValidInt(3);
             UI.getInputString();
             switch (choice) {
                 case 0 -> running = false;
@@ -55,7 +55,7 @@ public class Controller {
 
                 0. Tilbage til hoved menu
                 """);
-        choice = UI.getInputInt();
+        choice = UI.getValidInt(4);
         UI.getInputString();
         switch (choice) {
             case 1 -> memberCreation();
@@ -74,7 +74,7 @@ public class Controller {
 
                 0. Tilbage til hoved menu
                 """);
-        choice = UI.getInputInt();
+        choice = UI.getValidInt(2);
         UI.getInputString();
         switch (choice) {
             case 1 -> {
@@ -101,7 +101,7 @@ public class Controller {
 
                 0. Tilbage til hoved menu
                 """);
-        choice = UI.getInputInt();
+        choice = UI.getValidInt(5);
         UI.getInputString();
         switch (choice) {
             case 1 -> teamCreation();
@@ -127,12 +127,13 @@ public class Controller {
 
                 0. Tilbage til hoved menu
                 """);
-        choice = UI.getInputInt();
+        choice = UI.getValidInt(4);
         switch (choice) {
             case 1 -> registerCompetitiveButterfly();
             case 2 -> registerCompetitiveCrawl();
             case 3 -> registerCompetitiveBackcrawl();
             case 4 -> registerCompetitiveBreaststroke();
+
     }}
 
     private void registerCompetitiveButterfly() {
@@ -198,7 +199,7 @@ public class Controller {
 
                 0. Tilbage til hoved menu
                 """);
-        choice = UI.getInputInt();
+        choice = UI.getValidInt(4);
         switch (choice) {
             case 1 -> registerTrainingButterfly();
             case 2 -> registerTrainingCrawl();
