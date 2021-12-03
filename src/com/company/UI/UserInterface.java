@@ -35,7 +35,7 @@ public class UserInterface {
     }
 
     public int getValidInt(int max) {
-    int choice;
+        int choice;
         while (true) {
             try {
                 choice = sc.nextInt();
