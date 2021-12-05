@@ -50,6 +50,7 @@ public class FileHandler {
                 e.printStackTrace();
             }
         }
+        UI.printMessage("Members List saved");
     }
 
     //try to read list of teams file
@@ -69,7 +70,22 @@ public class FileHandler {
     }
 
     //Try to write list of teams file
-    public void writeListOfTeams() {
-
+    public void writeListOfTeams(ArrayList<String> list) {
+        PrintStream ps;
+        {
+            try {
+                ps = new PrintStream(new FileOutputStream("src/com/company/data/teamlisttest.csv", false));
+                if (list == null) {
+                    UI.printMessage("No teams to save");
+                } else {
+                    for (String team : list) {
+                        ps.println(team);
+                    }
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        UI.printMessage("Teams List saved");
     }
 }
