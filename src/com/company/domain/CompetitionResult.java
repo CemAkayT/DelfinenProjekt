@@ -9,4 +9,9 @@ public class CompetitionResult extends Result{
         super(resultTime, idNum, dateOfResult);
         this.tournament = tournament;
     }
+
+    public String getTournament() {
+        return tournament;
+    }
+
 }

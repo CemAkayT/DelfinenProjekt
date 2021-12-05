@@ -5,6 +5,7 @@ import com.company.data.FileHandler;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.UUID;
 
 public class Controller {
@@ -12,13 +13,16 @@ public class Controller {
     FileHandler fh = new FileHandler();
     MemberList memberList = new MemberList();
     TeamList teamList = new TeamList();
+    ResultList resultList = new ResultList();
 
 
     public void start() {
 
         ArrayList<String> listOfMembers = fh.readListOfMembers();
         memberCreationFromFile(listOfMembers);
-        fh.readListOfTeams();
+        ArrayList<String> listOfTeams = fh.readListOfTeams();
+        teamCreationFromFile(listOfTeams);
+        //teamList.listOfTeams();
 
 
         int choice;
@@ -128,7 +132,35 @@ public class Controller {
     }
 
     private void top5Swimmers() {
-
+        int choice;
+        boolean running = true;
+        while (running) {
+            UI.printMessage("""
+                    Træning menu - Vælg funktion:
+                    1. Butterfly(Konkurence)
+                    2. Crawl(Konkurence)
+                    3. Backcrawl(Konkurence)
+                    4. Brystsvømning(Konkurence)
+                    5. Butterfly(Træning)
+                    6. Crawl(Træning)
+                    7. Backcrawl(Træning)
+                    8. Brystsvømning(Træning)
+                                        
+                    0. Tilbage til hoved menu
+                    """);
+            choice = UI.getValidInt(5);
+            switch (choice) {
+                case 0 -> running = false;
+                case 1 -> resultList.showTop5CompResultsButterfly();
+                case 2 -> resultList.showTop5CompResultsCrawl();
+                case 3 -> resultList.showTop5CompResultsBackcrawl();
+                case 4 -> resultList.showTop5CompResultsBreaststroke();
+                case 5 -> resultList.showTop5TrainResultsButterfly();
+                case 6 -> resultList.showTop5TrainResultsCrawl();
+                case 7 -> resultList.showTop5TrainResultsBackcrawl();
+                case 8 -> resultList.showTop5TrainResultsBreaststroke();
+            }
+        }
     }
 
     private void registerCompetitive() {
@@ -139,8 +171,7 @@ public class Controller {
                 2. Registrer crawl(Konkurence)
                 3. Registrer rygcrawl(Konkurence)
                 4. Registrer brystsvømning(Konkurence)
-                5. Registrer stævne(Konkurence)
-                                    
+                                                   
                 0. Tilbage til hoved menu
                 """);
         choice = UI.getInputInt();
@@ -149,7 +180,6 @@ public class Controller {
             case 2 -> registerCompetitiveCrawl();
             case 3 -> registerCompetitiveBackcrawl();
             case 4 -> registerCompetitiveBreaststroke();
-            case 5 -> registerCompetitiveTournament();
         }
     }
 
@@ -159,6 +189,16 @@ public class Controller {
         String idNum = UI.getInputString();
         UI.printMessage("Svømmerens nuværende bedste tid er: ");
         UI.printMessage("Vil du ændre den?");
+        String choice = UI.getInputString();
+        if(choice.equals("ja")){
+            UI.printMessage("Skriv ny tid");
+            double time = UI.getInputDouble();
+            UI.printMessage("Skriv stævne");
+            String tournament = UI.getInputString();
+            UI.printMessage("Skriv dato");
+            LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
+            resultList.createCompResultButterfly(time,idNum,resultDate,tournament);
+        }else{UI.printMessage("tiden blevet ikke ændret");}
     }
 
     private void registerCompetitiveCrawl() {
@@ -167,6 +207,16 @@ public class Controller {
         String idNum = UI.getInputString();
         UI.printMessage("Svømmerens nuværende bedste tid er: ");
         UI.printMessage("Vil du ændre den?");
+        String choice = UI.getInputString();
+        if(choice.equals("ja") && choice.equals("Ja")){
+            UI.printMessage("Skriv ny tid");
+            double time = UI.getInputDouble();
+            UI.printMessage("Skriv stævne");
+            String tournament = UI.getInputString();
+            UI.printMessage("Skriv dato");
+            LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
+            resultList.createCompResultCrawl(time,idNum,resultDate,tournament);
+        }else{UI.printMessage("tiden blevet ikke ændret");}
     }
 
     private void registerCompetitiveBackcrawl() {
@@ -175,6 +225,16 @@ public class Controller {
         String idNum = UI.getInputString();
         UI.printMessage("Svømmerens nuværende bedste tid er: ");
         UI.printMessage("Vil du ændre den?");
+        String choice = UI.getInputString();
+        if(choice.equals("ja")){
+            UI.printMessage("Skriv ny tid");
+            double time = UI.getInputDouble();
+            UI.printMessage("Skriv stævne");
+            String tournament = UI.getInputString();
+            UI.printMessage("Skriv dato");
+            LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
+            resultList.createCompResultBackcrawl(time,idNum,resultDate,tournament);
+        }else{UI.printMessage("tiden blevet ikke ændret");}
     }
 
     private void registerCompetitiveBreaststroke() {
@@ -183,26 +243,28 @@ public class Controller {
         String idNum = UI.getInputString();
         UI.printMessage("Svømmerens nuværende bedste tid er: ");
         UI.printMessage("Vil du ændre den?");
+        String choice = UI.getInputString();
+        if(choice.equals("ja")){
+            UI.printMessage("Skriv ny tid");
+            double time = UI.getInputDouble();
+            UI.printMessage("Skriv stævne");
+            String tournament = UI.getInputString();
+            UI.printMessage("Skriv dato");
+            LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
+            resultList.createCompResultBreaststroke(time,idNum,resultDate,tournament);
+        }else{UI.printMessage("tiden blevet ikke ændret");}
     }
 
-    private void registerCompetitiveTournament() {
-        memberList.CompetitiveList();
-        UI.printMessage("Skriv medlems ID");
-        String idNum = UI.getInputString();
-        UI.printMessage("Svømmerens nuværende bedste tid er: ");
-        UI.printMessage("Vil du ændre den?");
-    }
 
     private void registerTraining() {
         int choice;
         UI.printMessage("""
                 Vælg funktion:
-                1. Registrer butterfly(Konkurence)
-                2. Registrer crawl(Konkurence)
-                3. Registrer rygcrawl(Konkurence)
-                4. Registrer brystsvømning(Konkurence)
-                5. Registrer stævne(Konkurence)
-                                    
+                1. Registrer butterfly(Træning)
+                2. Registrer crawl(Træning)
+                3. Registrer rygcrawl(Træning)
+                4. Registrer brystsvømning(Træning)
+                                                    
                 0. Tilbage til hoved menu
                 """);
         choice = UI.getInputInt();
@@ -221,6 +283,13 @@ public class Controller {
         UI.printMessage("Svømmerens nuværende bedste tid er: ");
         UI.printMessage("Vil du ændre den?");
         String choice = UI.getInputString();
+        if(choice.equals("ja")){
+            UI.printMessage("Skriv ny tid");
+            double time = UI.getInputDouble();
+            UI.printMessage("Skriv dato");
+            LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
+            resultList.createTrainResultButterfly(time,idNum,resultDate);
+        }else{UI.printMessage("tiden blevet ikke ændret");}
     }
 
     private void registerTrainingCrawl() {
@@ -230,6 +299,13 @@ public class Controller {
         UI.printMessage("Svømmerens nuværende bedste tid er: ");
         UI.printMessage("Vil du ændre den?");
         String choice = UI.getInputString();
+        if(choice.equals("ja")){
+            UI.printMessage("Skriv ny tid");
+            double time = UI.getInputDouble();
+            UI.printMessage("Skriv dato");
+            LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
+            resultList.createTrainResultCrawl(time,idNum,resultDate);
+        }else{UI.printMessage("tiden blevet ikke ændret");}
     }
 
     private void registerTrainingBackcrawl() {
@@ -239,12 +315,14 @@ public class Controller {
         UI.printMessage("Svømmerens nuværende bedste tid er: ");
         UI.printMessage("Vil du ændre den?");
         String choice = UI.getInputString();
-        if (choice.equals("ja")) {
+        if(choice.equals("ja")){
             UI.printMessage("Skriv ny tid");
-            UI.getInputDouble();
-
+            double time = UI.getInputDouble();
+            UI.printMessage("Skriv dato");
+            LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
+            resultList.createTrainResultBackcrawl(time,idNum,resultDate);
+        }else{UI.printMessage("tiden blevet ikke ændret");}
         }
-    }
 
     private void registerTrainingBreaststroke() {
         memberList.CompetitiveList();
@@ -253,12 +331,20 @@ public class Controller {
         UI.printMessage("Svømmerens nuværende bedste tid er: ");
         UI.printMessage("Vil du ændre den?");
         String choice = UI.getInputString();
+        if(choice.equals("ja")){
+            UI.printMessage("Skriv ny tid");
+            double time = UI.getInputDouble();
+            UI.printMessage("Skriv dato");
+            LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
+            resultList.createTrainResultBreaststroke(time,idNum,resultDate);
+        }else{UI.printMessage("tiden blevet ikke ændret");}
     }
 
     private void teamDeletion() {
         teamList.listOfTeams();
         UI.printMessage("Skriv navn på holdet");
         String teamName = UI.getInputString();
+        UI.getInputString();
         UI.printMessage("Er du sikker på at du vil slette " + teamName + "?");
         String choice = UI.getInputString();
         if (choice.equals("ja")) {
@@ -271,6 +357,7 @@ public class Controller {
     private void teamCreation() {
         UI.printMessage("Skriv navn på holdet");
         String teamName = UI.getInputString();
+        UI.getInputString();
         UI.printMessage("Er det et juniorhold?");
         String choice = UI.getInputString();
         boolean isJunior;
@@ -314,7 +401,7 @@ public class Controller {
                 }
                 case "svømmerstatus", "4" -> {
                     memberList.editMemberStatus(idNumEdit);
-                    UI.printMessage("Medlems restance status er nu ændret til " + memberList.memberSwimmerStatus(idNumEdit));
+                    UI.printMessage("Medlems svømmestatus er nu ændret til " + memberList.memberSwimmerStatus(idNumEdit));
                     if (memberList.memberSwimmerStatus(idNumEdit)) {
                         UI.printMessage("Husk at tilføje træner");
                     }
@@ -353,13 +440,15 @@ public class Controller {
         memberList.showMembers();
         UI.printMessage("Skriv medlemmets ID for at slette medlem");
         String idNumDelete = UI.getInputString();
+        UI.getInputString();
         memberList.deleteMember(idNumDelete);
         UI.printMessage("Medlem slettet" + "\n");
     }
 
     private void memberCreation() {
-        UI.printMessage("Skriv navn: ");
+        UI.printMessage("Skriv fornavn: ");
         String name = UI.getInputString();
+        UI.getInputString();
         UI.printMessage("Skriv mellemnavn: ");
         String middleName = UI.getInputString();
         UI.printMessage("Skriv efternavn: ");
@@ -369,9 +458,7 @@ public class Controller {
         UI.printMessage("Skriv fødselsdato år/måned/dag: ");
         LocalDate dateOfBirth = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
         UI.printMessage("Medlemmets fødselsdato: " + dateOfBirth + "\n");
-
         UI.printMessage("Vil medlem deltage i konkurrencer? ");
-        UI.getInputString();
         String choice = UI.getInputString();
         if (choice.equals("ja")) {
             UI.printMessage("Hvem bliver medlemmets træner? ");
@@ -390,7 +477,19 @@ public class Controller {
         memberList.createMember(list);
     }
 
-    private void getMemberListToSaveToFile() {
-
+    private void teamCreationFromFile(ArrayList<String> list) {
+        ArrayList<Member> listOfMembers = new ArrayList<>();
+        for (String s : list) {
+            String[] lineData = s.split(";");
+            String teamName = lineData[0];
+            boolean isJunior = (Objects.equals(lineData[1], "true"));
+            boolean isDeleteable = (Objects.equals(lineData[2], "true"));
+            Member member;
+            for (int i = 3; i < lineData.length; i++) {
+                member = memberList.getMemberFromUUID(lineData[i]);
+                listOfMembers.add(member);
+            }
+            teamList.createTeam(teamName, isJunior, isDeleteable, listOfMembers);
+        }
     }
 }

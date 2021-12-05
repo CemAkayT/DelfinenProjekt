@@ -14,6 +14,13 @@ public class Team {
         this.isDeleteable=isDeleteable;
     }
 
+    public Team(String teamName, boolean isJunior, boolean isDeleteable, ArrayList<Member> list) {
+        this.teamName = teamName;
+        this.isJunior=isJunior;
+        this.isDeleteable=isDeleteable;
+        this.teamMemberlist = list;
+    }
+
     public void addMember(Member member){
         teamMemberlist.add(member);
     }
