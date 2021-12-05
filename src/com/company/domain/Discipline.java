@@ -5,10 +5,4 @@ enum Discipline {
     CRAWL,
     BACKCRAWL,
     BREASTSTROKE;
-
-
-    public String getDiscipline(){
-
-        return "";
-    }
 }

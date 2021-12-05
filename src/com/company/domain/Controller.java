@@ -184,6 +184,7 @@ public class Controller {
     }
 
     private void registerCompetitiveButterfly() {
+        //@Martin Anberg
         memberList.CompetitiveList();
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
@@ -202,6 +203,7 @@ public class Controller {
     }
 
     private void registerCompetitiveCrawl() {
+        //@Martin Anberg
         memberList.CompetitiveList();
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
@@ -220,6 +222,7 @@ public class Controller {
     }
 
     private void registerCompetitiveBackcrawl() {
+        //@Martin Anberg
         memberList.CompetitiveList();
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
@@ -238,6 +241,7 @@ public class Controller {
     }
 
     private void registerCompetitiveBreaststroke() {
+        //@Martin Anberg
         memberList.CompetitiveList();
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
@@ -277,6 +281,7 @@ public class Controller {
     }
 
     private void registerTrainingButterfly() {
+        //@Martin Anberg
         memberList.CompetitiveList();
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
@@ -293,6 +298,7 @@ public class Controller {
     }
 
     private void registerTrainingCrawl() {
+        //@Martin Anberg
         memberList.CompetitiveList();
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
@@ -309,6 +315,7 @@ public class Controller {
     }
 
     private void registerTrainingBackcrawl() {
+        //@Martin Anberg
         memberList.CompetitiveList();
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
@@ -325,6 +332,7 @@ public class Controller {
         }
 
     private void registerTrainingBreaststroke() {
+        //@Martin Anberg
         memberList.CompetitiveList();
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
@@ -368,6 +376,7 @@ public class Controller {
     }
 
     private void memberEditing() {
+        //@Martin Anberg
         memberList.showMembers();
         UI.printMessage("Skriv medlemmets ID for at redigere medlem: ");
         String idNumEdit = UI.getInputString();
@@ -382,24 +391,24 @@ public class Controller {
                     "\n6. medlems træner(hvis medlem er konkurrencesvømmer)" +
                     "\n7. ændre aktiv/passiv status" +
                     "\n8. afslut redigering");
-            String choice = UI.getInputString().toLowerCase();
+            int choice = UI.getValidInt(8);
             switch (choice) {
-                case "navn", "1" -> {
+                case 1 -> {
                     UI.printMessage("Skriv nyt navn: ");
                     String memberName = UI.getInputString();
                     memberList.editMemberName(idNumEdit, memberName);
                 }
-                case "mellemnavn", "2" -> {
+                case 2 -> {
                     UI.printMessage("Skriv nyt mellemnavn: ");
                     String memberMiddleName = UI.getInputString();
                     memberList.editMemberMiddleName(idNumEdit, memberMiddleName);
                 }
-                case "efternavn", "3" -> {
+                case 3 -> {
                     UI.printMessage("Skriv nyt efternavn: ");
                     String memberLastName = UI.getInputString();
                     memberList.editMemberLastName(idNumEdit, memberLastName);
                 }
-                case "svømmerstatus", "4" -> {
+                case 4 -> {
                     memberList.editMemberStatus(idNumEdit);
                     UI.printMessage("Medlems svømmestatus er nu ændret til " + memberList.memberSwimmerStatus(idNumEdit));
                     if (memberList.memberSwimmerStatus(idNumEdit)) {
@@ -407,12 +416,12 @@ public class Controller {
                     }
                 }
 
-                case "kontingent", "5" -> {
+                case 5 -> {
                     memberList.editMemberArrears(idNumEdit);
                     UI.printMessage("Medlems restance status er nu ændret til " + memberList.memberArrearsStatus(idNumEdit));
                 }
 
-                case "træner", "6" -> {
+                case 6 -> {
                     if (memberList.memberSwimmerStatus(idNumEdit)) {
                         UI.printMessage("Skriv nyt navn på træner");
                         String trainerName = UI.getInputString();
@@ -423,20 +432,19 @@ public class Controller {
                 }
 
 
-                case "aktiv/passiv", "7" -> {
+                case 7 -> {
                     memberList.editActiveStatus(idNumEdit);
                     UI.printMessage("Medlemmets aktivitetsstatus er nu ændret til " + memberList.memberActiveStatus(idNumEdit));
                 }
 
-                case "afslut", "8" -> editActive = false;
+                case 8 -> editActive = false;
 
-
-                default -> UI.printMessage("Der skete en fejl, prøv noget andet.");
             }
         }
     }
 
     private void memberDeletion() {
+        //@Martin Anberg
         memberList.showMembers();
         UI.printMessage("Skriv medlemmets ID for at slette medlem");
         String idNumDelete = UI.getInputString();
@@ -446,6 +454,7 @@ public class Controller {
     }
 
     private void memberCreation() {
+        //@Martin Anberg
         UI.printMessage("Skriv fornavn: ");
         String name = UI.getInputString();
         UI.getInputString();

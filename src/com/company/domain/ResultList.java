@@ -16,7 +16,7 @@ public class ResultList {
     ArrayList<CompetitionResult> competitiveResultListBackcrawl = new ArrayList<>();
     ArrayList<CompetitionResult> competitiveResultListBreaststroke = new ArrayList<>();
 
-    //Create Competitive Results
+    //Create Competitive Results //@Martin Anberg
 
     public void createCompResultButterfly(double resultTime, String idNum, LocalDate resultDate,String tournament){
         for(Result result : competitiveResultListButterfly){
@@ -68,7 +68,7 @@ public class ResultList {
             }
         }
     }
-    //Create Training Results
+    //Create Training Results //@Martin Anberg
 
     public void createTrainResultButterfly(double resultTime, String idNum, LocalDate resultDate) {
         for (Result result : trainingResultListButterfly) {
@@ -117,7 +117,7 @@ public class ResultList {
         }
     }
 
-    //TOP 5 COMPETITIVE
+    //TOP 5 COMPETITIVE //@Martin Anberg
 
     public String showTop5CompResultsButterfly(){
         for (int i = 0; i < 5; i++) {
@@ -125,7 +125,6 @@ public class ResultList {
         }
         return null;
     }
-
 
     public String showTop5CompResultsCrawl(){
         for (int i = 0; i < 5; i++) {
