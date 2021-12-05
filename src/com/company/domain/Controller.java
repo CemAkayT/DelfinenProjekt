@@ -262,6 +262,7 @@ public class Controller {
         teamList.listOfTeams();
         UI.printMessage("Skriv navn på holdet");
         String teamName = UI.getInputString();
+        UI.getInputString();
         UI.printMessage("Er du sikker på at du vil slette " + teamName + "?");
         String choice = UI.getInputString();
         if (choice.equals("ja")) {
@@ -274,6 +275,7 @@ public class Controller {
     private void teamCreation() {
         UI.printMessage("Skriv navn på holdet");
         String teamName = UI.getInputString();
+        UI.getInputString();
         UI.printMessage("Er det et juniorhold?");
         String choice = UI.getInputString();
         boolean isJunior;
@@ -317,7 +319,7 @@ public class Controller {
                 }
                 case "svømmerstatus", "4" -> {
                     memberList.editMemberStatus(idNumEdit);
-                    UI.printMessage("Medlems restance status er nu ændret til " + memberList.memberSwimmerStatus(idNumEdit));
+                    UI.printMessage("Medlems svømmestatus er nu ændret til " + memberList.memberSwimmerStatus(idNumEdit));
                     if (memberList.memberSwimmerStatus(idNumEdit)) {
                         UI.printMessage("Husk at tilføje træner");
                     }
@@ -356,13 +358,15 @@ public class Controller {
         memberList.showMembers();
         UI.printMessage("Skriv medlemmets ID for at slette medlem");
         String idNumDelete = UI.getInputString();
+        UI.getInputString();
         memberList.deleteMember(idNumDelete);
         UI.printMessage("Medlem slettet" + "\n");
     }
 
     private void memberCreation() {
-        UI.printMessage("Skriv navn: ");
+        UI.printMessage("Skriv fornavn: ");
         String name = UI.getInputString();
+        UI.getInputString();
         UI.printMessage("Skriv mellemnavn: ");
         String middleName = UI.getInputString();
         UI.printMessage("Skriv efternavn: ");
@@ -374,7 +378,6 @@ public class Controller {
         UI.printMessage("Medlemmets fødselsdato: " + dateOfBirth + "\n");
 
         UI.printMessage("Vil medlem deltage i konkurrencer? ");
-        UI.getInputString();
         String choice = UI.getInputString();
         if (choice.equals("ja")) {
             UI.printMessage("Hvem bliver medlemmets træner? ");
