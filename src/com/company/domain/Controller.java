@@ -382,19 +382,22 @@ public class Controller {
         String idNumEdit = UI.getInputString();
         boolean editActive = true;
         while (editActive) {
-            UI.printMessage("Hvad skal redigeres? " +
-                    "\n1. medlemmets navn" +
-                    "\n2. medlemmets mellemnavn" +
-                    "\n3. medlemmets efternavn" +
-                    "\n4. medlemmets svømmestatus" +
-                    "\n5. medlemmets kontingent" +
-                    "\n6. medlems træner(hvis medlem er konkurrencesvømmer)" +
-                    "\n7. ændre aktiv/passiv status" +
-                    "\n8. afslut redigering");
+            UI.printMessage("""
+                Vælg funktion:
+                1. Medlemmets fornavn
+                2. Medlemmets mellemnavn
+                3. Medlemmets efternavn
+                4. Medlemmets svømmestatus
+                5. Medlemmets kontingent
+                6. Medlems træner(hvis medlem er konkurencesvømmer)  
+                7. Ændre aktiv/passiv status  
+                                                    
+                0. Tilbage til hoved menu
+                """);
             int choice = UI.getValidInt(8);
             switch (choice) {
                 case 1 -> {
-                    UI.printMessage("Skriv nyt navn: ");
+                    UI.printMessage("Skriv nyt fornavn: ");
                     String memberName = UI.getInputString();
                     memberList.editMemberName(idNumEdit, memberName);
                 }
@@ -437,7 +440,7 @@ public class Controller {
                     UI.printMessage("Medlemmets aktivitetsstatus er nu ændret til " + memberList.memberActiveStatus(idNumEdit));
                 }
 
-                case 8 -> editActive = false;
+                case 0 -> editActive = false;
 
             }
         }

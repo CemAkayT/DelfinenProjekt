@@ -131,7 +131,7 @@ public class Member {
 
         }
         if(!active){
-            this.membershipFee = 500; // mangler vi else?
+            this.membershipFee = 500;
         }
     }
 
