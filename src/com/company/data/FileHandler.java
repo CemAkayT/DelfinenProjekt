@@ -9,6 +9,7 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+//@Graham Heaven
 public class FileHandler {
 
     UserInterface UI = new UserInterface();
@@ -87,5 +88,15 @@ public class FileHandler {
             }
         }
         UI.printMessage("Teams List saved");
+    }
+
+    // Try to read registered times from file
+    public void readRegisteredTimes() {
+
+    }
+
+    // Try to write registered times to file
+    public void writeRegisteredTimes() {
+
     }
 }
