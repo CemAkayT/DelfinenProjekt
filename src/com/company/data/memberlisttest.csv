@@ -1,4 +1,13 @@
-firstName1;something;lastName1;6f38cf10-6f19-4452-b78a-0e56c7167a04;1980-01-01;2000-01-01;false;"";
-firstName2;middleName2;lastName2;858debeb-4513-40c9-879e-96feed162309;1990-02-02;2010-01-01;true;"";
-firstName3;middleName3;lastName3;79903d8e-e733-4deb-b52c-aa79627f8ecb;2010-03-03;2020-01-01;false;"";
-f;m;l;5fe13b91-ecf7-4b8f-bc57-d7f12917e665;2010-08-15;2021-12-02;true;t;
+Ulrik;Bjørn;Gunnarsen;6f38cf10-6f19-4452-b78a-0e56c7167a04;1980-01-01;2000-01-01;true;"Jørgen Rasmussen";
+Anna;Marie;Nielsen;858debeb-4513-40c9-879e-96feed162309;1990-02-02;2010-01-01;true;"Jørgen Rasmussen";
+Lars;;Østergaard;79903d8e-e733-4deb-b52c-aa79627f8ecb;2010-03-03;2020-01-01;false;"";
+Søren;;l;5fe13b91-ecf7-4b8f-bc57-d7f12917e665;2010-08-15;2021-12-02;true;"Kim Hansen";
+Johnny;Donny;Johannsen;78903d8e-e733-4deb-b52c-aa79627f8ecb;1981-04-10;2020-01-01;true;"Jørgen Rasmussen";
+Daniel;Danny;Bergman;78903d8e-e753-4deb-b52c-aa79627f8ecb;1978-03-20;2020-01-01;true;"Jørgen Rasmussen";
+Morty;Bob;Heisenberg;78903d8e-e793-4deb-b52c-aa79627f8ecb;2003-03-10;2020-01-01;true;"Kim Hansen";
+Anders;Anders;Andersen;78903d8e-e703-4deb-b52c-aa79627f8ecb;2003-03-10;2020-01-01;true;"Kim Hansen";
+Dorte;Eva;Johannsen;78903d8e-e723-4deb-b52c-aa79627f8ecb;1993-03-10;2020-01-01;true;"Jørgen Rasmussen";
+Trine;;Johannsen;78903d8e-e713-4deb-b52c-aa79627f8ecb;2003-03-10;2020-01-01;false;"";
+Celine;Ingrid;Nelson;78903d8e-e755-4deb-b52c-aa79627f8ecb;2003-03-10;2020-01-01;false;"";
+Annie;;Nielsen;78903d8e-e736-4deb-b52c-aa79627f8ecb;2003-03-10;2020-01-01;true;"Kim Hansen";
+Hector;Ronald;Jameson;78903d8e-e737-4deb-b52c-aa79627f8ecb;1968-03-10;2020-01-01;true;"Jørgen Rasmussen";
