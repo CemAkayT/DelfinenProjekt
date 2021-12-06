@@ -202,9 +202,9 @@ public class Controller {
             double time = UI.getInputDouble();
             UI.printMessage("Skriv stævne");
             String tournament = UI.getInputString();
-            UI.printMessage("Skriv dato");
+            UI.printMessage("Skriv dato år/måned/dag");
             LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
-            resultList.createCompResultButterfly(time,idNum,resultDate,tournament);
+            resultList.runCreateCompResultButterfly(time,idNum,resultDate,tournament);
         }else{UI.printMessage("tiden blevet ikke ændret");}
     }
 
@@ -221,9 +221,9 @@ public class Controller {
             double time = UI.getInputDouble();
             UI.printMessage("Skriv stævne");
             String tournament = UI.getInputString();
-            UI.printMessage("Skriv dato");
+            UI.printMessage("Skriv dato år/måned/dag");
             LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
-            resultList.createCompResultCrawl(time,idNum,resultDate,tournament);
+            resultList.runCreateCompResultCrawl(time,idNum,resultDate,tournament);
         }else{UI.printMessage("tiden blevet ikke ændret");}
     }
 
@@ -240,9 +240,9 @@ public class Controller {
             double time = UI.getInputDouble();
             UI.printMessage("Skriv stævne");
             String tournament = UI.getInputString();
-            UI.printMessage("Skriv dato");
+            UI.printMessage("Skriv dato år/måned/dag");
             LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
-            resultList.createCompResultBackcrawl(time,idNum,resultDate,tournament);
+            resultList.runCreateCompResultBackcrawl(time,idNum,resultDate,tournament);
         }else{UI.printMessage("tiden blevet ikke ændret");}
     }
 
@@ -259,9 +259,9 @@ public class Controller {
             double time = UI.getInputDouble();
             UI.printMessage("Skriv stævne");
             String tournament = UI.getInputString();
-            UI.printMessage("Skriv dato");
+            UI.printMessage("Skriv dato år/måned/dag");
             LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
-            resultList.createCompResultBreaststroke(time,idNum,resultDate,tournament);
+            resultList.runCreateCompResultBreaststroke(time,idNum,resultDate,tournament);
         }else{UI.printMessage("tiden blevet ikke ændret");}
     }
 
@@ -297,9 +297,9 @@ public class Controller {
         if(choice.equals("ja")||choice.equals("Ja")||choice.equals("JA")){
             UI.printMessage("Skriv ny tid");
             double time = UI.getInputDouble();
-            UI.printMessage("Skriv dato");
+            UI.printMessage("Skriv dato år/måned/dag");
             LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
-            resultList.createTrainResultButterfly(time,idNum,resultDate);
+            resultList.runCreateTrainResultButterfly(time,idNum,resultDate);
         }else{UI.printMessage("tiden blevet ikke ændret");}
     }
 
@@ -314,9 +314,9 @@ public class Controller {
         if(choice.equals("ja")||choice.equals("Ja")||choice.equals("JA")){
             UI.printMessage("Skriv ny tid");
             double time = UI.getInputDouble();
-            UI.printMessage("Skriv dato");
+            UI.printMessage("Skriv dato år/måned/dag");
             LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
-            resultList.createTrainResultCrawl(time,idNum,resultDate);
+            resultList.runCreateTrainResultCrawl(time,idNum,resultDate);
         }else{UI.printMessage("tiden blevet ikke ændret");}
     }
 
@@ -331,9 +331,9 @@ public class Controller {
         if(choice.equals("ja")||choice.equals("Ja")||choice.equals("JA")){
             UI.printMessage("Skriv ny tid");
             double time = UI.getInputDouble();
-            UI.printMessage("Skriv dato");
+            UI.printMessage("Skriv dato år/måned/dag");
             LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
-            resultList.createTrainResultBackcrawl(time,idNum,resultDate);
+            resultList.runCreateTrainResultBackcrawl(time,idNum,resultDate);
         }else{UI.printMessage("tiden blevet ikke ændret");}
         }
 
@@ -348,9 +348,9 @@ public class Controller {
         if(choice.equals("ja")||choice.equals("Ja")||choice.equals("JA")){
             UI.printMessage("Skriv ny tid");
             double time = UI.getInputDouble();
-            UI.printMessage("Skriv dato");
+            UI.printMessage("Skriv dato år/måned/dag");
             LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
-            resultList.createTrainResultBreaststroke(time,idNum,resultDate);
+            resultList.runCreateTrainResultBreaststroke(time,idNum,resultDate);
         }else{UI.printMessage("tiden blevet ikke ændret");}
     }
 
