@@ -91,8 +91,23 @@ public class FileHandler {
     }
 
     // Try to read registered times from file
-    public void readRegisteredTimes() {
-
+    public ArrayList<String> readRegisteredTimes() {
+        File resultsList = new File("src/com/company/data/butterfly_training.csv");
+        ArrayList<String> listOfResults = new ArrayList<>();
+        // Try to load results for butterfly training
+        String line;
+        try {
+            Scanner input = new Scanner(resultsList);
+            while (input.hasNext()) {
+                line = input.nextLine();
+                listOfResults.add(line);
+            }
+        } catch (FileNotFoundException e) {
+            UI.printMessage(resultsList + " not found");
+        }
+        UI.printMessage("Results List loaded");
+        System.out.println(listOfResults); // test
+        return listOfResults;
     }
 
     // Try to write registered times to file

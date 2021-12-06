@@ -49,6 +49,7 @@ public class Controller {
         memberCreationFromFile(listOfMembers);
         ArrayList<String> listOfTeams = fh.readListOfTeams();
         teamCreationFromFile(listOfTeams);
+        fh.readRegisteredTimes();
         return true;
     }
 
@@ -508,6 +509,14 @@ public class Controller {
                 listOfMembers.add(member);
             }
             teamList.createTeam(teamName, isJunior, isDeleteable, listOfMembers);
+        }
+    }
+
+    private void trainingResultCreationFromFile(ArrayList<String> list) {
+        for (String s : list){
+            String[] lineData = s.split(";");
+            String idNum = lineData[0];
+
         }
     }
 }
