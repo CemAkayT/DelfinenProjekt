@@ -18,12 +18,8 @@ public class Controller {
 
     public void start() {
 
-        ArrayList<String> listOfMembers = fh.readListOfMembers();
-        memberCreationFromFile(listOfMembers);
-        ArrayList<String> listOfTeams = fh.readListOfTeams();
-        teamCreationFromFile(listOfTeams);
-        //teamList.listOfTeams();
-
+        // Try to load Members, Teams from file.
+        openFiles();
 
         int choice;
         UI.printMessage("\nVELKOMMEN TIL DELFINEN! \uD83D\uDC2C\n");
@@ -48,9 +44,19 @@ public class Controller {
         }
     }
 
+    private boolean openFiles() {
+        ArrayList<String> listOfMembers = fh.readListOfMembers();
+        memberCreationFromFile(listOfMembers);
+        ArrayList<String> listOfTeams = fh.readListOfTeams();
+        teamCreationFromFile(listOfTeams);
+        return true;
+    }
+
     private boolean closeFiles() {
-        ArrayList<String> list = memberList.membersListToString();
-        fh.writeListOfMembers(list);
+        ArrayList<String> mList = memberList.membersListToString();
+        fh.writeListOfMembers(mList);
+        ArrayList<String> tList = teamList.teamsListToString();
+        fh.writeListOfTeams(tList);
         return false;
     }
 
@@ -490,8 +496,8 @@ public class Controller {
     }
 
     private void teamCreationFromFile(ArrayList<String> list) {
-        ArrayList<Member> listOfMembers = new ArrayList<>();
         for (String s : list) {
+            ArrayList<Member> listOfMembers = new ArrayList<>();
             String[] lineData = s.split(";");
             String teamName = lineData[0];
             boolean isJunior = (Objects.equals(lineData[1], "true"));

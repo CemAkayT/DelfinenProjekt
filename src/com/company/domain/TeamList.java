@@ -32,4 +32,21 @@ public class TeamList {
         for (Team team : teams)
             System.out.println("TEAM NAVN: " + team.getTeamName());
     }
+
+    public ArrayList<String> teamsListToString() {
+        ArrayList<String> listOfTeams = new ArrayList<>();
+        ArrayList<String> listOfTeamData;
+        for (Team t : teams) {
+            StringBuilder teamData = new StringBuilder();
+            teamData.append(t.getTeamName()).append(";");
+            teamData.append(t.isJunior()).append(";");
+            teamData.append(t.isDeleteable()).append(";");
+            listOfTeamData = t.getListOfTeamMembersIds();
+            for (String s : listOfTeamData) {
+                teamData.append(s).append(";");
+            }
+            listOfTeams.add(teamData.toString());
+        }
+        return listOfTeams;
+    }
 }

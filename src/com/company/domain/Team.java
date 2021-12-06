@@ -41,6 +41,19 @@ public class Team {
         return isDeleteable;
     }
 
+    public boolean isJunior() {
+        return isJunior;
+    }
+
+    //Build a list of ID for team members so they can save to file.
+    public ArrayList<String> getListOfTeamMembersIds() {
+        ArrayList<String> listOfIds = new ArrayList<>();
+        for (Member m : teamMemberlist) {
+            listOfIds.add(m.getIdNum());
+        }
+        return  listOfIds;
+    }
+
     enum Discipline{
         BUTTERFLY,
         CRAWL,
