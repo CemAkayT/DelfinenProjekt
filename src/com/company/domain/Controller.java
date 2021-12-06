@@ -121,7 +121,7 @@ public class Controller {
                     2. Slet hold
                     3. Registrering(Træning)
                     4. Registrering(Konkurence)
-                    5. TOP 5 svømmerer
+                    5. TOP 5 svømmere
                                         
                     0. Tilbage til hoved menu
                     """);
@@ -152,19 +152,19 @@ public class Controller {
                     7. Backcrawl(Træning)
                     8. Brystsvømning(Træning)
                                         
-                    0. Tilbage til hoved menu
+                    0. Tilbage til tidligere menu
                     """);
             choice = UI.getValidInt(5);
             switch (choice) {
                 case 0 -> running = false;
-                case 1 -> resultList.showTop5CompResultsButterfly();
-                case 2 -> resultList.showTop5CompResultsCrawl();
-                case 3 -> resultList.showTop5CompResultsBackcrawl();
-                case 4 -> resultList.showTop5CompResultsBreaststroke();
-                case 5 -> resultList.showTop5TrainResultsButterfly();
-                case 6 -> resultList.showTop5TrainResultsCrawl();
-                case 7 -> resultList.showTop5TrainResultsBackcrawl();
-                case 8 -> resultList.showTop5TrainResultsBreaststroke();
+                case 1 -> UI.printMessage(resultList.showTop5CompResultsButterfly());
+                case 2 -> UI.printMessage(resultList.showTop5CompResultsCrawl());
+                case 3 -> UI.printMessage(resultList.showTop5CompResultsBackcrawl());
+                case 4 -> UI.printMessage(resultList.showTop5CompResultsBreaststroke());
+                case 5 -> UI.printMessage(resultList.showTop5TrainResultsButterfly());
+                case 6 -> UI.printMessage(resultList.showTop5TrainResultsCrawl());
+                case 7 -> UI.printMessage(resultList.showTop5TrainResultsBackcrawl());
+                case 8 -> UI.printMessage(resultList.showTop5TrainResultsBreaststroke());
             }
         }
     }
@@ -194,10 +194,10 @@ public class Controller {
         memberList.CompetitiveList();
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
-        UI.printMessage("Svømmerens nuværende bedste tid er: ");
-        UI.printMessage("Vil du ændre den?");
+        UI.printMessage("Svømmerens nuværende bedste tid er: "+resultList.memberCompetitiveButterfly(idNum));
+        UI.printMessage("Vil du ændre den? skriv ja eller nej");
         String choice = UI.getInputString();
-        if(choice.equals("ja")){
+        if(choice.equals("ja")||choice.equals("Ja")||choice.equals("JA")){
             UI.printMessage("Skriv ny tid");
             double time = UI.getInputDouble();
             UI.printMessage("Skriv stævne");
@@ -213,10 +213,10 @@ public class Controller {
         memberList.CompetitiveList();
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
-        UI.printMessage("Svømmerens nuværende bedste tid er: ");
+        UI.printMessage("Svømmerens nuværende bedste tid er: "+resultList.memberCompetitiveCrawl(idNum));
         UI.printMessage("Vil du ændre den?");
         String choice = UI.getInputString();
-        if(choice.equals("ja") && choice.equals("Ja")){
+        if(choice.equals("ja")||choice.equals("Ja")||choice.equals("JA")){
             UI.printMessage("Skriv ny tid");
             double time = UI.getInputDouble();
             UI.printMessage("Skriv stævne");
@@ -232,10 +232,10 @@ public class Controller {
         memberList.CompetitiveList();
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
-        UI.printMessage("Svømmerens nuværende bedste tid er: ");
+        UI.printMessage("Svømmerens nuværende bedste tid er: "+resultList.memberCompetitiveBackcrawl(idNum));
         UI.printMessage("Vil du ændre den?");
         String choice = UI.getInputString();
-        if(choice.equals("ja")){
+        if(choice.equals("ja")||choice.equals("Ja")||choice.equals("JA")){
             UI.printMessage("Skriv ny tid");
             double time = UI.getInputDouble();
             UI.printMessage("Skriv stævne");
@@ -251,10 +251,10 @@ public class Controller {
         memberList.CompetitiveList();
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
-        UI.printMessage("Svømmerens nuværende bedste tid er: ");
+        UI.printMessage("Svømmerens nuværende bedste tid er: "+resultList.memberCompetitiveBreaststroke(idNum));
         UI.printMessage("Vil du ændre den?");
         String choice = UI.getInputString();
-        if(choice.equals("ja")){
+        if(choice.equals("ja")||choice.equals("Ja")||choice.equals("JA")){
             UI.printMessage("Skriv ny tid");
             double time = UI.getInputDouble();
             UI.printMessage("Skriv stævne");
@@ -291,10 +291,10 @@ public class Controller {
         memberList.CompetitiveList();
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
-        UI.printMessage("Svømmerens nuværende bedste tid er: ");
+        UI.printMessage("Svømmerens nuværende bedste tid er: "+resultList.memberTrainingButterfly(idNum));
         UI.printMessage("Vil du ændre den?");
         String choice = UI.getInputString();
-        if(choice.equals("ja")){
+        if(choice.equals("ja")||choice.equals("Ja")||choice.equals("JA")){
             UI.printMessage("Skriv ny tid");
             double time = UI.getInputDouble();
             UI.printMessage("Skriv dato");
@@ -308,10 +308,10 @@ public class Controller {
         memberList.CompetitiveList();
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
-        UI.printMessage("Svømmerens nuværende bedste tid er: ");
+        UI.printMessage("Svømmerens nuværende bedste tid er: "+resultList.memberTrainingCrawl(idNum));
         UI.printMessage("Vil du ændre den?");
         String choice = UI.getInputString();
-        if(choice.equals("ja")){
+        if(choice.equals("ja")||choice.equals("Ja")||choice.equals("JA")){
             UI.printMessage("Skriv ny tid");
             double time = UI.getInputDouble();
             UI.printMessage("Skriv dato");
@@ -325,10 +325,10 @@ public class Controller {
         memberList.CompetitiveList();
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
-        UI.printMessage("Svømmerens nuværende bedste tid er: ");
+        UI.printMessage("Svømmerens nuværende bedste tid er: "+resultList.memberTrainingBackcrawl(idNum));
         UI.printMessage("Vil du ændre den?");
         String choice = UI.getInputString();
-        if(choice.equals("ja")){
+        if(choice.equals("ja")||choice.equals("Ja")||choice.equals("JA")){
             UI.printMessage("Skriv ny tid");
             double time = UI.getInputDouble();
             UI.printMessage("Skriv dato");
@@ -342,10 +342,10 @@ public class Controller {
         memberList.CompetitiveList();
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
-        UI.printMessage("Svømmerens nuværende bedste tid er: ");
+        UI.printMessage("Svømmerens nuværende bedste tid er: "+resultList.memberTrainingBreaststroke(idNum));
         UI.printMessage("Vil du ændre den?");
         String choice = UI.getInputString();
-        if(choice.equals("ja")){
+        if(choice.equals("ja")||choice.equals("Ja")||choice.equals("JA")){
             UI.printMessage("Skriv ny tid");
             double time = UI.getInputDouble();
             UI.printMessage("Skriv dato");
@@ -361,7 +361,7 @@ public class Controller {
         UI.getInputString();
         UI.printMessage("Er du sikker på at du vil slette " + teamName + "?");
         String choice = UI.getInputString();
-        if (choice.equals("ja")) {
+        if (choice.equals("ja")||choice.equals("Ja")||choice.equals("JA")) {
             teamList.deleteTeam(teamName);
         } else {
             UI.printMessage(teamName + " bliver IKKE slette");
@@ -478,7 +478,7 @@ public class Controller {
         UI.printMessage("Medlemmets fødselsdato: " + dateOfBirth + "\n");
         UI.printMessage("Vil medlem deltage i konkurrencer? ");
         String choice = UI.getInputString();
-        if (choice.equals("ja")) {
+        if (choice.equals("ja")||choice.equals("Ja")||choice.equals("JA")) {
             UI.printMessage("Hvem bliver medlemmets træner? ");
             String trainerName = UI.getInputString();
             LocalDate dateOfMembership = LocalDate.now();

@@ -28,6 +28,9 @@ public class ResultList {
                 competitiveResultListButterfly.add(i,competitionResult);
             }
         }
+        if(!competitiveResultListButterfly.contains(competitionResult)){
+            competitiveResultListButterfly.add(competitiveResultListButterfly.size(),competitionResult);
+        }
     }
     public void createCompResultCrawl(double resultTime, String idNum, LocalDate resultDate,String tournament) {
         for (Result result : competitiveResultListCrawl) {
@@ -41,6 +44,10 @@ public class ResultList {
                 competitiveResultListCrawl.add(i, competitionResult);
             }
         }
+        if(!competitiveResultListCrawl.contains(competitionResult)){
+            competitiveResultListCrawl.add(competitiveResultListCrawl.size(),competitionResult);
+        }
+
     }
     public void createCompResultBackcrawl(double resultTime, String idNum, LocalDate resultDate,String tournament) {
         for (Result result : competitiveResultListBackcrawl) {
@@ -54,6 +61,9 @@ public class ResultList {
                 competitiveResultListBackcrawl.add(i, competitionResult);
             }
         }
+        if(!competitiveResultListBackcrawl.contains(competitionResult)){
+            competitiveResultListBackcrawl.add(competitiveResultListBackcrawl.size(),competitionResult);
+        }
     }
     public void createCompResultBreaststroke(double resultTime, String idNum, LocalDate resultDate,String tournament) {
         for (Result result : competitiveResultListBreaststroke) {
@@ -62,10 +72,13 @@ public class ResultList {
             }
         }
         CompetitionResult competitionResult = new CompetitionResult(resultTime, idNum, resultDate, tournament, Discipline.BREASTSTROKE);
-        for (int i = 0; i < competitiveResultListButterfly.size(); i++) {
-            if (competitionResult.getResultTime() > competitiveResultListButterfly.get(i).getResultTime()) {
-                competitiveResultListButterfly.add(i, competitionResult);
+        for (int i = 0; i < competitiveResultListBreaststroke.size(); i++) {
+            if (competitionResult.getResultTime() > competitiveResultListBreaststroke.get(i).getResultTime()) {
+                competitiveResultListBreaststroke.add(i, competitionResult);
             }
+        }
+        if(!competitiveResultListBreaststroke.contains(competitionResult)){
+            competitiveResultListBreaststroke.add(competitiveResultListBreaststroke.size(),competitionResult);
         }
     }
     //Create Training Results //@Martin Anberg
@@ -82,6 +95,9 @@ public class ResultList {
                 trainingResultListButterfly.add(i, trainingResult);
             }
         }
+        if(!trainingResultListButterfly.contains(trainingResult)){
+            trainingResultListButterfly.add(trainingResultListButterfly.size(),trainingResult);
+        }
     }
     public void createTrainResultCrawl(double resultTime, String idNum, LocalDate resultDate){
         for(Result result : trainingResultListCrawl){
@@ -93,6 +109,9 @@ public class ResultList {
                     trainingResultListCrawl.add(i,trainingResult);
                 }
             }
+        if(!trainingResultListCrawl.contains(trainingResult)){
+            trainingResultListCrawl.add(trainingResultListCrawl.size(),trainingResult);
+        }
     }
     public void createTrainResultBackcrawl(double resultTime, String idNum, LocalDate resultDate){
         for(Result result : trainingResultListBackcrawl){
@@ -104,6 +123,9 @@ public class ResultList {
                 trainingResultListBackcrawl.add(i,trainingResult);
             }
         }
+        if(!trainingResultListBackcrawl.contains(trainingResult)){
+            trainingResultListBackcrawl.add(trainingResultListBackcrawl.size(),trainingResult);
+        }
     }
     public void createTrainResultBreaststroke(double resultTime, String idNum, LocalDate resultDate){
         for(Result result : trainingResultListBreaststroke){
@@ -114,6 +136,9 @@ public class ResultList {
             if(trainingResult.getResultTime() > trainingResultListBreaststroke.get(i).getResultTime()){
                 trainingResultListBreaststroke.add(i,trainingResult);
             }
+        }
+        if(!trainingResultListBreaststroke.contains(trainingResult)){
+            trainingResultListBreaststroke.add(trainingResultListBreaststroke.size(),trainingResult);
         }
     }
 
@@ -160,7 +185,8 @@ public class ResultList {
             }
     public String showTop5TrainResultsBackcrawl(){
         for (int i = 0; i <= 5; i++) {
-            return i+". ID:"+trainingResultListBackcrawl.get(i).getIdNum()+" TID:"+ trainingResultListBackcrawl.get(i).getResultTime();
+            int place = i+1;
+            return place+". ID:"+trainingResultListBackcrawl.get(i).getIdNum()+" TID:"+ trainingResultListBackcrawl.get(i).getResultTime();
         }
         return null;
     }
@@ -169,6 +195,73 @@ public class ResultList {
             return i+". ID:"+trainingResultListBreaststroke.get(i).getIdNum()+" TID:"+ trainingResultListBreaststroke.get(i).getResultTime();
         }
         return null;
+    }
+
+    //FIND MEMBER RESULT COMPETITIVE //@MartinAnberg
+    public double memberCompetitiveButterfly(String idNum){
+        for(Result result : competitiveResultListButterfly){
+            if(idNum.equals(result.getIdNum())){
+                return result.getResultTime();
+            }
+        }
+        return 0;
+    }
+    public double memberCompetitiveCrawl(String idNum){
+        for(Result result : competitiveResultListCrawl){
+            if(idNum.equals(result.getIdNum())){
+                return result.getResultTime();
+            }
+        }
+        return 0;
+    }
+    public double memberCompetitiveBackcrawl(String idNum){
+        for(Result result : competitiveResultListBackcrawl){
+            if(idNum.equals(result.getIdNum())){
+                return result.getResultTime();
+            }
+        }
+        return 0;
+    }
+    public double memberCompetitiveBreaststroke(String idNum){
+        for(Result result : competitiveResultListBreaststroke){
+            if(idNum.equals(result.getIdNum())){
+                return result.getResultTime();
+            }
+        }
+        return 0;
+    }
+    //FIND MEMBER RESULT TRAINING //@MartinAnberg
+    public double memberTrainingButterfly(String idNum){
+        for(Result result : trainingResultListBreaststroke){
+            if(idNum.equals(result.getIdNum())){
+                return result.getResultTime();
+            }
+        }
+        return 0;
+    }
+    public double memberTrainingCrawl(String idNum){
+        for(Result result : trainingResultListCrawl){
+            if(idNum.equals(result.getIdNum())){
+                return result.getResultTime();
+            }
+        }
+        return 0;
+    }
+    public double memberTrainingBackcrawl(String idNum){
+        for(Result result : trainingResultListBackcrawl){
+            if(idNum.equals(result.getIdNum())){
+                return result.getResultTime();
+            }
+        }
+        return 0;
+    }
+    public double memberTrainingBreaststroke(String idNum){
+        for(Result result : trainingResultListBreaststroke){
+            if(idNum.equals(result.getIdNum())){
+                return result.getResultTime();
+            }
+        }
+        return 0;
     }
 
 }
