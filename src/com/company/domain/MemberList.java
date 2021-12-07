@@ -44,14 +44,14 @@ public class MemberList {
 
     public void deleteMember(String idNumDelete) {
         for (int i = 0; i < members.size(); i++)
-            if (members.get(i).getIdNum().toString().equals(idNumDelete)) {
+            if (members.get(i).getIdNum().equals(idNumDelete)) {
                 members.remove(i);
             }
     }
 
     public void editMemberName(String idNumEdit, String name) {
         for (Member member : members)
-            if (member.getIdNum().toString().equals(idNumEdit)) {
+            if (member.getIdNum().equals(idNumEdit)) {
                 member.setName(name);
             }
 
@@ -59,21 +59,21 @@ public class MemberList {
 
     public void editMemberMiddleName(String idNumEdit, String memberMiddleName) {
         for (Member member : members)
-            if (member.getIdNum().toString().equals(idNumEdit)) {
+            if (member.getIdNum().equals(idNumEdit)) {
                 member.setMiddleName(memberMiddleName);
             }
     }
 
     public void editMemberLastName(String idNumEdit, String memberLastName) {
         for (int i = 0; i < members.size(); i++)
-            if (members.get(i).getIdNum().toString().equals(idNumEdit)) {
+            if (members.get(i).getIdNum().equals(idNumEdit)) {
                 members.get(i).setLastName(memberLastName);
             }
     }
 
     public void editMemberArrears(String idNumEdit) {
         for (int i = 0; i < members.size(); i++)
-            if (members.get(i).getIdNum().toString().equals(idNumEdit)) {
+            if (members.get(i).getIdNum().equals(idNumEdit)) {
                 if (members.get(i).isHasPaid()) {
                     members.get(i).setHasPaid(false);
                 } else members.get(i).setHasPaid(true);
@@ -82,14 +82,14 @@ public class MemberList {
 
     public void editMemberTrainer(String idNumEdit, String trainerName) {
         for (Member member : members)
-            if (member.getIdNum().toString().equals(idNumEdit)) {
+            if (member.getIdNum().equals(idNumEdit)) {
                 member.setTrainerName(trainerName);
             }
     }
 
     public void editMemberStatus(String idNumEdit) {
         for (Member member : members)
-            if (member.getIdNum().toString().equals(idNumEdit)) {
+            if (member.getIdNum().equals(idNumEdit)) {
                 if (member.isCompetitive()) {
                     member.setCompetitive(false);
                     member.setTrainerName(null);
@@ -110,42 +110,53 @@ public class MemberList {
         }
 
     }
-    public void arrearsList(){
+    public String arrearsList(){
         for (Member member : members)
             if (!member.isHasPaid()) {
-                System.out.println(member.getName());
+                return member.getName()+" "+member.getMiddleName()+" "+member.getLastName()+"\n"+member.getIdNum()+"\n";
             }
+        return null;
     }
+    public String memberPaymentList(){
+        for (Member member : members){
+            if (member.isHasPaid()) {
+                return member.getName() + " " + member.getMiddleName() + " " + member.getLastName() + "\n" + member.getIdNum() +
+                        "\nDette medlem betaler " + member.getMembershipFee() + " i kontingent";
+            }
+        }
+        return null;
+    }
+
     public boolean memberArrearsStatus(String idNumEdit){
         for (int i = 0; i < members.size(); i++)
-            if(members.get(i).getIdNum().toString().equals(idNumEdit)){
+            if(members.get(i).getIdNum().equals(idNumEdit)){
             return members.get(i).isHasPaid();
             }
         return false;
     }
     public boolean memberSwimmerStatus(String idNumEdit){
         for (int i = 0; i < members.size(); i++)
-            if(members.get(i).getIdNum().toString().equals(idNumEdit)){
+            if(members.get(i).getIdNum().equals(idNumEdit)){
                 return members.get(i).isCompetitive();
             }
         return false;
     }
-    public double showIncome(){
+    public String showIncome(){
         double income = 0;
         for (Member member : members) {
             income = income + member.getMembershipFee();
         }
-         return income;
+         return "Klubbens årlige indkomst er "+income+"\nKlubbens månedlige indkomst er "+income/12;
     }
     public void editActiveStatus(String idNumEdit){
         for (Member member : members)
-            if (member.getIdNum().toString().equals(idNumEdit)) {
+            if (member.getIdNum().equals(idNumEdit)) {
                 member.setActive(!member.isActive());
             }
     }
     public boolean memberActiveStatus(String idNumEdit){
         for (Member member : members)
-            if (member.getIdNum().toString().equals(idNumEdit)) {
+            if (member.getIdNum().equals(idNumEdit)) {
                 return member.isActive();
             }
         return false;
@@ -162,6 +173,14 @@ public class MemberList {
                         "\nAKTIVSTATUS: " + member.isActive() +
                         "\n");
             }
+    }
+
+    public String searchMemberByIdNum(String IdNum){
+        for(Member member : members)
+        if(member.getIdNum().equals(IdNum)) {
+            return member.getName() + " " + member.getMiddleName() + " " + member.getLastName();
+        }
+    return null;
     }
 
     public ArrayList<String> membersListToString() {

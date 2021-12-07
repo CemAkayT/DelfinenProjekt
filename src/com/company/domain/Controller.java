@@ -70,18 +70,27 @@ public class Controller {
                     2. Slet medlem
                     3. rediger medlem
                     4. Se medlemsliste
+                    5. Søg efter medlem efter ID
                                         
                     0. Tilbage til hoved menu
                     """);
-            choice = UI.getValidInt(4);
+            choice = UI.getValidInt(5);
             switch (choice) {
                 case 0 -> running = false;
                 case 1 -> memberCreation();
                 case 2 -> memberDeletion();
                 case 3 -> memberEditing();
                 case 4 -> memberList.showMembers();
+                case 5 -> runSearchMemberByID();
             }
         }
+    }
+
+    private void runSearchMemberByID() {
+        UI.getInputString();
+        UI.printMessage("Skriv ID");
+        String idNum = UI.getInputString();
+        memberList.searchMemberByIdNum(idNum);
     }
 
     private void accountMenu() {
@@ -92,20 +101,26 @@ public class Controller {
                     Kontigent menu - Vælg funktion:
                     1. Se restance liste
                     2. Se kontingent til dato
+                    3. Se medlemsliste med kontingent
+                    
                                         
                     0. Tilbage til hoved menu
                     """);
-            choice = UI.getValidInt(2);
+            choice = UI.getValidInt(3);
             switch (choice) {
                 case 0 -> running = false;
                 case 1 -> {
                     UI.printMessage("LISTE AF MEDLEMMER I RESTANCE: " + "\n");
-                    memberList.arrearsList();
+                    UI.printMessage(memberList.arrearsList());
                 }
                 case 2 -> {
                     UI.printMessage("TOTAL KONTINGENT: ");
-                    UI.printDouble(memberList.showIncome());
+                    UI.printMessage(memberList.showIncome());
                     UI.printMessage("");
+                }
+                case 3 -> {
+                    UI.printMessage("LISTE AF MEDLEMMERS KONTINGENT");
+                    UI.printMessage(memberList.memberPaymentList());
                 }
             }
         }
