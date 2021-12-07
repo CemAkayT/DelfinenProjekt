@@ -95,9 +95,11 @@ public class ResultList {
 
     public String Top5CompResults(ArrayList<CompetitionResult> competitionResultList){
         String s ="";
-        for (int i = 0; i < 5; i++) {
-            s = s + i+". ID:"+competitionResultList.get(i).getIdNum()+" TID:"+competitionResultList.get(i).getResultTime()+" STÆVNE: "+competitionResultList.get(i).getTournament();
-        }
+        if(competitionResultList.size() >= 5) {
+            for (int i = 0; i < 5; i++) {
+                s = s + i + ". ID:" + competitionResultList.get(i).getIdNum() + " TID:" + competitionResultList.get(i).getResultTime() + " STÆVNE: " + competitionResultList.get(i).getTournament();
+            }
+        }else{s = "Der ikke fem resultater registreret";}
         return s;
     }
 
@@ -117,9 +119,11 @@ public class ResultList {
 
     public String Top5TrainResults(ArrayList<TrainingResult> trainingResultList){
         String s = "";
-        for (int i = 0; i <= 5; i++) {
-            s = s + i+". ID:"+trainingResultList.get(i).getIdNum()+" TID:"+ trainingResultList.get(i).getResultTime();
-        }
+        if(trainingResultList.size() >= 5) {
+            for (int i = 0; i <= 5; i++) {
+                s = s + i + ". ID:" + trainingResultList.get(i).getIdNum() + " TID:" + trainingResultList.get(i).getResultTime();
+            }
+        }else{s = "Der ikke fem resultater registreret";}
         return s;
     }
 

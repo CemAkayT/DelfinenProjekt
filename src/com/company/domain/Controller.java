@@ -174,7 +174,7 @@ public class Controller {
                                         
                     0. Tilbage til tidligere menu
                     """);
-            choice = UI.getValidInt(5);
+            choice = UI.getValidInt(8);
             switch (choice) {
                 case 0 -> running = false;
                 case 1 -> UI.printMessage(resultList.showTop5CompResultsButterfly());
@@ -420,7 +420,7 @@ public class Controller {
                                                     
                 0. Tilbage til hoved menu
                 """);
-            int choice = UI.getValidInt(8);
+            int choice = UI.getValidInt(7);
             switch (choice) {
                 case 1 -> {
                     UI.printMessage("Skriv nyt fornavn: ");
