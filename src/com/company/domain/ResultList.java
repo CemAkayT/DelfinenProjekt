@@ -63,16 +63,17 @@ public class ResultList {
         for (Result result : trainingResultList) {
             if (result.getIdNum().equals(idNum)) {
                 trainingResultList.remove(result);
+            }else {
+                TrainingResult trainingResult = new TrainingResult(resultTime, idNum, resultDate, comment);
+                for (int i = 0; i < trainingResultList.size(); i++) {
+                    if (trainingResult.getResultTime() <= trainingResultList.get(i).getResultTime()) {
+                        trainingResultList.add(i, trainingResult);
+                    }
+                }
+                if (!trainingResultList.contains(trainingResult)) {
+                    trainingResultList.add(trainingResultList.size(), trainingResult);
+                }
             }
-        }
-        TrainingResult trainingResult = new TrainingResult(resultTime, idNum, resultDate, comment);
-        for (int i = 0; i < trainingResultList.size(); i++) {
-            if (trainingResult.getResultTime() > trainingResultList.get(i).getResultTime()) {
-                trainingResultList.add(i, trainingResult);
-            }
-        }
-        if(!trainingResultList.contains(trainingResult)){
-            trainingResultList.add(trainingResultList.size(),trainingResult);
         }
     }
 
@@ -126,70 +127,70 @@ public class ResultList {
     }
 
     //FIND MEMBER RESULT COMPETITIVE //@MartinAnberg
-    public double memberCompetitiveButterfly(String idNum){
+    public String memberCompetitiveButterfly(String idNum){
         for(Result result : competitiveBestResultListButterfly){
             if(idNum.equals(result.getIdNum())){
-                return result.getResultTime();
+                return ""+result.getResultTime();
             }
         }
-        return 0;
+        return "INGEN TID";
     }
-    public double memberCompetitiveCrawl(String idNum){
+    public String memberCompetitiveCrawl(String idNum){
         for(Result result : competitiveBestResultListCrawl){
             if(idNum.equals(result.getIdNum())){
-                return result.getResultTime();
+                return ""+result.getResultTime();
             }
         }
-        return 0;
+        return "INGEN TID";
     }
-    public double memberCompetitiveBackcrawl(String idNum){
+    public String memberCompetitiveBackcrawl(String idNum){
         for(Result result : competitiveBestResultListBackcrawl){
             if(idNum.equals(result.getIdNum())){
-                return result.getResultTime();
+                return ""+result.getResultTime();
             }
         }
-        return 0;
+        return "INGEN TID";
     }
-    public double memberCompetitiveBreaststroke(String idNum){
+    public String memberCompetitiveBreaststroke(String idNum){
         for(Result result : competitiveBestResultListBreaststroke){
             if(idNum.equals(result.getIdNum())){
-                return result.getResultTime();
+                return ""+result.getResultTime();
             }
         }
-        return 0;
+        return "INGEN TID";
     }
     //FIND MEMBER RESULT TRAINING //@MartinAnberg
-    public double memberTrainingButterfly(String idNum){
+    public String memberTrainingButterfly(String idNum){
         for(Result result : trainingBestResultListBreaststroke){
             if(idNum.equals(result.getIdNum())){
-                return result.getResultTime();
+                return ""+result.getResultTime();
             }
         }
-        return 0;
+        return "INGEN TID";
     }
-    public double memberTrainingCrawl(String idNum){
+    public String memberTrainingCrawl(String idNum){
         for(Result result : trainingBestResultListCrawl){
             if(idNum.equals(result.getIdNum())){
-                return result.getResultTime();
+                return ""+result.getResultTime();
             }
         }
-        return 0;
+        return "INGEN TID";
     }
-    public double memberTrainingBackcrawl(String idNum){
+    public String memberTrainingBackcrawl(String idNum){
         for(Result result : trainingBestResultListBackcrawl){
             if(idNum.equals(result.getIdNum())){
-                return result.getResultTime();
+                return ""+result.getResultTime();
             }
         }
-        return 0;
+        return "INGEN TID";
     }
-    public double memberTrainingBreaststroke(String idNum){
+    public String memberTrainingBreaststroke(String idNum){
         for(Result result : trainingBestResultListBreaststroke){
             if(idNum.equals(result.getIdNum())){
-                return result.getResultTime();
+                return ""+result.getResultTime();
             }
         }
-        return 0;
+        return "INGEN TID";
     }
 
 }
