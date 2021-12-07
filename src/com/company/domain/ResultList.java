@@ -75,7 +75,7 @@ public class ResultList {
             }
         }
         if(!trainingResultList.contains(trainingResult)){
-            trainingResultList.add(trainingResultList.size(),trainingResult);
+            trainingResultList.add(trainingResult);
         }
     }
 
