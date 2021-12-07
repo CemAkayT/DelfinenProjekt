@@ -576,6 +576,7 @@ public class Controller {
                             //resultList.runCreateTrainResultButterfly(resultTime, idNum, dateOfresult, tekst);
                         }
                     }
+
             }
         }
         UI.printMessage("Results lists loaded");
