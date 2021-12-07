@@ -94,10 +94,11 @@ public class ResultList {
     }
 
     public String Top5CompResults(ArrayList<CompetitionResult> competitionResultList){
+        String s ="";
         for (int i = 0; i < 5; i++) {
-            return i+". ID:"+competitionResultList.get(i).getIdNum()+" TID:"+competitionResultList.get(i).getResultTime()+" STÆVNE: "+competitionResultList.get(i).getTournament();
+            s = s + i+". ID:"+competitionResultList.get(i).getIdNum()+" TID:"+competitionResultList.get(i).getResultTime()+" STÆVNE: "+competitionResultList.get(i).getTournament();
         }
-        return null;
+        return s;
     }
 
     //TOP 5 TRAINING
@@ -115,10 +116,11 @@ public class ResultList {
     }
 
     public String Top5TrainResults(ArrayList<TrainingResult> trainingResultList){
+        String s = "";
         for (int i = 0; i <= 5; i++) {
-            return i+". ID:"+trainingResultList.get(i).getIdNum()+" TID:"+ trainingResultList.get(i).getResultTime();
+            s = s + i+". ID:"+trainingResultList.get(i).getIdNum()+" TID:"+ trainingResultList.get(i).getResultTime();
         }
-        return null;
+        return s;
     }
 
     //FIND MEMBER RESULT COMPETITIVE //@MartinAnberg

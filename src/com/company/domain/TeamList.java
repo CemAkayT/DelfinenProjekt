@@ -19,21 +19,25 @@ public class TeamList {
     }
 
 
-    public void deleteTeam(String name){
+    public String deleteTeam(String name){
         for (Team team : teams)
         if(team.getTeamName().equals(name)){
             if(team.isDeleteable()) {
                 teams.remove(team);
-                System.out.println(team.getTeamName()+" er blevet slettet.");
+                return team.getTeamName()+" er blevet slettet.";
             }else{
-                System.out.println("Dette hold kan ikke slettes");
+                return "Dette hold kan ikke slettes";
             }
         }
+        return null;
     }
 
-    public void listOfTeams() {
-        for (Team team : teams)
-            System.out.println("TEAM NAVN: " + team.getTeamName());
+    public String listOfTeams() {
+        String s ="";
+        for (Team team : teams) {
+            s = s + "TEAM NAVN: " + team.getTeamName();
+        }
+        return s;
     }
 
     // @Graham Heaven

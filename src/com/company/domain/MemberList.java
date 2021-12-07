@@ -98,34 +98,40 @@ public class MemberList {
             }
             }
 
-    public void showMembers(){
+    public String showMembers(){
+        String s = "";
         for (Member member : members) {
-            System.out.println("\nMEDLEMSNAVN: " + member.getName() + " " + member.getMiddleName() + " " + member.getLastName() +
+            s = s + "\nMEDLEMSNAVN: " + member.getName() + " " + member.getMiddleName() + " " + member.getLastName() +
                     "\nID: " + member.getIdNum() +
                     "\nFØDSELSDATO: " + member.getDateOfBirth() +
                     "\nOPRETTELSESDATO: " + member.getDateOfMembership() +
                     "\nTRÆNER: " + member.getTrainerName() +
                     "\nMEDLEMSSTATUS: " + member.getMembershipStatus() +
                     "\nAKTIVSTATUS: " + member.isActive() +
-                    "\n");
+                    "\n";
         }
-
+    return s;
     }
+    //@MartinAnberg
     public String arrearsList(){
-        for (Member member : members)
+        String s = "";
+        for (Member member : members) {
             if (!member.isHasPaid()) {
-                return member.getName()+" "+member.getMiddleName()+" "+member.getLastName()+"\n"+member.getIdNum()+"\n";
+                s = s + member.getName() + " " + member.getMiddleName() + " " + member.getLastName() + "\n" + member.getIdNum() + "\n";
             }
-        return null;
+        }
+            return s;
     }
+    //@MartinAnberg
     public String memberPaymentList(){
+        String s = "";
         for (Member member : members){
             if (member.isHasPaid()) {
-                return member.getName() + " " + member.getMiddleName() + " " + member.getLastName() + "\n" + member.getIdNum() +
-                        "\nDette medlem betaler " + member.getMembershipFee() + " i kontingent";
+                s = s + member.getName() + " " + member.getMiddleName() + " " + member.getLastName() + "\n" + member.getIdNum() +
+                        "\nDette medlem betaler " + member.getMembershipFee() + " i kontingent\n\n";
             }
         }
-        return null;
+        return s;
     }
 
     public boolean memberArrearsStatus(String idNumEdit){
@@ -142,12 +148,13 @@ public class MemberList {
             }
         return false;
     }
+    //@MartinAnberg
     public String showIncome(){
         double income = 0;
         for (Member member : members) {
             income = income + member.getMembershipFee();
         }
-         return "Klubbens årlige indkomst er "+income+"\nKlubbens månedlige indkomst er "+income/12;
+        return "Klubbens årlige indkomst er "+income+"\nKlubbens månedlige indkomst er "+income/12;
     }
     public void editActiveStatus(String idNumEdit){
         for (Member member : members)
@@ -162,20 +169,24 @@ public class MemberList {
             }
         return false;
     }
-    public void CompetitiveList(){
-        for (Member member : members)
+    //@MartinAnberg
+    public String CompetitiveList(){
+        String s ="";
+        for (Member member : members) {
             if (member.isCompetitive()) {
-                System.out.println("\nMEDLEMSNAVN: " + member.getName() + " "+member.getMiddleName()+" " + member.getLastName() +
+                s = s + "\nMEDLEMSNAVN: " + member.getName() + " " + member.getMiddleName() + " " + member.getLastName() +
                         "\nID: " + member.getIdNum() +
                         "\nFØDSELSDATO: " + member.getDateOfBirth() +
                         "\nOPRETTELSESDATO: " + member.getDateOfMembership() +
                         "\nTRÆNER: " + member.getTrainerName() +
                         "\nMEDLEMSSTATUS: " + member.getMembershipStatus() +
                         "\nAKTIVSTATUS: " + member.isActive() +
-                        "\n");
+                        "\n";
             }
+        }
+        return s;
     }
-
+//@MartinAnberg
     public String searchMemberByIdNum(String IdNum){
         for(Member member : members)
         if(member.getIdNum().equals(IdNum)) {
