@@ -569,6 +569,7 @@ public class Controller {
                             Double resultTime = Double.parseDouble(lineData[2]);
                             String tekst = lineData[3];
                     }
+
             }
         }
         UI.printMessage("Results lists loaded");
