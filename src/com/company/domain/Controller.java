@@ -3,9 +3,11 @@ package com.company.domain;
 import com.company.UI.UserInterface;
 import com.company.data.FileHandler;
 
+import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -562,13 +564,19 @@ public class Controller {
                 listOfResultsFromOneFile = fh.readOneTimeFile(resultType, fileName);
                 // todo: for each line in each file create the appropriate Result object and add to ResultList.
                 System.out.println(listOfResultsFromOneFile); // test
-                    for (String s : listOfResultsFromOneFile) {
+                    if (resultType.equals("training") && fileName.equals("butterfly")) {
+                        for (String s : listOfResultsFromOneFile) {
                             String[] lineData = s.split(";");
+                            System.out.println(s);
                             String idNum = lineData[0];
                             LocalDate dateOfresult = LocalDate.parse(lineData[1], formatter);
-                            Double resultTime = Double.parseDouble(lineData[2]);
+                            Double resultTime =  Double.parseDouble(lineData[2]);
+                            System.out.println(resultTime);
                             String tekst = lineData[3];
+                            //resultList.runCreateTrainResultButterfly(resultTime, idNum, dateOfresult, tekst);
+                        }
                     }
+
             }
         }
         UI.printMessage("Results lists loaded");
