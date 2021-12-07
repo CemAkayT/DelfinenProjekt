@@ -44,14 +44,17 @@ public class Controller {
         }
     }
 
+    // @Graham Heaven
     private boolean openFiles() {
         ArrayList<String> listOfMembers = fh.readListOfMembers();
         memberCreationFromFile(listOfMembers);
         ArrayList<String> listOfTeams = fh.readListOfTeams();
         teamCreationFromFile(listOfTeams);
+        fh.readAllTimeFiles();
         return true;
     }
 
+    // @Graham Heaven
     private boolean closeFiles() {
         ArrayList<String> mList = memberList.membersListToString();
         fh.writeListOfMembers(mList);
@@ -60,6 +63,7 @@ public class Controller {
         return false;
     }
 
+    // @Graham Heaven
     private void membersMenu() {
         int choice;
         boolean running = true;
@@ -93,6 +97,7 @@ public class Controller {
         memberList.searchMemberByIdNum(idNum);
     }
 
+    // @Graham Heaven
     private void accountMenu() {
         int choice;
         boolean running = true;
@@ -126,6 +131,7 @@ public class Controller {
         }
     }
 
+    // @Graham Heaven
     private void trainingMenu() {
         int choice;
         boolean running = true;
@@ -506,10 +512,12 @@ public class Controller {
         }
     }
 
+    // @Graham Heaven
     private void memberCreationFromFile(ArrayList<String> list) {
         memberList.createMember(list);
     }
 
+    // @Graham Heaven
     private void teamCreationFromFile(ArrayList<String> list) {
         for (String s : list) {
             ArrayList<Member> listOfMembers = new ArrayList<>();
@@ -523,6 +531,15 @@ public class Controller {
                 listOfMembers.add(member);
             }
             teamList.createTeam(teamName, isJunior, isDeleteable, listOfMembers);
+        }
+    }
+
+    // @Graham Heaven
+    private void trainingResultCreationFromFile(ArrayList<String> list) {
+        for (String s : list){
+            String[] lineData = s.split(";");
+            String idNum = lineData[0];
+
         }
     }
 }

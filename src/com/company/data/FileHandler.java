@@ -34,7 +34,7 @@ public class FileHandler {
         return listOfMembers;
     }
 
-    //try to write list of members file
+    //try to write list of members file @Graham Heaven
     public void writeListOfMembers(ArrayList<String> list) {
         PrintStream ps;
         {
@@ -54,7 +54,7 @@ public class FileHandler {
         UI.printMessage("Members List saved");
     }
 
-    //try to read list of teams file
+    //try to read list of teams file @Graham Heaven
     public ArrayList<String> readListOfTeams() {
         String line;
         try {
@@ -70,7 +70,7 @@ public class FileHandler {
         return listOfTeams;
     }
 
-    //Try to write list of teams file
+    //Try to write list of teams file @Graham Heaven
     public void writeListOfTeams(ArrayList<String> list) {
         PrintStream ps;
         {
@@ -90,12 +90,45 @@ public class FileHandler {
         UI.printMessage("Teams List saved");
     }
 
-    // Try to read registered times from file
-    public void readRegisteredTimes() {
-
+    // @Graham Heaven
+    public void readAllTimeFiles() {
+        String[] resultTypes = {"training", "competition"};
+        String[] fileNames = {"butterfly", "breaststroke", "crawl", "backcrawl"};
+        for (String resultType : resultTypes) {
+            for (String fileName : fileNames) {
+                readOneTimeFile(resultType, fileName);
+                // todo: for each line in each file create the appropriate Result object and add to ResultList.
+            }
+        }
+        UI.printMessage("Results lists loaded");
     }
 
-    // Try to write registered times to file
+    // @Graham Heaven
+    public void readOneTimeFile(String type, String discipline) {
+        String fileToRead = "src/com/company/data/" + discipline + "_" + type + ".csv";
+        ArrayList<String> resultTimes = readRegisteredTimes(fileToRead);
+        System.out.println(resultTimes); // test
+    }
+
+    // Try to read registered times from file @Graham Heaven
+    public ArrayList<String> readRegisteredTimes(String fileName) {
+        File resultsList = new File(fileName);
+        ArrayList<String> listOfResults = new ArrayList<>();
+        // Try to load results for one of the training files
+        String line;
+        try {
+            Scanner input = new Scanner(resultsList);
+            while (input.hasNext()) {
+                line = input.nextLine();
+                listOfResults.add(line);
+            }
+        } catch (FileNotFoundException e) {
+            UI.printMessage(fileName + " not found");
+        }
+        return listOfResults;
+    }
+
+    // Try to write registered times to file @Graham Heaven
     public void writeRegisteredTimes() {
 
     }

@@ -10,7 +10,10 @@ public class TeamList {
         Team team = new Team(name,isJunior,isDeleteable);
         teams.add(team);
 
-    }public void createTeam(String name, boolean isJunior, boolean isDeleteable, ArrayList<Member> list) {
+    }
+
+    // overload to recreate team list from file @Graham Heaven
+    public void createTeam(String name, boolean isJunior, boolean isDeleteable, ArrayList<Member> list) {
         Team team = new Team(name, isJunior, isDeleteable, list);
         teams.add(team);
     }
@@ -33,6 +36,7 @@ public class TeamList {
             System.out.println("TEAM NAVN: " + team.getTeamName());
     }
 
+    // @Graham Heaven
     public ArrayList<String> teamsListToString() {
         ArrayList<String> listOfTeams = new ArrayList<>();
         ArrayList<String> listOfTeamData;
