@@ -4,14 +4,14 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class ResultList {
-    ArrayList<TrainingResult> trainingBestResultListButterfly = new ArrayList<>();
-    ArrayList<TrainingResult> trainingBestResultListCrawl = new ArrayList<>();
-    ArrayList<TrainingResult> trainingBestResultListBackcrawl = new ArrayList<>();
-    ArrayList<TrainingResult> trainingBestResultListBreaststroke = new ArrayList<>();
-    ArrayList<CompetitionResult> competitiveBestResultListButterfly = new ArrayList<>();
-    ArrayList<CompetitionResult> competitiveBestResultListCrawl = new ArrayList<>();
-    ArrayList<CompetitionResult> competitiveBestResultListBackcrawl = new ArrayList<>();
-    ArrayList<CompetitionResult> competitiveBestResultListBreaststroke = new ArrayList<>();
+    private ArrayList<TrainingResult> trainingBestResultListButterfly = new ArrayList<>();
+    private ArrayList<TrainingResult> trainingBestResultListCrawl = new ArrayList<>();
+    private ArrayList<TrainingResult> trainingBestResultListBackcrawl = new ArrayList<>();
+    private ArrayList<TrainingResult> trainingBestResultListBreaststroke = new ArrayList<>();
+    private ArrayList<CompetitionResult> competitiveBestResultListButterfly = new ArrayList<>();
+    private ArrayList<CompetitionResult> competitiveBestResultListCrawl = new ArrayList<>();
+    private ArrayList<CompetitionResult> competitiveBestResultListBackcrawl = new ArrayList<>();
+    private ArrayList<CompetitionResult> competitiveBestResultListBreaststroke = new ArrayList<>();
     public String comment;
 
     //Create Competitive Results //@Martin Anberg
@@ -29,9 +29,9 @@ public class ResultList {
         createCompResult(resultTime,idNum,resultDate,tournament, competitiveBestResultListBreaststroke);
     }
 
-    public void createCompResult(double resultTime, String idNum, LocalDate resultDate,String tournament, ArrayList<CompetitionResult> competiveResultList){
-        for(Result result : competiveResultList){
-            if(result.getIdNum().equals(idNum)){competiveResultList.remove(result);}
+    public String createCompResult(double resultTime, String idNum, LocalDate resultDate,String tournament, ArrayList<CompetitionResult> competiveResultList){
+        for(CompetitionResult competitionresult : competiveResultList){
+            if(competitionresult.getIdNum().equals(idNum)){competiveResultList.remove(competitionresult);}
         }
         CompetitionResult competitionResult = new CompetitionResult(resultTime, idNum,resultDate,tournament);
         for (int i = 0; i < competiveResultList.size(); i++) {
@@ -42,6 +42,7 @@ public class ResultList {
         if(!competiveResultList.contains(competitionResult)){
             competiveResultList.add(competiveResultList.size(),competitionResult);
         }
+        return "";
     }
 
     //Create Training Results //@Martin Anberg
@@ -59,10 +60,10 @@ public class ResultList {
         createTrainResult(resultTime,idNum,resultDate,comment, trainingBestResultListBreaststroke);
     }
 
-    public void createTrainResult(double resultTime, String idNum, LocalDate resultDate, String comment, ArrayList<TrainingResult> trainingResultList) {
-        for (Result result : trainingResultList) {
-            if (result.getIdNum().equals(idNum)) {
-                trainingResultList.remove(result);
+    public String createTrainResult(double resultTime, String idNum, LocalDate resultDate, String comment, ArrayList<TrainingResult> trainingResultList) {
+        for (TrainingResult trainingresult : trainingResultList) {
+            if (trainingresult.getIdNum().equals(idNum)) {
+                trainingResultList.remove(trainingresult);
             }else {
                 TrainingResult trainingResult = new TrainingResult(resultTime, idNum, resultDate, comment);
                 for (int i = 0; i < trainingResultList.size(); i++) {
@@ -75,6 +76,7 @@ public class ResultList {
                 }
             }
         }
+        return "";
     }
 
     //TOP 5 COMPETITIVE //@Martin Anberg
