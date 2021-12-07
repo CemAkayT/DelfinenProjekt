@@ -9,6 +9,7 @@ import java.util.UUID;
 public class MemberList {
     private ArrayList<Member> members = new ArrayList<>();
 
+    // Overload to build member list from file @Graham Heaven
     public void createMember(ArrayList<String> listOfMembers) {
         for (String line : listOfMembers) {
             String[] lineData = line.split(";");
@@ -164,6 +165,7 @@ public class MemberList {
             }
     }
 
+    // @Graham Heaven
     public ArrayList<String> membersListToString() {
         ArrayList<String> listOfMembers = new ArrayList<>();
         String memberData;
@@ -174,7 +176,7 @@ public class MemberList {
         return listOfMembers;
     }
 
-    //Needed to create team list from file which only stores UUID as string.
+    //Needed to create team list from file which only stores UUID as string. @Graham Heaven
     public Member getMemberFromUUID(String idNum) {
         //try to get name as test
         Member foundMember = null;

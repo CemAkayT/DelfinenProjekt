@@ -135,11 +135,13 @@ public class Member {
         }
     }
 
+    // @Graham Heaven
     public String buildStringForCSV() {
         return name + ";" + middleName + ";" + lastName + ";" +
                 idNum + ";" + dateOfBirth + ";" + dateOfMembership + ";" + isCompetitive + ";" + trainerName + ";";
     }
 
+    // @Graham Heaven
     @Override
     public String toString() {
         return "Member: " + name + " " + middleName + " " + lastName +

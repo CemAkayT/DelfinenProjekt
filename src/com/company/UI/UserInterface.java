@@ -34,6 +34,7 @@ public class UserInterface {
         return choice;
     }
 
+    // Only returns an integer in the range for the required menu @Graham Heaven
     public int getValidInt(int max) {
         int choice;
         while (true) {
@@ -49,7 +50,6 @@ public class UserInterface {
                 sc.nextLine();
             }
         }
-
         return choice;
     }
 }
