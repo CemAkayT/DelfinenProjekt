@@ -95,10 +95,13 @@ public class ResultList {
     }
 
     public String Top5CompResults(ArrayList<CompetitionResult> competitionResultList){
-        for (int i = 0; i < 5; i++) {
-            return i+". ID:"+competitionResultList.get(i).getIdNum()+" TID:"+competitionResultList.get(i).getResultTime()+" STÆVNE: "+competitionResultList.get(i).getTournament();
-        }
-        return null;
+        String s ="";
+        if(competitionResultList.size() >= 5) {
+            for (int i = 0; i < 5; i++) {
+                s = s + i + ". ID:" + competitionResultList.get(i).getIdNum() + " TID:" + competitionResultList.get(i).getResultTime() + " STÆVNE: " + competitionResultList.get(i).getTournament();
+            }
+        }else{s = "Der ikke fem resultater registreret";}
+        return s;
     }
 
     //TOP 5 TRAINING
@@ -116,10 +119,13 @@ public class ResultList {
     }
 
     public String Top5TrainResults(ArrayList<TrainingResult> trainingResultList){
-        for (int i = 0; i <= 5; i++) {
-            return i+". ID:"+trainingResultList.get(i).getIdNum()+" TID:"+ trainingResultList.get(i).getResultTime();
-        }
-        return null;
+        String s = "";
+        if(trainingResultList.size() >= 5) {
+            for (int i = 0; i <= 5; i++) {
+                s = s + i + ". ID:" + trainingResultList.get(i).getIdNum() + " TID:" + trainingResultList.get(i).getResultTime();
+            }
+        }else{s = "Der ikke fem resultater registreret";}
+        return s;
     }
 
     //FIND MEMBER RESULT COMPETITIVE //@MartinAnberg

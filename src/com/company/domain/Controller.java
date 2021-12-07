@@ -85,7 +85,7 @@ public class Controller {
                 case 1 -> memberCreation();
                 case 2 -> memberDeletion();
                 case 3 -> memberEditing();
-                case 4 -> memberList.showMembers();
+                case 4 -> UI.printMessage(memberList.showMembers());
                 case 5 -> runSearchMemberByID();
             }
         }
@@ -95,7 +95,7 @@ public class Controller {
         UI.getInputString();
         UI.printMessage("Skriv ID");
         String idNum = UI.getInputString();
-        memberList.searchMemberByIdNum(idNum);
+        UI.printMessage(memberList.searchMemberByIdNum(idNum));
     }
 
     // @Graham Heaven
@@ -108,7 +108,7 @@ public class Controller {
                     1. Se restance liste
                     2. Se kontingent til dato
                     3. Se medlemsliste med kontingent
-                                        
+                    
                                         
                     0. Tilbage til hoved menu
                     """);
@@ -122,7 +122,6 @@ public class Controller {
                 case 2 -> {
                     UI.printMessage("TOTAL KONTINGENT: ");
                     UI.printMessage(memberList.showIncome());
-                    UI.printMessage("");
                 }
                 case 3 -> {
                     UI.printMessage("LISTE AF MEDLEMMERS KONTINGENT");
@@ -176,7 +175,7 @@ public class Controller {
                                         
                     0. Tilbage til tidligere menu
                     """);
-            choice = UI.getValidInt(5);
+            choice = UI.getValidInt(8);
             switch (choice) {
                 case 0 -> running = false;
                 case 1 -> UI.printMessage(resultList.showTop5CompResultsButterfly());
@@ -213,7 +212,7 @@ public class Controller {
 
     private void registerCompetitiveButterfly() {
         //@Martin Anberg
-        memberList.CompetitiveList();
+        UI.printMessage(memberList.CompetitiveList());
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
         UI.printMessage("Svømmerens nuværende bedste tid er: " + resultList.memberCompetitiveButterfly(idNum));
@@ -234,7 +233,7 @@ public class Controller {
 
     private void registerCompetitiveCrawl() {
         //@Martin Anberg
-        memberList.CompetitiveList();
+        UI.printMessage(memberList.CompetitiveList());
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
         UI.printMessage("Svømmerens nuværende bedste tid er: " + resultList.memberCompetitiveCrawl(idNum));
@@ -255,7 +254,7 @@ public class Controller {
 
     private void registerCompetitiveBackcrawl() {
         //@Martin Anberg
-        memberList.CompetitiveList();
+        UI.printMessage(memberList.CompetitiveList());
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
         UI.printMessage("Svømmerens nuværende bedste tid er: " + resultList.memberCompetitiveBackcrawl(idNum));
@@ -276,7 +275,7 @@ public class Controller {
 
     private void registerCompetitiveBreaststroke() {
         //@Martin Anberg
-        memberList.CompetitiveList();
+        UI.printMessage(memberList.CompetitiveList());
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
         UI.printMessage("Svømmerens nuværende bedste tid er: " + resultList.memberCompetitiveBreaststroke(idNum));
@@ -318,7 +317,7 @@ public class Controller {
 
     private void registerTrainingButterfly() {
         //@Martin Anberg
-        memberList.CompetitiveList();
+        UI.printMessage(memberList.CompetitiveList());
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
         UI.printMessage("Svømmerens nuværende bedste tid er: " + resultList.memberTrainingButterfly(idNum));
@@ -337,7 +336,7 @@ public class Controller {
 
     private void registerTrainingCrawl() {
         //@Martin Anberg
-        memberList.CompetitiveList();
+        UI.printMessage(memberList.CompetitiveList());
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
         UI.printMessage("Svømmerens nuværende bedste tid er: " + resultList.memberTrainingCrawl(idNum));
@@ -356,7 +355,7 @@ public class Controller {
 
     private void registerTrainingBackcrawl() {
         //@Martin Anberg
-        memberList.CompetitiveList();
+        UI.printMessage(memberList.CompetitiveList());
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
         UI.printMessage("Svømmerens nuværende bedste tid er: " + resultList.memberTrainingBackcrawl(idNum));
@@ -375,7 +374,7 @@ public class Controller {
 
     private void registerTrainingBreaststroke() {
         //@Martin Anberg
-        memberList.CompetitiveList();
+        UI.printMessage(memberList.CompetitiveList());
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
         UI.printMessage("Svømmerens nuværende bedste tid er: " + resultList.memberTrainingBreaststroke(idNum));
@@ -421,7 +420,7 @@ public class Controller {
 
     private void memberEditing() {
         //@Martin Anberg
-        memberList.showMembers();
+        UI.printMessage(memberList.showMembers());
         UI.printMessage("Skriv medlemmets ID for at redigere medlem: ");
         String idNumEdit = UI.getInputString();
         boolean editActive = true;
@@ -438,7 +437,7 @@ public class Controller {
                                                         
                     0. Tilbage til hoved menu
                     """);
-            int choice = UI.getValidInt(8);
+            int choice = UI.getValidInt(7);
             switch (choice) {
                 case 1 -> {
                     UI.printMessage("Skriv nyt fornavn: ");
@@ -492,7 +491,7 @@ public class Controller {
 
     private void memberDeletion() {
         //@Martin Anberg
-        memberList.showMembers();
+        UI.printMessage(memberList.showMembers());
         UI.printMessage("Skriv medlemmets ID for at slette medlem");
         String idNumDelete = UI.getInputString();
         UI.getInputString();
