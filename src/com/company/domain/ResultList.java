@@ -35,7 +35,7 @@ public class ResultList {
         }
         CompetitionResult competitionResult = new CompetitionResult(resultTime, idNum,resultDate,tournament);
         for (int i = 0; i < competiveResultList.size(); i++) {
-            if(competitionResult.getResultTime() > competiveResultList.get(i).getResultTime()){
+            if(competitionResult.getResultTime() <= competiveResultList.get(i).getResultTime()){
                 competiveResultList.add(i,competitionResult);
             }
         }
