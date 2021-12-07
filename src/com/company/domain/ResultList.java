@@ -15,6 +15,7 @@ public class ResultList {
     ArrayList<CompetitionResult> competitiveResultListCrawl = new ArrayList<>();
     ArrayList<CompetitionResult> competitiveResultListBackcrawl = new ArrayList<>();
     ArrayList<CompetitionResult> competitiveResultListBreaststroke = new ArrayList<>();
+    public String comment;
 
     //Create Competitive Results //@Martin Anberg
 
@@ -48,26 +49,26 @@ public class ResultList {
 
     //Create Training Results //@Martin Anberg
 
-    public void runCreateTrainResultButterfly(double resultTime, String idNum, LocalDate resultDate){
-        createTrainResult(resultTime,idNum,resultDate,trainingResultListButterfly);
+    public void runCreateTrainResultButterfly(double resultTime, String idNum, LocalDate resultDate, String comment){
+        createTrainResult(resultTime,idNum,resultDate,comment, trainingResultListButterfly);
     }
     public void runCreateTrainResultCrawl(double resultTime, String idNum, LocalDate resultDate){
-        createTrainResult(resultTime,idNum,resultDate,trainingResultListButterfly);
+        createTrainResult(resultTime,idNum,resultDate,comment,trainingResultListButterfly);
     }
     public void runCreateTrainResultBackcrawl(double resultTime, String idNum, LocalDate resultDate){
-        createTrainResult(resultTime,idNum,resultDate,trainingResultListButterfly);
+        createTrainResult(resultTime,idNum,resultDate,comment,trainingResultListButterfly);
     }
     public void runCreateTrainResultBreaststroke(double resultTime, String idNum, LocalDate resultDate){
-        createTrainResult(resultTime,idNum,resultDate,trainingResultListButterfly);
+        createTrainResult(resultTime,idNum,resultDate,comment,trainingResultListButterfly);
     }
 
-    public void createTrainResult(double resultTime, String idNum, LocalDate resultDate, ArrayList<TrainingResult> trainingResultList) {
+    public void createTrainResult(double resultTime, String idNum, LocalDate resultDate, String comment, ArrayList<TrainingResult> trainingResultList) {
         for (Result result : trainingResultList) {
             if (result.getIdNum().equals(idNum)) {
                 trainingResultList.remove(result);
             }
         }
-        TrainingResult trainingResult = new TrainingResult(resultTime, idNum, resultDate);
+        TrainingResult trainingResult = new TrainingResult(resultTime, idNum, resultDate, comment);
         for (int i = 0; i < trainingResultList.size(); i++) {
             if (trainingResult.getResultTime() > trainingResultList.get(i).getResultTime()) {
                 trainingResultList.add(i, trainingResult);

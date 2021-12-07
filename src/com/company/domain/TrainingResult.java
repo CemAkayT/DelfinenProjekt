@@ -5,8 +5,10 @@ import java.util.UUID;
 
 public class TrainingResult extends Result {
 
-    public TrainingResult(double resultTime, String idNum, LocalDate dateOfResult) {
-        super(resultTime, idNum, dateOfResult);
+    private String comment;
 
+    public TrainingResult(double resultTime, String idNum, LocalDate dateOfResult, String comment) {
+        super(resultTime, idNum, dateOfResult);
+        this.comment = comment;
     }
 }

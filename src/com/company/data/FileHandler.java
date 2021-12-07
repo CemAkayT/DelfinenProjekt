@@ -91,23 +91,10 @@ public class FileHandler {
     }
 
     // @Graham Heaven
-    public void readAllTimeFiles() {
-        String[] resultTypes = {"training", "competition"};
-        String[] fileNames = {"butterfly", "breaststroke", "crawl", "backcrawl"};
-        for (String resultType : resultTypes) {
-            for (String fileName : fileNames) {
-                readOneTimeFile(resultType, fileName);
-                // todo: for each line in each file create the appropriate Result object and add to ResultList.
-            }
-        }
-        UI.printMessage("Results lists loaded");
-    }
-
-    // @Graham Heaven
-    public void readOneTimeFile(String type, String discipline) {
+    public ArrayList<String> readOneTimeFile(String type, String discipline) {
         String fileToRead = "src/com/company/data/" + discipline + "_" + type + ".csv";
-        ArrayList<String> resultTimes = readRegisteredTimes(fileToRead);
-        System.out.println(resultTimes); // test
+        System.out.println(fileToRead); //test
+        return readRegisteredTimes(fileToRead);
     }
 
     // Try to read registered times from file @Graham Heaven
