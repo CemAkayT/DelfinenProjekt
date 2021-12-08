@@ -12,7 +12,7 @@ public class ResultList {
     private ArrayList<CompetitionResult> competitiveBestResultListCrawl = new ArrayList<>();
     private ArrayList<CompetitionResult> competitiveBestResultListBackcrawl = new ArrayList<>();
     private ArrayList<CompetitionResult> competitiveBestResultListBreaststroke = new ArrayList<>();
-    public String comment;
+    //public String comment;
 
     //Create Competitive Results //@Martin Anberg
 
@@ -44,7 +44,7 @@ public class ResultList {
         return competiveResultList;
     }
 
-    //Create Training Results //@Martin Anberg
+    //Create Training Results //@Martin Anberg @Graham Heaven
 
     public void runCreateTrainResultButterfly(boolean fromFile, double resultTime, String idNum, LocalDate resultDate, String comment){
       if (fromFile) {
@@ -54,14 +54,19 @@ public class ResultList {
       }
     }
 
-    public void runCreateTrainResultCrawl(double resultTime, String idNum, LocalDate resultDate){
+    public void runCreateTrainResultCrawl(boolean fromFile, double resultTime, String idNum, LocalDate resultDate, String comment){
         createTrainResult(resultTime,idNum,resultDate,comment, trainingBestResultListCrawl);
     }
-    public void runCreateTrainResultBackcrawl(double resultTime, String idNum, LocalDate resultDate){
+    public void runCreateTrainResultBackcrawl(boolean fromFile, double resultTime, String idNum, LocalDate resultDate, String comment){
         createTrainResult(resultTime,idNum,resultDate,comment, trainingBestResultListBackcrawl);
     }
-    public void runCreateTrainResultBreaststroke(double resultTime, String idNum, LocalDate resultDate){
-        createTrainResult(resultTime,idNum,resultDate,comment, trainingBestResultListBreaststroke);
+
+    public void runCreateTrainResultBreaststroke(boolean fromFile, double resultTime, String idNum, LocalDate resultDate, String comment){
+        if (fromFile) {
+            trainingBestResultListBreaststroke = createTrainResultFromFile(resultTime,idNum,resultDate,comment, trainingBestResultListBreaststroke);
+        } else {
+            trainingBestResultListBreaststroke = createTrainResult(resultTime,idNum,resultDate,comment, trainingBestResultListBreaststroke);
+        }
     }
 
 

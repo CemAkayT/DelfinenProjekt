@@ -359,7 +359,7 @@ public class Controller {
             double time = UI.getInputDouble();
             UI.printMessage("Skriv dato år/måned/dag");
             LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
-            resultList.runCreateTrainResultCrawl(time, idNum, resultDate);
+            resultList.runCreateTrainResultCrawl(false, time, idNum, resultDate, "");
         } else {
             UI.printMessage("tiden blevet ikke ændret");
         }
@@ -378,7 +378,7 @@ public class Controller {
             double time = UI.getInputDouble();
             UI.printMessage("Skriv dato år/måned/dag");
             LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
-            resultList.runCreateTrainResultBackcrawl(time, idNum, resultDate);
+            resultList.runCreateTrainResultBackcrawl(false, time, idNum, resultDate, "");
         } else {
             UI.printMessage("tiden blevet ikke ændret");
         }
@@ -397,7 +397,7 @@ public class Controller {
             double time = UI.getInputDouble();
             UI.printMessage("Skriv dato år/måned/dag");
             LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
-            resultList.runCreateTrainResultBreaststroke(time, idNum, resultDate);
+            resultList.runCreateTrainResultBreaststroke(false, time, idNum, resultDate, "");
         } else {
             UI.printMessage("tiden blevet ikke ændret");
         }
@@ -573,14 +573,18 @@ public class Controller {
             for (String fileName : fileNames) {
                 listOfResultsFromOneFile = fh.readOneTimeFile(resultType, fileName);
                 // todo: for each line in each file create the appropriate Result object and add to ResultList.
-                if (resultType.equals("training") && fileName.equals("butterfly")) {
-                    for (String s : listOfResultsFromOneFile) {
-                        String[] lineData = s.split(";");
-                        String idNum = lineData[0];
-                        LocalDate dateOfresult = LocalDate.parse(lineData[1], formatter);
-                        double resultTime = Double.parseDouble(lineData[2]);
-                        String tekst = lineData[3];
+
+                for (String s : listOfResultsFromOneFile) {
+                    String[] lineData = s.split(";");
+                    String idNum = lineData[0];
+                    LocalDate dateOfresult = LocalDate.parse(lineData[1], formatter);
+                    double resultTime = Double.parseDouble(lineData[2]);
+                    String tekst = lineData[3];
+                    if (resultType.equals("training") && fileName.equals("butterfly")) {
                         resultList.runCreateTrainResultButterfly(true, resultTime, idNum, dateOfresult, tekst);
+                    }
+                    if (resultType.equals("training") && fileName.equals("breaststroke")) {
+                        resultList.runCreateTrainResultBreaststroke(true, resultTime, idNum, dateOfresult, tekst);
                     }
                 }
             }
