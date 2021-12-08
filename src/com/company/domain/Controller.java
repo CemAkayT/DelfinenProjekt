@@ -333,7 +333,7 @@ public class Controller {
 
     private void registerTrainingButterfly() {
         //@Martin Anberg
-        UI.printMessage(memberList.CompetitiveListShort());
+        UI.printMessage(memberList.CompetitiveListShort()); // suggestion to make it easier to find an id
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
         UI.printMessage("Svømmerens nuværende bedste tid er: " + resultList.memberTrainingButterfly(idNum));
