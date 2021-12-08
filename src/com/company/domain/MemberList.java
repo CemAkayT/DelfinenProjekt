@@ -38,9 +38,6 @@ public class MemberList {
     public void createMember(String name, String middleName, String lastName, String idNum, LocalDate dateOfBirth, LocalDate dateOfMembership, boolean isCompetitive, String trainerName) {
         Member member = new Member(name, middleName, lastName, idNum, dateOfBirth, dateOfMembership, isCompetitive, trainerName);
         members.add(member);
-        //System.out.println(member); //test
-        //System.out.println(members); //test
-
     }
 
     public void deleteMember(String idNumDelete) {
@@ -186,6 +183,18 @@ public class MemberList {
         }
         return s;
     }
+    //@Graham Heaven
+    public String CompetitiveListShort(){
+        StringBuilder s = new StringBuilder();
+        for (Member member : members) {
+            if (member.isCompetitive()) {
+                s.append("\n").append(member.getName()).append(" ").append(member.getMiddleName()).append(" ").append(member.getLastName()).append(", ID: ").append(member.getIdNum());
+            }
+        }
+        return s.toString();
+    }
+
+
 //@MartinAnberg
     public String searchMemberByIdNum(String IdNum){
         for(Member member : members)

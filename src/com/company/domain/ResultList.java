@@ -14,21 +14,27 @@ public class ResultList {
     private ArrayList<CompetitionResult> competitiveBestResultListBreaststroke = new ArrayList<>();
     //public String comment;
 
-    //Create Competitive Results //@Martin Anberg
+    //Create Competitive Results //@Martin Anberg @Graham Heaven
 
     public void runCreateCompResultButterfly(double resultTime, String idNum, LocalDate resultDate,String tournament){
-        createCompResult(resultTime,idNum,resultDate,tournament, competitiveBestResultListButterfly);
+     competitiveBestResultListButterfly = createCompResult(resultTime,idNum,resultDate,tournament, competitiveBestResultListButterfly);
     }
     public void runCreateCompResultCrawl(double resultTime, String idNum, LocalDate resultDate,String tournament){
-        createCompResult(resultTime,idNum,resultDate,tournament, competitiveBestResultListCrawl);
+      competitiveBestResultListCrawl = createCompResult(resultTime,idNum,resultDate,tournament, competitiveBestResultListCrawl);
     }
     public void runCreateCompResultBackcrawl(double resultTime, String idNum, LocalDate resultDate,String tournament){
-        createCompResult(resultTime,idNum,resultDate,tournament, competitiveBestResultListBackcrawl);
+      competitiveBestResultListBackcrawl = createCompResult(resultTime,idNum,resultDate,tournament, competitiveBestResultListBackcrawl);
     }
     public void runCreateCompResultBreaststroke(double resultTime, String idNum, LocalDate resultDate,String tournament){
-        createCompResult(resultTime,idNum,resultDate,tournament, competitiveBestResultListBreaststroke);
+      competitiveBestResultListBreaststroke = createCompResult(resultTime,idNum,resultDate,tournament, competitiveBestResultListBreaststroke);
     }
 
+    //@Graham Heaven
+    public ArrayList<CompetitionResult> createCompResultFromFile(double resultTime, String idNum, LocalDate resultDate, String comment, ArrayList<CompetitionResult> competitionResultList) {
+        CompetitionResult competitionResult = new CompetitionResult(resultTime, idNum, resultDate, comment);
+        competitionResultList.add(competitionResult);
+        return competitionResultList;
+    }
 
     public ArrayList<CompetitionResult> createCompResult(double resultTime, String idNum, LocalDate resultDate,String tournament, ArrayList<CompetitionResult> competiveResultList) {
         for (CompetitionResult competitionResult : competiveResultList) {
@@ -39,7 +45,6 @@ public class ResultList {
                 CompetitionResult competitionResult2 = new CompetitionResult(resultTime, idNum, resultDate, tournament);
                 competiveResultList.add(competitionResult2);
             }
-
         }
         return competiveResultList;
     }

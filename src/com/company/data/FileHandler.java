@@ -116,6 +116,8 @@ public class FileHandler {
     }
 
     // Try to write registered times to file @Graham Heaven
+    //The data for each of 8 file is stored in an array list
+
     public void writeRegisteredTimes() {
 
     }

@@ -329,7 +329,7 @@ public class Controller {
 
     private void registerTrainingButterfly() {
         //@Martin Anberg
-        UI.printMessage(memberList.CompetitiveList());
+        UI.printMessage(memberList.CompetitiveListShort());
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
         UI.printMessage("Svømmerens nuværende bedste tid er: " + resultList.memberTrainingButterfly(idNum));
