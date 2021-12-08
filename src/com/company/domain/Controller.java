@@ -47,13 +47,12 @@ public class Controller {
     }
 
     // @Graham Heaven
-    private boolean openFiles() {
+    private void openFiles() {
         ArrayList<String> listOfMembers = fh.readListOfMembers();
         memberCreationFromFile(listOfMembers);
         ArrayList<String> listOfTeams = fh.readListOfTeams();
         teamCreationFromFile(listOfTeams);
         resultsCreationFromFiles();
-        return true;
     }
 
     // @Graham Heaven
@@ -455,8 +454,8 @@ public class Controller {
                     3. Medlemmets efternavn
                     4. Medlemmets svømmestatus
                     5. Medlemmets kontingent
-                    6. Medlems træner(hvis medlem er konkurencesvømmer)  
-                    7. Ændre aktiv/passiv status  
+                    6. Medlems træner(hvis medlem er konkurencesvømmer)
+                    7. Ændre aktiv/passiv status
                                                         
                     0. Tilbage til hoved menu
                     """);
