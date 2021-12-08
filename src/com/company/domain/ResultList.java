@@ -165,7 +165,7 @@ public class ResultList {
     }
     //FIND MEMBER RESULT TRAINING //@MartinAnberg
     public double memberTrainingButterfly(String idNum){
-        double bestTime = 0;
+        double bestTime = 0; //gh
         for(Result result : trainingBestResultListButterfly){
             if(idNum.equals(result.getIdNum())){
                 bestTime = result.getResultTime();

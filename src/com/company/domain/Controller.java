@@ -577,8 +577,9 @@ public class Controller {
                         System.out.println(s);
                         String idNum = lineData[0];
                         LocalDate dateOfresult = LocalDate.parse(lineData[1], formatter);
-                        double resultTime = Double.parseDouble(lineData[2]);
-                        //double resultTime = 44.44;
+                        //double resultTime = Double.parseDouble(lineData[2]);
+                        //System.out.println(resultTime);
+                        double resultTime = 44.44;
                         /*try {
                            resultTime = NumberFormat.getInstance(Locale.getDefault()).parse(lineData[2]).doubleValue();
                         } catch (ParseException e) {
