@@ -117,8 +117,25 @@ public class FileHandler {
 
     // Try to write registered times to file @Graham Heaven
     //The data for each of 8 file is stored in an array list
-
-    public void writeRegisteredTimes() {
+    public void writeRegisteredTimes(ArrayList<String> list, String discipline, String type) {
+    //Try to write the butterfly taining data
+        PrintStream ps;
+        {
+            try {
+                String fileName = "src/com/company/data/" + discipline + "_" + type + "_test.csv";
+                ps = new PrintStream(new FileOutputStream(fileName, false));
+                if (list == null) {
+                    UI.printMessage("No results to save");
+                } else {
+                    for (String result : list) {
+                        ps.println(result);
+                    }
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        UI.printMessage("Results List saved");
 
     }
 }

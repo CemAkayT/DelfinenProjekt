@@ -56,6 +56,12 @@ public class Controller {
         ArrayList<String> listOfTeams = fh.readListOfTeams();
         teamCreationFromFile(listOfTeams);
         resultsCreationFromFiles();
+        //test, try to write the first 2 files
+        ArrayList<String> rList;
+        rList = resultList.trainingResultsListToString(resultList.getTrainingBestResultListButterfly());
+        fh.writeRegisteredTimes(rList, "butterfly", "training");
+        rList = resultList.trainingResultsListToString(resultList.getTrainingBestResultListCrawl());
+        fh.writeRegisteredTimes(rList, "crawl", "training");
         return true;
     }
 

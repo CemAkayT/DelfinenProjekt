@@ -39,4 +39,9 @@ public class Result {
     public void setDateOfResult(LocalDate dateOfResult) {
         this.dateOfResult = dateOfResult;
     }
+
+    // @Graham Heaven
+    public String buildStringForCSV() {
+        return idNum + ";" + dateOfResult + ";" + resultTime + ";";
+    }
 }

@@ -12,4 +12,8 @@ public class TrainingResult extends Result {
         this.comment = comment;
     }
 
+    public String getComment() {
+        return comment;
+    }
+
 }
