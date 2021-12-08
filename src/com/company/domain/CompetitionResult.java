@@ -14,5 +14,4 @@ public class CompetitionResult extends Result {
     public String getTournament() {
         return tournament;
     }
-
 }

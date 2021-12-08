@@ -2,6 +2,7 @@ package com.company.domain;
 
 import com.company.UI.UserInterface;
 import com.company.data.FileHandler;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -243,7 +244,7 @@ public class Controller {
             String tournament = UI.getInputString();
             UI.printMessage("Skriv dato år/måned/dag");
             LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
-            resultList.runCreateCompResultButterfly(time, idNum, resultDate, tournament);
+            resultList.runCreateCompResultButterfly(false, time, idNum, resultDate, tournament);
         } else {
             UI.printMessage("tiden blevet ikke ændret");
         }
@@ -264,7 +265,7 @@ public class Controller {
             String tournament = UI.getInputString();
             UI.printMessage("Skriv dato år/måned/dag");
             LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
-            resultList.runCreateCompResultCrawl(time, idNum, resultDate, tournament);
+            resultList.runCreateCompResultCrawl(false, time, idNum, resultDate, tournament);
         } else {
             UI.printMessage("tiden blevet ikke ændret");
         }
@@ -285,7 +286,7 @@ public class Controller {
             String tournament = UI.getInputString();
             UI.printMessage("Skriv dato år/måned/dag");
             LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
-            resultList.runCreateCompResultBackcrawl(time, idNum, resultDate, tournament);
+            resultList.runCreateCompResultBackcrawl(false, time, idNum, resultDate, tournament);
         } else {
             UI.printMessage("tiden blevet ikke ændret");
         }
@@ -306,7 +307,7 @@ public class Controller {
             String tournament = UI.getInputString();
             UI.printMessage("Skriv dato år/måned/dag");
             LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
-            resultList.runCreateCompResultBreaststroke(time, idNum, resultDate, tournament);
+            resultList.runCreateCompResultBreaststroke(false, time, idNum, resultDate, tournament);
         } else {
             UI.printMessage("tiden blevet ikke ændret");
         }
@@ -582,8 +583,6 @@ public class Controller {
         for (String resultType : resultTypes) {
             for (String fileName : fileNames) {
                 listOfResultsFromOneFile = fh.readOneTimeFile(resultType, fileName);
-                // todo: Add the competition results
-
                 for (String s : listOfResultsFromOneFile) {
                     String[] lineData = s.split(";");
                     String idNum = lineData[0];
@@ -602,10 +601,22 @@ public class Controller {
                     if (resultType.equals("training") && fileName.equals("backcrawl")) {
                         resultList.runCreateTrainResultBackcrawl(true, resultTime, idNum, dateOfresult, tekst);
                     }
+                    if (resultType.equals("competition") && fileName.equals("butterfly")) {
+                        resultList.runCreateCompResultButterfly(true, resultTime, idNum, dateOfresult, tekst);
+                    }
+                    if (resultType.equals("competition") && fileName.equals("breaststroke")) {
+                        resultList.runCreateCompResultBreaststroke(true, resultTime, idNum, dateOfresult, tekst);
+                    }
+                    if (resultType.equals("competition") && fileName.equals("crawl")) {
+                        resultList.runCreateCompResultCrawl(true, resultTime, idNum, dateOfresult, tekst);
+                    }
+                    if (resultType.equals("competition") && fileName.equals("backcrawl")) {
+                        resultList.runCreateCompResultBackcrawl(true, resultTime, idNum, dateOfresult, tekst);
+                    }
                 }
             }
         }
         UI.printMessage("Training results lists loaded");
-        UI.printMessage("Competition results lists not loaded");
+        UI.printMessage("Competition results lists loaded");
     }
 }

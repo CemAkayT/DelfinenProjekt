@@ -121,7 +121,7 @@ public class FileHandler {
         PrintStream ps;
         {
             try {
-                String fileName = "src/com/company/data/" + discipline + "_" + type + ".csv";
+                String fileName = "src/com/company/data/" + discipline + "_" + type + "_test.csv";
                 ps = new PrintStream(new FileOutputStream(fileName, false));
                 if (list == null) {
                     UI.printMessage("No results to save");
