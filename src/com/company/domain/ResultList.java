@@ -4,14 +4,14 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class ResultList {
-    ArrayList<TrainingResult> trainingBestResultListButterfly = new ArrayList<>();
-    ArrayList<TrainingResult> trainingBestResultListCrawl = new ArrayList<>();
-    ArrayList<TrainingResult> trainingBestResultListBackcrawl = new ArrayList<>();
-    ArrayList<TrainingResult> trainingBestResultListBreaststroke = new ArrayList<>();
-    ArrayList<CompetitionResult> competitiveBestResultListButterfly = new ArrayList<>();
-    ArrayList<CompetitionResult> competitiveBestResultListCrawl = new ArrayList<>();
-    ArrayList<CompetitionResult> competitiveBestResultListBackcrawl = new ArrayList<>();
-    ArrayList<CompetitionResult> competitiveBestResultListBreaststroke = new ArrayList<>();
+    private ArrayList<TrainingResult> trainingBestResultListButterfly = new ArrayList<>();
+    private ArrayList<TrainingResult> trainingBestResultListCrawl = new ArrayList<>();
+    private ArrayList<TrainingResult> trainingBestResultListBackcrawl = new ArrayList<>();
+    private ArrayList<TrainingResult> trainingBestResultListBreaststroke = new ArrayList<>();
+    private ArrayList<CompetitionResult> competitiveBestResultListButterfly = new ArrayList<>();
+    private ArrayList<CompetitionResult> competitiveBestResultListCrawl = new ArrayList<>();
+    private ArrayList<CompetitionResult> competitiveBestResultListBackcrawl = new ArrayList<>();
+    private ArrayList<CompetitionResult> competitiveBestResultListBreaststroke = new ArrayList<>();
     public String comment;
 
     //Create Competitive Results //@Martin Anberg
@@ -29,19 +29,20 @@ public class ResultList {
         createCompResult(resultTime,idNum,resultDate,tournament, competitiveBestResultListBreaststroke);
     }
 
-    public void createCompResult(double resultTime, String idNum, LocalDate resultDate,String tournament, ArrayList<CompetitionResult> competiveResultList){
-        for(Result result : competiveResultList){
-            if(result.getIdNum().equals(idNum)){competiveResultList.remove(result);}
+    public String createCompResult(double resultTime, String idNum, LocalDate resultDate,String tournament, ArrayList<CompetitionResult> competiveResultList){
+        for(CompetitionResult competitionresult : competiveResultList){
+            if(competitionresult.getIdNum().equals(idNum)){competiveResultList.remove(competitionresult);}
         }
         CompetitionResult competitionResult = new CompetitionResult(resultTime, idNum,resultDate,tournament);
         for (int i = 0; i < competiveResultList.size(); i++) {
-            if(competitionResult.getResultTime() > competiveResultList.get(i).getResultTime()){
+            if(competitionResult.getResultTime() <= competiveResultList.get(i).getResultTime()){
                 competiveResultList.add(i,competitionResult);
             }
         }
         if(!competiveResultList.contains(competitionResult)){
             competiveResultList.add(competiveResultList.size(),competitionResult);
         }
+        return "";
     }
 
     //Create Training Results //@Martin Anberg
@@ -130,37 +131,37 @@ public class ResultList {
     }
 
     //FIND MEMBER RESULT COMPETITIVE //@MartinAnberg
-    public double memberCompetitiveButterfly(String idNum){
+    public String memberCompetitiveButterfly(String idNum){
         for(Result result : competitiveBestResultListButterfly){
             if(idNum.equals(result.getIdNum())){
-                return result.getResultTime();
+                return ""+result.getResultTime();
             }
         }
-        return 0;
+        return "INGEN TID";
     }
-    public double memberCompetitiveCrawl(String idNum){
+    public String memberCompetitiveCrawl(String idNum){
         for(Result result : competitiveBestResultListCrawl){
             if(idNum.equals(result.getIdNum())){
-                return result.getResultTime();
+                return ""+result.getResultTime();
             }
         }
-        return 0;
+        return "INGEN TID";
     }
-    public double memberCompetitiveBackcrawl(String idNum){
+    public String memberCompetitiveBackcrawl(String idNum){
         for(Result result : competitiveBestResultListBackcrawl){
             if(idNum.equals(result.getIdNum())){
-                return result.getResultTime();
+                return ""+result.getResultTime();
             }
         }
-        return 0;
+        return "INGEN TID";
     }
-    public double memberCompetitiveBreaststroke(String idNum){
+    public String memberCompetitiveBreaststroke(String idNum){
         for(Result result : competitiveBestResultListBreaststroke){
             if(idNum.equals(result.getIdNum())){
-                return result.getResultTime();
+                return ""+result.getResultTime();
             }
         }
-        return 0;
+        return "INGEN TID";
     }
     //FIND MEMBER RESULT TRAINING //@MartinAnberg
     public double memberTrainingButterfly(String idNum){
@@ -173,29 +174,29 @@ public class ResultList {
         System.out.println(bestTime); // test
         return bestTime;
     }
-    public double memberTrainingCrawl(String idNum){
+    public String memberTrainingCrawl(String idNum){
         for(Result result : trainingBestResultListCrawl){
             if(idNum.equals(result.getIdNum())){
-                return result.getResultTime();
+                return ""+result.getResultTime();
             }
         }
-        return 0;
+        return "INGEN TID";
     }
-    public double memberTrainingBackcrawl(String idNum){
+    public String memberTrainingBackcrawl(String idNum){
         for(Result result : trainingBestResultListBackcrawl){
             if(idNum.equals(result.getIdNum())){
-                return result.getResultTime();
+                return ""+result.getResultTime();
             }
         }
-        return 0;
+        return "INGEN TID";
     }
-    public double memberTrainingBreaststroke(String idNum){
+    public String memberTrainingBreaststroke(String idNum){
         for(Result result : trainingBestResultListBreaststroke){
             if(idNum.equals(result.getIdNum())){
-                return result.getResultTime();
+                return ""+result.getResultTime();
             }
         }
-        return 0;
+        return "INGEN TID";
     }
 
 }

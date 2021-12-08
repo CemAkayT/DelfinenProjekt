@@ -9,7 +9,6 @@ public class TeamList {
     public void createTeam(String name, boolean isJunior, boolean isDeleteable){
         Team team = new Team(name,isJunior,isDeleteable);
         teams.add(team);
-
     }
 
     // overload to recreate team list from file @Graham Heaven
