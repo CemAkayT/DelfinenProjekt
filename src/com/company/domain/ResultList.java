@@ -163,7 +163,7 @@ public class ResultList {
     }
     //FIND MEMBER RESULT TRAINING //@MartinAnberg
     public String memberTrainingButterfly(String idNum){
-        for(Result result : trainingBestResultListBreaststroke){
+        for(Result result : trainingBestResultListButterfly){
             if(idNum.equals(result.getIdNum())){
                 return ""+result.getResultTime();
             }
