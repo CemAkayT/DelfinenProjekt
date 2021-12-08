@@ -586,9 +586,16 @@ public class Controller {
                     if (resultType.equals("training") && fileName.equals("breaststroke")) {
                         resultList.runCreateTrainResultBreaststroke(true, resultTime, idNum, dateOfresult, tekst);
                     }
+                    if (resultType.equals("training") && fileName.equals("crawl")) {
+                        resultList.runCreateTrainResultCrawl(true, resultTime, idNum, dateOfresult, tekst);
+                    }
+                    if (resultType.equals("training") && fileName.equals("backcrawl")) {
+                        resultList.runCreateTrainResultBackcrawl(true, resultTime, idNum, dateOfresult, tekst);
+                    }
                 }
             }
         }
-        UI.printMessage("Results lists loaded");
+        UI.printMessage("Training results lists loaded");
+        UI.printMessage("Competition results lists not loaded");
     }
 }

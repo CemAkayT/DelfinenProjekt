@@ -55,10 +55,19 @@ public class ResultList {
     }
 
     public void runCreateTrainResultCrawl(boolean fromFile, double resultTime, String idNum, LocalDate resultDate, String comment){
-        createTrainResult(resultTime,idNum,resultDate,comment, trainingBestResultListCrawl);
+        if (fromFile) {
+            trainingBestResultListCrawl = createTrainResultFromFile(resultTime,idNum,resultDate,comment, trainingBestResultListCrawl);
+        } else {
+            trainingBestResultListCrawl = createTrainResult(resultTime,idNum,resultDate,comment, trainingBestResultListCrawl);
+        }
     }
+
     public void runCreateTrainResultBackcrawl(boolean fromFile, double resultTime, String idNum, LocalDate resultDate, String comment){
-        createTrainResult(resultTime,idNum,resultDate,comment, trainingBestResultListBackcrawl);
+        if (fromFile) {
+            trainingBestResultListBackcrawl = createTrainResultFromFile(resultTime,idNum,resultDate,comment, trainingBestResultListBackcrawl);
+        } else {
+            trainingBestResultListBackcrawl = createTrainResult(resultTime,idNum,resultDate,comment, trainingBestResultListBackcrawl);
+        }
     }
 
     public void runCreateTrainResultBreaststroke(boolean fromFile, double resultTime, String idNum, LocalDate resultDate, String comment){
@@ -69,7 +78,7 @@ public class ResultList {
         }
     }
 
-
+    //@Graham Heaven
     public ArrayList<TrainingResult> createTrainResultFromFile(double resultTime, String idNum, LocalDate resultDate, String comment, ArrayList<TrainingResult> trainingResultList) {
         TrainingResult trainingResult = new TrainingResult(resultTime, idNum, resultDate, comment);
         trainingResultList.add(trainingResult);
