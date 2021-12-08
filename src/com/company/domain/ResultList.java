@@ -29,15 +29,17 @@ public class ResultList {
         createCompResult(resultTime,idNum,resultDate,tournament, competitiveBestResultListBreaststroke);
     }
 
-    public ArrayList<CompetitionResult> createCompResult(double resultTime, String idNum, LocalDate resultDate,String tournament, ArrayList<CompetitionResult> competiveResultList){
+
+    public ArrayList<CompetitionResult> createCompResult(double resultTime, String idNum, LocalDate resultDate,String tournament, ArrayList<CompetitionResult> competiveResultList) {
         for (CompetitionResult competitionResult : competiveResultList) {
-            if((competitionResult.getIdNum().equals(idNum) && competitionResult.getResultTime() > resultTime )|| (competitionResult.getIdNum().equals(idNum) && competitionResult.getResultTime() != 0)) {
+            if ((competitionResult.getIdNum().equals(idNum) && competitionResult.getResultTime() > resultTime) || (competitionResult.getIdNum().equals(idNum) && competitionResult.getResultTime() != 0)) {
                 competitionResult.setDateOfResult(resultDate);
                 competitionResult.setResultTime(resultTime);
-            }else{
-                CompetitionResult competitionResult2 = new CompetitionResult(resultTime, idNum, resultDate,tournament);
+            } else {
+                CompetitionResult competitionResult2 = new CompetitionResult(resultTime, idNum, resultDate, tournament);
                 competiveResultList.add(competitionResult2);
             }
+
         }
         return competiveResultList;
     }
@@ -45,8 +47,13 @@ public class ResultList {
     //Create Training Results //@Martin Anberg
 
     public void runCreateTrainResultButterfly(double resultTime, String idNum, LocalDate resultDate, String comment){
-      createTrainResult(resultTime,idNum,resultDate,comment, trainingBestResultListButterfly);
+      trainingBestResultListButterfly = createTrainResult(resultTime,idNum,resultDate,comment, trainingBestResultListButterfly);
     }
+
+    public void runCreateTrainResultButterflyFromFile(double resultTime, String idNum, LocalDate resultDate, String comment) {
+        trainingBestResultListButterfly = createTrainResultFromFile(resultTime,idNum,resultDate,comment, trainingBestResultListButterfly);
+    }
+
     public void runCreateTrainResultCrawl(double resultTime, String idNum, LocalDate resultDate){
         createTrainResult(resultTime,idNum,resultDate,comment, trainingBestResultListCrawl);
     }
@@ -57,19 +64,26 @@ public class ResultList {
         createTrainResult(resultTime,idNum,resultDate,comment, trainingBestResultListBreaststroke);
     }
 
-    public ArrayList<TrainingResult> createTrainResult(double resultTime, String idNum, LocalDate resultDate, String comment, ArrayList<TrainingResult> trainingResultList) {
-        for (TrainingResult trainingResult : trainingResultList) {
-            if((trainingResult.getIdNum().equals(idNum) && trainingResult.getResultTime() > resultTime )|| (trainingResult.getIdNum().equals(idNum) && trainingResult.getResultTime() != 0)) {
-                trainingResult.setDateOfResult(resultDate);
-                trainingResult.setResultTime(resultTime);
-            }else{
-                TrainingResult trainingResult2 = new TrainingResult(resultTime, idNum, resultDate, comment);
-                trainingResultList.add(trainingResult2);
-            }
-        }
+
+    public ArrayList<TrainingResult> createTrainResultFromFile(double resultTime, String idNum, LocalDate resultDate, String comment, ArrayList<TrainingResult> trainingResultList) {
+        TrainingResult trainingResult = new TrainingResult(resultTime, idNum, resultDate, comment);
+        trainingResultList.add(trainingResult);
         return trainingResultList;
     }
 
+    public ArrayList<TrainingResult> createTrainResult(double resultTime, String idNum, LocalDate resultDate, String comment, ArrayList<TrainingResult> trainingResultList) {
+        for (TrainingResult trainingResult : trainingResultList) {
+            if ((trainingResult.getIdNum().equals(idNum) && trainingResult.getResultTime() > resultTime) || (trainingResult.getIdNum().equals(idNum) && trainingResult.getResultTime() != 0)) {
+                trainingResult.setDateOfResult(resultDate);
+                trainingResult.setResultTime(resultTime);
+            } else {
+                TrainingResult trainingResult2 = new TrainingResult(resultTime, idNum, resultDate, comment);
+                trainingResultList.add(trainingResult2);
+            }
+
+        }
+        return trainingResultList;
+    }
     //TOP 5 COMPETITIVE //@Martin Anberg
 
     public String showTop5CompResultsButterfly(){
@@ -154,14 +168,12 @@ public class ResultList {
     }
     //FIND MEMBER RESULT TRAINING //@MartinAnberg
     public double memberTrainingButterfly(String idNum){
-        double bestTime = 0; //gh
+        double bestTime = 0;
         for(Result result : trainingBestResultListButterfly){
-            System.out.println(result.getIdNum());
-            if(idNum.equals(result.getIdNum())){
+            if (idNum.equals(result.getIdNum())) {
                 bestTime = result.getResultTime();
             }
         }
-        System.out.println(bestTime); // test
         return bestTime;
     }
     public String memberTrainingCrawl(String idNum){

@@ -94,7 +94,6 @@ public class FileHandler {
     // @Graham Heaven
     public ArrayList<String> readOneTimeFile(String type, String discipline) {
         String fileToRead = "src/com/company/data/" + discipline + "_" + type + ".csv";
-        System.out.println(fileToRead); //test
         return readRegisteredTimes(fileToRead);
     }
 
@@ -106,7 +105,6 @@ public class FileHandler {
         String line;
         try {
             Scanner input = new Scanner(resultsList);
-            System.out.println("Current Lcoale: " + input.locale());
             while (input.hasNext()) {
                 line = input.nextLine();
                 listOfResults.add(line);
