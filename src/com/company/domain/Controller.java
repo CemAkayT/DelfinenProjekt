@@ -340,7 +340,7 @@ public class Controller {
             double time = UI.getInputDouble();
             UI.printMessage("Skriv dato år/måned/dag");
             LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
-            resultList.runCreateTrainResultButterfly(time, idNum, resultDate, "");
+            resultList.runCreateTrainResultButterfly(false, time, idNum, resultDate, "");
         } else {
             UI.printMessage("tiden blevet ikke ændret");
         }
@@ -580,7 +580,7 @@ public class Controller {
                         LocalDate dateOfresult = LocalDate.parse(lineData[1], formatter);
                         double resultTime = Double.parseDouble(lineData[2]);
                         String tekst = lineData[3];
-                        resultList.runCreateTrainResultButterflyFromFile(resultTime, idNum, dateOfresult, tekst);
+                        resultList.runCreateTrainResultButterfly(true, resultTime, idNum, dateOfresult, tekst);
                     }
                 }
             }

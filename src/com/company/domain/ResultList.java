@@ -46,12 +46,12 @@ public class ResultList {
 
     //Create Training Results //@Martin Anberg
 
-    public void runCreateTrainResultButterfly(double resultTime, String idNum, LocalDate resultDate, String comment){
-      trainingBestResultListButterfly = createTrainResult(resultTime,idNum,resultDate,comment, trainingBestResultListButterfly);
-    }
-
-    public void runCreateTrainResultButterflyFromFile(double resultTime, String idNum, LocalDate resultDate, String comment) {
-        trainingBestResultListButterfly = createTrainResultFromFile(resultTime,idNum,resultDate,comment, trainingBestResultListButterfly);
+    public void runCreateTrainResultButterfly(boolean fromFile, double resultTime, String idNum, LocalDate resultDate, String comment){
+      if (fromFile) {
+          trainingBestResultListButterfly = createTrainResultFromFile(resultTime,idNum,resultDate,comment, trainingBestResultListButterfly);
+      } else {
+          trainingBestResultListButterfly = createTrainResult(resultTime,idNum,resultDate,comment, trainingBestResultListButterfly);
+      }
     }
 
     public void runCreateTrainResultCrawl(double resultTime, String idNum, LocalDate resultDate){
@@ -80,7 +80,6 @@ public class ResultList {
                 TrainingResult trainingResult2 = new TrainingResult(resultTime, idNum, resultDate, comment);
                 trainingResultList.add(trainingResult2);
             }
-
         }
         return trainingResultList;
     }
