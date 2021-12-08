@@ -2,14 +2,9 @@ package com.company.domain;
 
 import com.company.UI.UserInterface;
 import com.company.data.FileHandler;
-
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -56,12 +51,15 @@ public class Controller {
         ArrayList<String> listOfTeams = fh.readListOfTeams();
         teamCreationFromFile(listOfTeams);
         resultsCreationFromFiles();
-        //test, try to write the first 2 files
         ArrayList<String> rList;
         rList = resultList.trainingResultsListToString(resultList.getTrainingBestResultListButterfly());
         fh.writeRegisteredTimes(rList, "butterfly", "training");
         rList = resultList.trainingResultsListToString(resultList.getTrainingBestResultListCrawl());
         fh.writeRegisteredTimes(rList, "crawl", "training");
+        rList = resultList.trainingResultsListToString(resultList.getTrainingBestResultListBackcrawl());
+        fh.writeRegisteredTimes(rList, "backcrawl", "training");
+        rList = resultList.trainingResultsListToString(resultList.getTrainingBestResultListBreaststroke());
+        fh.writeRegisteredTimes(rList, "breaststroke", "training");
         return true;
     }
 
@@ -578,7 +576,7 @@ public class Controller {
         for (String resultType : resultTypes) {
             for (String fileName : fileNames) {
                 listOfResultsFromOneFile = fh.readOneTimeFile(resultType, fileName);
-                // todo: for each line in each file create the appropriate Result object and add to ResultList.
+                // todo: Add the competition results
 
                 for (String s : listOfResultsFromOneFile) {
                     String[] lineData = s.split(";");

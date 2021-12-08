@@ -218,28 +218,36 @@ public class ResultList {
         return "INGEN TID";
     }
 
+    //@Graham Heaven
     public ArrayList<TrainingResult> getTrainingBestResultListButterfly() {
         return trainingBestResultListButterfly;
     }
 
+    //@Graham Heaven
     public ArrayList<TrainingResult> getTrainingBestResultListCrawl() {
         return trainingBestResultListCrawl;
     }
 
-    // @Graham Heaven
-    //ArrayList<ArrayList<Individual>> group = new ArrayList<ArrayList<Individual>>(4);
+    //@Graham Heaven
+    public ArrayList<TrainingResult> getTrainingBestResultListBackcrawl() {
+        return trainingBestResultListBackcrawl;
+    }
 
+    //@Graham Heaven
+    public ArrayList<TrainingResult> getTrainingBestResultListBreaststroke() {
+        return trainingBestResultListBreaststroke;
+    }
+
+    // @Graham Heaven
     public ArrayList<String> trainingResultsListToString(ArrayList<TrainingResult> results) {
         ArrayList<String> listOfResults = new ArrayList<>();
         String resultData;
         for (TrainingResult r : results) {
             resultData = r.buildStringForCSV() + r.getComment() + ";";
-            System.out.println(resultData);
             listOfResults.add(resultData);
         }
         return listOfResults;
     }
-
 }
 
 
