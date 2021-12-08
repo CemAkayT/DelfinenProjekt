@@ -50,6 +50,7 @@ public class UserInterface {
                 sc.nextLine();
             }
         }
+        sc.nextLine();
         return choice;
     }
 }

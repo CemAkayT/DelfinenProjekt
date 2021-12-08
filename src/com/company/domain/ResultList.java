@@ -47,7 +47,7 @@ public class ResultList {
     //Create Training Results //@Martin Anberg
 
     public void runCreateTrainResultButterfly(double resultTime, String idNum, LocalDate resultDate, String comment){
-        createTrainResult(resultTime,idNum,resultDate,comment, trainingBestResultListButterfly);
+      trainingBestResultListButterfly = createTrainResult(resultTime,idNum,resultDate,comment, trainingBestResultListButterfly);
     }
     public void runCreateTrainResultCrawl(double resultTime, String idNum, LocalDate resultDate){
         createTrainResult(resultTime,idNum,resultDate,comment, trainingBestResultListCrawl);
@@ -59,21 +59,25 @@ public class ResultList {
         createTrainResult(resultTime,idNum,resultDate,comment, trainingBestResultListBreaststroke);
     }
 
-    public void createTrainResult(double resultTime, String idNum, LocalDate resultDate, String comment, ArrayList<TrainingResult> trainingResultList) {
+    public ArrayList<TrainingResult> createTrainResult(double resultTime, String idNum, LocalDate resultDate, String comment, ArrayList<TrainingResult> trainingResultList) {
         for (Result result : trainingResultList) {
             if (result.getIdNum().equals(idNum)) {
                 trainingResultList.remove(result);
             }
         }
         TrainingResult trainingResult = new TrainingResult(resultTime, idNum, resultDate, comment);
+        trainingResultList.add(trainingResult);
+        System.out.println(trainingResultList.size()); // test
         for (int i = 0; i < trainingResultList.size(); i++) {
-            if (trainingResult.getResultTime() > trainingResultList.get(i).getResultTime()) {
-                trainingResultList.add(i, trainingResult);
+            if (resultTime < trainingResultList.get(i).getResultTime() || trainingResultList.get(i).getResultTime() == 0) {
+                trainingResultList.set(i, trainingResult);
             }
         }
         if(!trainingResultList.contains(trainingResult)){
             trainingResultList.add(trainingResult);
         }
+        System.out.println("time " + resultTime);
+        return trainingResultList;
     }
 
     //TOP 5 COMPETITIVE //@Martin Anberg
@@ -160,12 +164,14 @@ public class ResultList {
     }
     //FIND MEMBER RESULT TRAINING //@MartinAnberg
     public double memberTrainingButterfly(String idNum){
-        for(Result result : trainingBestResultListBreaststroke){
+        double bestTime = 0;
+        for(Result result : trainingBestResultListButterfly){
             if(idNum.equals(result.getIdNum())){
-                return result.getResultTime();
+                bestTime = result.getResultTime();
             }
         }
-        return 0;
+        System.out.println(bestTime); // test
+        return bestTime;
     }
     public double memberTrainingCrawl(String idNum){
         for(Result result : trainingBestResultListCrawl){
