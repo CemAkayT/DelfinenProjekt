@@ -38,6 +38,10 @@ public class TeamList {
         }
         return s;
     }
+    public void editTeam(){
+
+
+    }
 
     // @Graham Heaven
     public ArrayList<String> teamsListToString() {

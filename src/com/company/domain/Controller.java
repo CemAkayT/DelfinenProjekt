@@ -80,7 +80,7 @@ public class Controller {
                     2. Slet medlem
                     3. rediger medlem
                     4. Se medlemsliste
-                    5. Søg efter medlem efter ID
+                    5. Søg efter medlem via ID
                                         
                     0. Tilbage til hoved menu
                     """);
@@ -145,20 +145,24 @@ public class Controller {
                     Træning menu - Vælg funktion:
                     1. Opret hold
                     2. Slet hold
-                    3. Registrering(Træning)
-                    4. Registrering(Konkurence)
-                    5. TOP 5 svømmere
+                    3. Redigere hold
+                    4. Registrering(Træning)
+                    5. Registrering(Konkurence)
+                    6. TOP 5 svømmere
+                    7. Søg efter medlem via ID
                                         
                     0. Tilbage til hoved menu
                     """);
-            choice = UI.getValidInt(5);
+            choice = UI.getValidInt(7);
             switch (choice) {
                 case 0 -> running = false;
                 case 1 -> teamCreation();
                 case 2 -> teamDeletion();
-                case 3 -> registerTraining();
-                case 4 -> registerCompetitive();
-                case 5 -> top5Swimmers();
+                //case 3 -> teamEditing();
+                case 4 -> registerTraining();
+                case 5 -> registerCompetitive();
+                case 6 -> top5Swimmers();
+                case 7 -> runSearchMemberByID();
             }
         }
     }

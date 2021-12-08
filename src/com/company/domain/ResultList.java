@@ -29,26 +29,23 @@ public class ResultList {
         createCompResult(resultTime,idNum,resultDate,tournament, competitiveBestResultListBreaststroke);
     }
 
-    public String createCompResult(double resultTime, String idNum, LocalDate resultDate,String tournament, ArrayList<CompetitionResult> competiveResultList){
-        for(CompetitionResult competitionresult : competiveResultList){
-            if(competitionresult.getIdNum().equals(idNum)){competiveResultList.remove(competitionresult);}
-        }
-        CompetitionResult competitionResult = new CompetitionResult(resultTime, idNum,resultDate,tournament);
-        for (int i = 0; i < competiveResultList.size(); i++) {
-            if(competitionResult.getResultTime() <= competiveResultList.get(i).getResultTime()){
-                competiveResultList.add(i,competitionResult);
+    public ArrayList<CompetitionResult> createCompResult(double resultTime, String idNum, LocalDate resultDate,String tournament, ArrayList<CompetitionResult> competiveResultList){
+        for (CompetitionResult competitionResult : competiveResultList) {
+            if((competitionResult.getIdNum().equals(idNum) && competitionResult.getResultTime() > resultTime )|| (competitionResult.getIdNum().equals(idNum) && competitionResult.getResultTime() != 0)) {
+                competitionResult.setDateOfResult(resultDate);
+                competitionResult.setResultTime(resultTime);
+            }else{
+                CompetitionResult competitionResult2 = new CompetitionResult(resultTime, idNum, resultDate,tournament);
+                competiveResultList.add(competitionResult2);
             }
         }
-        if(!competiveResultList.contains(competitionResult)){
-            competiveResultList.add(competiveResultList.size(),competitionResult);
-        }
-        return "";
+        return competiveResultList;
     }
 
     //Create Training Results //@Martin Anberg
 
     public void runCreateTrainResultButterfly(double resultTime, String idNum, LocalDate resultDate, String comment){
-      trainingBestResultListButterfly = createTrainResult(resultTime,idNum,resultDate,comment, trainingBestResultListButterfly);
+      createTrainResult(resultTime,idNum,resultDate,comment, trainingBestResultListButterfly);
     }
     public void runCreateTrainResultCrawl(double resultTime, String idNum, LocalDate resultDate){
         createTrainResult(resultTime,idNum,resultDate,comment, trainingBestResultListCrawl);
@@ -61,23 +58,15 @@ public class ResultList {
     }
 
     public ArrayList<TrainingResult> createTrainResult(double resultTime, String idNum, LocalDate resultDate, String comment, ArrayList<TrainingResult> trainingResultList) {
-        for (Result result : trainingResultList) {
-            if (result.getIdNum().equals(idNum)) {
-                trainingResultList.remove(result);
+        for (TrainingResult trainingResult : trainingResultList) {
+            if((trainingResult.getIdNum().equals(idNum) && trainingResult.getResultTime() > resultTime )|| (trainingResult.getIdNum().equals(idNum) && trainingResult.getResultTime() != 0)) {
+                trainingResult.setDateOfResult(resultDate);
+                trainingResult.setResultTime(resultTime);
+            }else{
+                TrainingResult trainingResult2 = new TrainingResult(resultTime, idNum, resultDate, comment);
+                trainingResultList.add(trainingResult2);
             }
         }
-        TrainingResult trainingResult = new TrainingResult(resultTime, idNum, resultDate, comment);
-        trainingResultList.add(trainingResult);
-        System.out.println(trainingResultList.size()); // test
-        for (int i = 0; i < trainingResultList.size(); i++) {
-            if (resultTime < trainingResultList.get(i).getResultTime() || trainingResultList.get(i).getResultTime() == 0) {
-                trainingResultList.set(i, trainingResult);
-            }
-        }
-        if(!trainingResultList.contains(trainingResult)){
-            trainingResultList.add(trainingResult);
-        }
-        System.out.println("time " + resultTime);
         return trainingResultList;
     }
 
@@ -167,6 +156,7 @@ public class ResultList {
     public double memberTrainingButterfly(String idNum){
         double bestTime = 0; //gh
         for(Result result : trainingBestResultListButterfly){
+            System.out.println(result.getIdNum());
             if(idNum.equals(result.getIdNum())){
                 bestTime = result.getResultTime();
             }

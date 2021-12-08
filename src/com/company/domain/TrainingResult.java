@@ -11,4 +11,5 @@ public class TrainingResult extends Result {
         super(resultTime, idNum, dateOfResult);
         this.comment = comment;
     }
+
 }
