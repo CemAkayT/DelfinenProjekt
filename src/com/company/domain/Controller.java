@@ -18,9 +18,10 @@ public class Controller {
 
     public void start() {
 
-        // Try to load Members, Teams from file.
+        // Try to load Members, Teams, Training results from file.
         openFiles();
 
+        // Menu uses "getValidInt" to eliminate errors from incorrect inputs.
         int choice;
         UI.printMessage("\nVELKOMMEN TIL DELFINEN! \uD83D\uDC2C\n");
         boolean running = true;
@@ -51,6 +52,20 @@ public class Controller {
         ArrayList<String> listOfTeams = fh.readListOfTeams();
         teamCreationFromFile(listOfTeams);
         resultsCreationFromFiles();
+        return true;
+    }
+
+    // @Graham Heaven
+    private boolean closeFiles() {
+        // Write contents of "members" to CSV
+        ArrayList<String> mList = memberList.membersListToString();
+        fh.writeListOfMembers(mList);
+
+        // Write contents of "teams" to CSV
+        ArrayList<String> tList = teamList.teamsListToString();
+        fh.writeListOfTeams(tList);
+
+        // Write contents of "training best results" to CSV
         ArrayList<String> rList;
         rList = resultList.trainingResultsListToString(resultList.getTrainingBestResultListButterfly());
         fh.writeRegisteredTimes(rList, "butterfly", "training");
@@ -60,15 +75,6 @@ public class Controller {
         fh.writeRegisteredTimes(rList, "backcrawl", "training");
         rList = resultList.trainingResultsListToString(resultList.getTrainingBestResultListBreaststroke());
         fh.writeRegisteredTimes(rList, "breaststroke", "training");
-        return true;
-    }
-
-    // @Graham Heaven
-    private boolean closeFiles() {
-        ArrayList<String> mList = memberList.membersListToString();
-        fh.writeListOfMembers(mList);
-        ArrayList<String> tList = teamList.teamsListToString();
-        fh.writeListOfTeams(tList);
         return false;
     }
 
