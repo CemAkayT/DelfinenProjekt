@@ -50,6 +50,11 @@ public class ResultList {
     public void runCreateTrainResultButterfly(double resultTime, String idNum, LocalDate resultDate, String comment){
       trainingBestResultListButterfly = createTrainResult(resultTime,idNum,resultDate,comment, trainingBestResultListButterfly);
     }
+
+    public void runCreateTrainResultButterflyFromFile(double resultTime, String idNum, LocalDate resultDate, String comment) {
+        trainingBestResultListButterfly = createTrainResultFromFile(resultTime,idNum,resultDate,comment, trainingBestResultListButterfly);
+    }
+
     public void runCreateTrainResultCrawl(double resultTime, String idNum, LocalDate resultDate){
         createTrainResult(resultTime,idNum,resultDate,comment, trainingBestResultListCrawl);
     }
@@ -60,7 +65,15 @@ public class ResultList {
         createTrainResult(resultTime,idNum,resultDate,comment, trainingBestResultListBreaststroke);
     }
 
+
+    public ArrayList<TrainingResult> createTrainResultFromFile(double resultTime, String idNum, LocalDate resultDate, String comment, ArrayList<TrainingResult> trainingResultList) {
+        TrainingResult trainingResult = new TrainingResult(resultTime, idNum, resultDate, comment);
+        trainingResultList.add(trainingResult);
+        return trainingResultList;
+    }
+
     public ArrayList<TrainingResult> createTrainResult(double resultTime, String idNum, LocalDate resultDate, String comment, ArrayList<TrainingResult> trainingResultList) {
+
         for (Result result : trainingResultList) {
             if (result.getIdNum().equals(idNum)) {
                 trainingResultList.remove(result);
@@ -68,18 +81,18 @@ public class ResultList {
         }
         TrainingResult trainingResult = new TrainingResult(resultTime, idNum, resultDate, comment);
         trainingResultList.add(trainingResult);
-        System.out.println(trainingResultList.size()); // test
         for (int i = 0; i < trainingResultList.size(); i++) {
             if (resultTime < trainingResultList.get(i).getResultTime() || trainingResultList.get(i).getResultTime() == 0) {
                 trainingResultList.set(i, trainingResult);
+                break;
             }
         }
-        if(!trainingResultList.contains(trainingResult)){
+        if (!trainingResultList.contains(trainingResult)) {
             trainingResultList.add(trainingResult);
         }
-        System.out.println("time " + resultTime);
         return trainingResultList;
     }
+
 
     //TOP 5 COMPETITIVE //@Martin Anberg
 
@@ -165,13 +178,12 @@ public class ResultList {
     }
     //FIND MEMBER RESULT TRAINING //@MartinAnberg
     public double memberTrainingButterfly(String idNum){
-        double bestTime = 0; //gh
+        double bestTime = 0;
         for(Result result : trainingBestResultListButterfly){
-            if(idNum.equals(result.getIdNum())){
+            if (idNum.equals(result.getIdNum())) {
                 bestTime = result.getResultTime();
             }
         }
-        System.out.println(bestTime); // test
         return bestTime;
     }
     public String memberTrainingCrawl(String idNum){

@@ -19,7 +19,6 @@ public class Controller {
     MemberList memberList = new MemberList();
     TeamList teamList = new TeamList();
     ResultList resultList = new ResultList();
-    double resultTime;
 
 
     public void start() {
@@ -570,26 +569,16 @@ public class Controller {
             for (String fileName : fileNames) {
                 listOfResultsFromOneFile = fh.readOneTimeFile(resultType, fileName);
                 // todo: for each line in each file create the appropriate Result object and add to ResultList.
-                System.out.println(listOfResultsFromOneFile); // test
                 if (resultType.equals("training") && fileName.equals("butterfly")) {
                     for (String s : listOfResultsFromOneFile) {
                         String[] lineData = s.split(";");
-                        System.out.println(s);
                         String idNum = lineData[0];
                         LocalDate dateOfresult = LocalDate.parse(lineData[1], formatter);
-                        //double resultTime = Double.parseDouble(lineData[2]);
-                        //System.out.println(resultTime);
-                        double resultTime = 44.44;
-                        /*try {
-                           resultTime = NumberFormat.getInstance(Locale.getDefault()).parse(lineData[2]).doubleValue();
-                        } catch (ParseException e) {
-                            e.printStackTrace();
-                        }*/
+                        double resultTime = Double.parseDouble(lineData[2]);
                         String tekst = lineData[3];
-                        resultList.runCreateTrainResultButterfly(resultTime, idNum, dateOfresult, tekst);
+                        resultList.runCreateTrainResultButterflyFromFile(resultTime, idNum, dateOfresult, tekst);
                     }
                 }
-
             }
         }
         UI.printMessage("Results lists loaded");
