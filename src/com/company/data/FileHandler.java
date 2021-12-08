@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 //@Graham Heaven
@@ -105,6 +106,7 @@ public class FileHandler {
         String line;
         try {
             Scanner input = new Scanner(resultsList);
+            System.out.println("Current Lcoale: " + input.locale());
             while (input.hasNext()) {
                 line = input.nextLine();
                 listOfResults.add(line);

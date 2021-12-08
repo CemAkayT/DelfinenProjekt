@@ -3,7 +3,9 @@ package com.company.domain;
 import com.company.UI.UserInterface;
 import com.company.data.FileHandler;
 
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -17,6 +19,7 @@ public class Controller {
     MemberList memberList = new MemberList();
     TeamList teamList = new TeamList();
     ResultList resultList = new ResultList();
+    double resultTime;
 
 
     public void start() {
@@ -110,7 +113,7 @@ public class Controller {
                     1. Se restance liste
                     2. Se kontingent til dato
                     3. Se medlemsliste med kontingent
-                    
+                                        
                                         
                     0. Tilbage til hoved menu
                     """);
@@ -299,21 +302,25 @@ public class Controller {
 
     private void registerTraining() {
         int choice;
-        UI.printMessage("""
-                Vælg funktion:
-                1. Registrer butterfly(Træning)
-                2. Registrer crawl(Træning)
-                3. Registrer rygcrawl(Træning)
-                4. Registrer brystsvømning(Træning)
-                                                    
-                0. Tilbage til hoved menu
-                """);
-        choice = UI.getInputInt();
-        switch (choice) {
-            case 1 -> registerTrainingButterfly();
-            case 2 -> registerTrainingCrawl();
-            case 3 -> registerTrainingBackcrawl();
-            case 4 -> registerTrainingBreaststroke();
+        boolean running = true;
+        while (running) {
+            UI.printMessage("""
+                    Vælg funktion:
+                    1. Registrer butterfly(Træning)
+                    2. Registrer crawl(Træning)
+                    3. Registrer rygcrawl(Træning)
+                    4. Registrer brystsvømning(Træning)
+                                                        
+                    0. Tilbage til hoved menu
+                    """);
+            choice = UI.getValidInt(4);
+            switch (choice) {
+                case 0 -> running = false;
+                case 1 -> registerTrainingButterfly();
+                case 2 -> registerTrainingCrawl();
+                case 3 -> registerTrainingBackcrawl();
+                case 4 -> registerTrainingBreaststroke();
+            }
         }
     }
 
@@ -564,18 +571,24 @@ public class Controller {
                 listOfResultsFromOneFile = fh.readOneTimeFile(resultType, fileName);
                 // todo: for each line in each file create the appropriate Result object and add to ResultList.
                 System.out.println(listOfResultsFromOneFile); // test
-                    if (resultType.equals("training") && fileName.equals("butterfly")) {
-                        for (String s : listOfResultsFromOneFile) {
-                            String[] lineData = s.split(";");
-                            System.out.println(s);
-                            String idNum = lineData[0];
-                            LocalDate dateOfresult = LocalDate.parse(lineData[1], formatter);
-                            Double resultTime =  Double.parseDouble(lineData[2]);
-                            System.out.println(resultTime);
-                            String tekst = lineData[3];
-                            //resultList.runCreateTrainResultButterfly(resultTime, idNum, dateOfresult, tekst);
-                        }
+                if (resultType.equals("training") && fileName.equals("butterfly")) {
+                    for (String s : listOfResultsFromOneFile) {
+                        String[] lineData = s.split(";");
+                        System.out.println(s);
+                        String idNum = lineData[0];
+                        LocalDate dateOfresult = LocalDate.parse(lineData[1], formatter);
+                        //double resultTime = Double.parseDouble(lineData[2]);
+                        //System.out.println(resultTime);
+                        double resultTime = 44.44;
+                        /*try {
+                           resultTime = NumberFormat.getInstance(Locale.getDefault()).parse(lineData[2]).doubleValue();
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }*/
+                        String tekst = lineData[3];
+                        resultList.runCreateTrainResultButterfly(resultTime, idNum, dateOfresult, tekst);
                     }
+                }
 
             }
         }
