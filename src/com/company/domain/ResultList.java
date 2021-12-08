@@ -2,6 +2,7 @@ package com.company.domain;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class ResultList {
     private ArrayList<TrainingResult> trainingBestResultListButterfly = new ArrayList<>();
@@ -29,7 +30,7 @@ public class ResultList {
         createCompResult(resultTime,idNum,resultDate,tournament, competitiveBestResultListBreaststroke);
     }
 
-
+    //Create Competitive Result//@Martin Anberg
     public ArrayList<CompetitionResult> createCompResult(double resultTime, String idNum, LocalDate resultDate,String tournament, ArrayList<CompetitionResult> competiveResultList) {
         for (CompetitionResult competitionResult : competiveResultList) {
             if ((competitionResult.getIdNum().equals(idNum) && competitionResult.getResultTime() > resultTime) || (competitionResult.getIdNum().equals(idNum) && competitionResult.getResultTime() != 0)) {
@@ -70,7 +71,7 @@ public class ResultList {
         trainingResultList.add(trainingResult);
         return trainingResultList;
     }
-
+//Create Training Result//@Martin Anberg
     public ArrayList<TrainingResult> createTrainResult(double resultTime, String idNum, LocalDate resultDate, String comment, ArrayList<TrainingResult> trainingResultList) {
         for (TrainingResult trainingResult : trainingResultList) {
             if ((trainingResult.getIdNum().equals(idNum) && trainingResult.getResultTime() > resultTime) || (trainingResult.getIdNum().equals(idNum) && trainingResult.getResultTime() != 0)) {
@@ -99,13 +100,14 @@ public class ResultList {
         return Top5CompResults(competitiveBestResultListButterfly);
     }
 
-    public String Top5CompResults(ArrayList<CompetitionResult> competitionResultList){
+    public String Top5CompResults(ArrayList<CompetitionResult> competitionBestResultList){
         String s ="";
-        if(competitionResultList.size() >= 5) {
-            for (int i = 0; i < 5; i++) {
-                s = s + i + ". ID:" + competitionResultList.get(i).getIdNum() + " TID:" + competitionResultList.get(i).getResultTime() + " STÆVNE: " + competitionResultList.get(i).getTournament();
-            }
-        }else{s = "Der ikke fem resultater registreret";}
+        int i = 5;
+        Collections.sort(competitionBestResultList);
+        for (CompetitionResult competitionResult : competitionBestResultList){
+            s = s+i+". BEDSTE TID ER   "+competitionResult.getResultTime()+"\nAF   "+competitionResult.getIdNum()+"\n";
+            i--;
+        }
         return s;
     }
 
@@ -123,13 +125,14 @@ public class ResultList {
         return Top5TrainResults(trainingBestResultListBreaststroke);
     }
 
-    public String Top5TrainResults(ArrayList<TrainingResult> trainingResultList){
-        String s = "";
-        if(trainingResultList.size() >= 5) {
-            for (int i = 0; i <= 5; i++) {
-                s = s + i + ". ID:" + trainingResultList.get(i).getIdNum() + " TID:" + trainingResultList.get(i).getResultTime();
-            }
-        }else{s = "Der ikke fem resultater registreret";}
+    public String Top5TrainResults(ArrayList<TrainingResult> trainingBestResultList){
+        String s ="";
+        int i = 5;
+        Collections.sort(trainingBestResultList);
+        for (TrainingResult trainingResult : trainingBestResultList){
+            s = s+i+". BEDSTE TID ER   "+trainingResult.getResultTime()+"\nAF   "+trainingResult.getIdNum()+"\n";
+            i--;
+        }
         return s;
     }
 

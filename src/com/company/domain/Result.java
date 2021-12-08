@@ -3,7 +3,7 @@ package com.company.domain;
 import java.time.LocalDate;
 import java.util.UUID;
 
-public class Result {
+public class Result implements Comparable<Result> {
     private double resultTime;
     private String idNum;
     private LocalDate dateOfResult;
@@ -38,5 +38,10 @@ public class Result {
 
     public void setDateOfResult(LocalDate dateOfResult) {
         this.dateOfResult = dateOfResult;
+    }
+
+    @Override
+    public int compareTo(Result time) {
+        return Double.compare(time.resultTime, this.resultTime);
     }
 }
