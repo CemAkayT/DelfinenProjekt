@@ -3,13 +3,9 @@ package com.company.domain;
 import com.company.UI.UserInterface;
 import com.company.data.FileHandler;
 
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -23,9 +19,10 @@ public class Controller {
 
     public void start() {
 
-        // Try to load Members, Teams from file.
+        // Try to load Members, Teams, Training results from file.
         openFiles();
 
+        // Menu uses "getValidInt" to eliminate errors from incorrect inputs.
         int choice;
         UI.printMessage("\nVELKOMMEN TIL DELFINEN! \uD83D\uDC2C\n");
         boolean running = true;
@@ -50,21 +47,34 @@ public class Controller {
     }
 
     // @Graham Heaven
-    private boolean openFiles() {
+    private void openFiles() {
         ArrayList<String> listOfMembers = fh.readListOfMembers();
         memberCreationFromFile(listOfMembers);
         ArrayList<String> listOfTeams = fh.readListOfTeams();
         teamCreationFromFile(listOfTeams);
         resultsCreationFromFiles();
-        return true;
     }
 
     // @Graham Heaven
     private boolean closeFiles() {
+        // Write contents of "members" to CSV
         ArrayList<String> mList = memberList.membersListToString();
         fh.writeListOfMembers(mList);
+
+        // Write contents of "teams" to CSV
         ArrayList<String> tList = teamList.teamsListToString();
         fh.writeListOfTeams(tList);
+
+        // Write contents of "training best results" to CSV
+        ArrayList<String> rList;
+        rList = resultList.trainingResultsListToString(resultList.getTrainingBestResultListButterfly());
+        fh.writeRegisteredTimes(rList, "butterfly", "training");
+        rList = resultList.trainingResultsListToString(resultList.getTrainingBestResultListCrawl());
+        fh.writeRegisteredTimes(rList, "crawl", "training");
+        rList = resultList.trainingResultsListToString(resultList.getTrainingBestResultListBackcrawl());
+        fh.writeRegisteredTimes(rList, "backcrawl", "training");
+        rList = resultList.trainingResultsListToString(resultList.getTrainingBestResultListBreaststroke());
+        fh.writeRegisteredTimes(rList, "breaststroke", "training");
         return false;
     }
 
@@ -306,7 +316,7 @@ public class Controller {
             String tournament = UI.getInputString();
             UI.printMessage("Skriv dato år/måned/dag");
             LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
-            resultList.runCreateCompResultButterfly(time, idNum, resultDate, tournament);
+            resultList.runCreateCompResultButterfly(false, time, idNum, resultDate, tournament);
         } else {
             UI.printMessage("tiden blevet ikke ændret");
         }
@@ -327,7 +337,7 @@ public class Controller {
             String tournament = UI.getInputString();
             UI.printMessage("Skriv dato år/måned/dag");
             LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
-            resultList.runCreateCompResultCrawl(time, idNum, resultDate, tournament);
+            resultList.runCreateCompResultCrawl(false, time, idNum, resultDate, tournament);
         } else {
             UI.printMessage("tiden blevet ikke ændret");
         }
@@ -348,7 +358,7 @@ public class Controller {
             String tournament = UI.getInputString();
             UI.printMessage("Skriv dato år/måned/dag");
             LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
-            resultList.runCreateCompResultBackcrawl(time, idNum, resultDate, tournament);
+            resultList.runCreateCompResultBackcrawl(false, time, idNum, resultDate, tournament);
         } else {
             UI.printMessage("tiden blevet ikke ændret");
         }
@@ -369,7 +379,7 @@ public class Controller {
             String tournament = UI.getInputString();
             UI.printMessage("Skriv dato år/måned/dag");
             LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
-            resultList.runCreateCompResultBreaststroke(time, idNum, resultDate, tournament);
+            resultList.runCreateCompResultBreaststroke(false, time, idNum, resultDate, tournament);
         } else {
             UI.printMessage("tiden blevet ikke ændret");
         }
@@ -402,7 +412,7 @@ public class Controller {
 
     private void registerTrainingButterfly() {
         //@Martin Anberg
-        UI.printMessage(memberList.CompetitiveList());
+        UI.printMessage(memberList.CompetitiveListShort()); // suggestion to make it easier to find an id
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
         UI.printMessage("Svømmerens nuværende bedste tid er: " + resultList.memberTrainingButterfly(idNum));
@@ -413,7 +423,7 @@ public class Controller {
             double time = UI.getInputDouble();
             UI.printMessage("Skriv dato år/måned/dag");
             LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
-            resultList.runCreateTrainResultButterfly(time, idNum, resultDate, "");
+            resultList.runCreateTrainResultButterfly(false, time, idNum, resultDate, "");
         } else {
             UI.printMessage("tiden blevet ikke ændret");
         }
@@ -432,7 +442,7 @@ public class Controller {
             double time = UI.getInputDouble();
             UI.printMessage("Skriv dato år/måned/dag");
             LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
-            resultList.runCreateTrainResultCrawl(time, idNum, resultDate);
+            resultList.runCreateTrainResultCrawl(false, time, idNum, resultDate, "");
         } else {
             UI.printMessage("tiden blevet ikke ændret");
         }
@@ -451,7 +461,7 @@ public class Controller {
             double time = UI.getInputDouble();
             UI.printMessage("Skriv dato år/måned/dag");
             LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
-            resultList.runCreateTrainResultBackcrawl(time, idNum, resultDate);
+            resultList.runCreateTrainResultBackcrawl(false, time, idNum, resultDate, "");
         } else {
             UI.printMessage("tiden blevet ikke ændret");
         }
@@ -470,7 +480,7 @@ public class Controller {
             double time = UI.getInputDouble();
             UI.printMessage("Skriv dato år/måned/dag");
             LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
-            resultList.runCreateTrainResultBreaststroke(time, idNum, resultDate);
+            resultList.runCreateTrainResultBreaststroke(false, time, idNum, resultDate, "");
         } else {
             UI.printMessage("tiden blevet ikke ændret");
         }
@@ -517,8 +527,8 @@ public class Controller {
                     3. Medlemmets efternavn
                     4. Medlemmets svømmestatus
                     5. Medlemmets kontingent
-                    6. Medlems træner(hvis medlem er konkurencesvømmer)  
-                    7. Ændre aktiv/passiv status  
+                    6. Medlems træner(hvis medlem er konkurencesvømmer)
+                    7. Ændre aktiv/passiv status
                                                         
                     0. Tilbage til hoved menu
                     """);
@@ -645,19 +655,40 @@ public class Controller {
         for (String resultType : resultTypes) {
             for (String fileName : fileNames) {
                 listOfResultsFromOneFile = fh.readOneTimeFile(resultType, fileName);
-                // todo: for each line in each file create the appropriate Result object and add to ResultList.
-                if (resultType.equals("training") && fileName.equals("butterfly")) {
-                    for (String s : listOfResultsFromOneFile) {
-                        String[] lineData = s.split(";");
-                        String idNum = lineData[0];
-                        LocalDate dateOfresult = LocalDate.parse(lineData[1], formatter);
-                        double resultTime = Double.parseDouble(lineData[2]);
-                        String tekst = lineData[3];
-                        resultList.runCreateTrainResultButterflyFromFile(resultTime, idNum, dateOfresult, tekst);
+                for (String s : listOfResultsFromOneFile) {
+                    String[] lineData = s.split(";");
+                    String idNum = lineData[0];
+                    LocalDate dateOfresult = LocalDate.parse(lineData[1], formatter);
+                    double resultTime = Double.parseDouble(lineData[2]);
+                    String tekst = lineData[3];
+                    if (resultType.equals("training") && fileName.equals("butterfly")) {
+                        resultList.runCreateTrainResultButterfly(true, resultTime, idNum, dateOfresult, tekst);
+                    }
+                    if (resultType.equals("training") && fileName.equals("breaststroke")) {
+                        resultList.runCreateTrainResultBreaststroke(true, resultTime, idNum, dateOfresult, tekst);
+                    }
+                    if (resultType.equals("training") && fileName.equals("crawl")) {
+                        resultList.runCreateTrainResultCrawl(true, resultTime, idNum, dateOfresult, tekst);
+                    }
+                    if (resultType.equals("training") && fileName.equals("backcrawl")) {
+                        resultList.runCreateTrainResultBackcrawl(true, resultTime, idNum, dateOfresult, tekst);
+                    }
+                    if (resultType.equals("competition") && fileName.equals("butterfly")) {
+                        resultList.runCreateCompResultButterfly(true, resultTime, idNum, dateOfresult, tekst);
+                    }
+                    if (resultType.equals("competition") && fileName.equals("breaststroke")) {
+                        resultList.runCreateCompResultBreaststroke(true, resultTime, idNum, dateOfresult, tekst);
+                    }
+                    if (resultType.equals("competition") && fileName.equals("crawl")) {
+                        resultList.runCreateCompResultCrawl(true, resultTime, idNum, dateOfresult, tekst);
+                    }
+                    if (resultType.equals("competition") && fileName.equals("backcrawl")) {
+                        resultList.runCreateCompResultBackcrawl(true, resultTime, idNum, dateOfresult, tekst);
                     }
                 }
             }
         }
-        UI.printMessage("Results lists loaded");
+        UI.printMessage("Training results lists loaded");
+        UI.printMessage("Competition results lists loaded");
     }
 }

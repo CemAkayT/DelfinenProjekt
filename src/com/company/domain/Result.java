@@ -40,6 +40,11 @@ public class Result implements Comparable<Result> {
         this.dateOfResult = dateOfResult;
     }
 
+    // @Graham Heaven
+    public String buildStringForCSV() {
+        return idNum + ";" + dateOfResult + ";" + resultTime + ";";
+    }
+
     @Override
     public int compareTo(Result time) {
         return Double.compare(this.resultTime, time.resultTime);
