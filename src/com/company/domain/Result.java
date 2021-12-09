@@ -2,7 +2,7 @@ package com.company.domain;
 
 import java.time.LocalDate;
 import java.util.UUID;
-
+//@Martin Anberg
 public class Result implements Comparable<Result> {
     private double resultTime;
     private String idNum;
@@ -42,6 +42,6 @@ public class Result implements Comparable<Result> {
 
     @Override
     public int compareTo(Result time) {
-        return Double.compare(time.resultTime, this.resultTime);
+        return Double.compare(this.resultTime, time.resultTime);
     }
 }

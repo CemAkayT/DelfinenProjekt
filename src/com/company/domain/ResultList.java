@@ -102,11 +102,11 @@ public class ResultList {
 
     public String Top5CompResults(ArrayList<CompetitionResult> competitionBestResultList){
         String s ="";
-        int i = 5;
+        int i = 1;
         Collections.sort(competitionBestResultList);
         for (CompetitionResult competitionResult : competitionBestResultList){
             s = s+i+". BEDSTE TID ER   "+competitionResult.getResultTime()+"\nAF   "+competitionResult.getIdNum()+"\n";
-            i--;
+            i++;
         }
         return s;
     }

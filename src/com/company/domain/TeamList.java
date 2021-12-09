@@ -17,7 +17,7 @@ public class TeamList {
         teams.add(team);
     }
 
-
+    //@Martin Anberg
     public String deleteTeam(String name){
         for (Team team : teams)
         if(team.getTeamName().equals(name)){
@@ -30,17 +30,36 @@ public class TeamList {
         }
         return null;
     }
-
+    //@Martin Anberg
     public String listOfTeams() {
         String s ="";
         for (Team team : teams) {
-            s = s + "TEAM NAVN: " + team.getTeamName();
+            s = s + "TEAM NAVN: " + team.getTeamName()+"\n";
         }
         return s;
     }
-    public void editTeam(){
+    //@Martin Anberg
+    public void editTeamName(String name,String newname){
+        for (Team team : teams) {
+            if(team.getTeamName().equals(name))
+            team.setTeamName(newname);
+        }
 
+    }
+    //@Martin Anberg
+    public void addMemberToTeam(String teamName, Member member){
+        for (Team team : teams) {
+            if(team.getTeamName().equals(teamName))
+                team.addMember(member);
+        }
 
+    }
+    //@Martin Anberg
+    public void removeMemberToTeam(String teamName,Member member){
+        for (Team team : teams) {
+            if(team.getTeamName().equals(teamName))
+                team.removeMember(member);
+        }
     }
 
     // @Graham Heaven

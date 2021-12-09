@@ -145,28 +145,97 @@ public class Controller {
                     1. Opret hold
                     2. Slet hold
                     3. Redigere hold
-                    4. Registrering(Træning)
-                    5. Registrering(Konkurence)
-                    6. TOP 5 svømmere
-                    7. Søg efter medlem via ID
+                    4. Se liste af hold
+                    5. Registrering(Træning)
+                    6. Registrering(Konkurence)
+                    7. TOP 5 svømmere
+                    8. Søg efter medlem via ID
                                         
                     0. Tilbage til hoved menu
                     """);
-            choice = UI.getValidInt(7);
+            choice = UI.getValidInt(8);
             switch (choice) {
                 case 0 -> running = false;
                 case 1 -> teamCreation();
                 case 2 -> teamDeletion();
-                //case 3 -> teamEditing();
-                case 4 -> registerTraining();
-                case 5 -> registerCompetitive();
-                case 6 -> top5Swimmers();
-                case 7 -> runSearchMemberByID();
+                case 3 -> teamEditing();
+                case 4 -> showListOfTeams();
+                case 5 -> registerTraining();
+                case 6 -> registerCompetitive();
+                case 7 -> top5Swimmers();
+                case 8 -> runSearchMemberByID();
             }
         }
     }
 
+    private void showListOfTeams() {
+        UI.printMessage(teamList.listOfTeams());
+    }
+
+    private void teamEditing() {
+        int choice;
+        boolean running = true;
+        while(running) {
+            UI.printMessage("""
+                    Træning menu - Vælg funktion:
+                    1. Tilføj medlem til hold
+                    2. Fjern medlem fra hold
+                    3. Rediger hold navn
+                                                                          
+                    0. Tilbage til hoved menu
+                    """);
+            choice = UI.getValidInt(3);
+            switch (choice) {
+                case 0 -> running = false;
+                case 1 -> addMemberToTeam();
+                case 2 -> removeMemberFromTeam();
+                case 3 -> editTeamName();
+            }
+        }
+    }
+
+    private void addMemberToTeam() {
+        UI.printMessage("Skriv navnet på holdet du vil tilføje medlem til");
+        String teamName = UI.getInputString();
+        UI.printMessage("Skriv ID på medlem du vil tilføje");
+        String idNum = UI.getInputString();
+        Member member = memberList.getMemberFromUUID(idNum);
+        UI.printMessage("Er du sikker på at du vil tilføje medlemmet");
+        String choice = UI.getInputString();
+        if (choice.equals("ja") || choice.equals("Ja") || choice.equals("JA")) {
+            teamList.addMemberToTeam(teamName,member);
+        } else {
+            UI.printMessage("medlem blev ikke tilføjet");
+
+    }
+    }
+
+    private void removeMemberFromTeam() {
+        UI.printMessage("Skriv navnet på holdet du vil fjerne medlem fra");
+        String teamName = UI.getInputString();
+        UI.printMessage("Skriv ID på medlem du vil fjerne");
+        String idNum = UI.getInputString();
+        Member member = memberList.getMemberFromUUID(idNum);
+        UI.printMessage("Er du sikker på at du vil fjerne medlemmet");
+        String choice = UI.getInputString();
+        if (choice.equals("ja") || choice.equals("Ja") || choice.equals("JA")) {
+            teamList.removeMemberToTeam(teamName,member);
+        } else {
+            UI.printMessage("medlem blev ikke tilføjet");
+
+        }
+    }
+
+    private void editTeamName() {
+        UI.printMessage("Skriv navnet på holdet du vil ændre");
+        String teamname = UI.getInputString();
+        UI.printMessage("Skriv holdet nye navn");
+        String newname = UI.getInputString();
+        teamList.editTeamName(teamname,newname);
+    }
+
     private void top5Swimmers() {
+        //@Martin Anberg
         int choice;
         boolean running = true;
         while (running) {
@@ -200,21 +269,25 @@ public class Controller {
 
     private void registerCompetitive() {
         int choice;
-        UI.printMessage("""
-                Vælg funktion:
-                1. Registrer butterfly(Konkurence)
-                2. Registrer crawl(Konkurence)
-                3. Registrer rygcrawl(Konkurence)
-                4. Registrer brystsvømning(Konkurence)
-                                                   
-                0. Tilbage til hoved menu
-                """);
-        choice = UI.getInputInt();
-        switch (choice) {
-            case 1 -> registerCompetitiveButterfly();
-            case 2 -> registerCompetitiveCrawl();
-            case 3 -> registerCompetitiveBackcrawl();
-            case 4 -> registerCompetitiveBreaststroke();
+        boolean running = true;
+        while(running) {
+            UI.printMessage("""
+                    Træning menu - Vælg funktion:
+                    1. Registrer butterfly(Konkurence)
+                    2. Registrer crawl(Konkurence)
+                    3. Registrer rygcrawl(Konkurence)
+                    4. Registrer brystsvømning(Konkurence)
+                                                       
+                    0. Tilbage til hoved menu
+                    """);
+            choice = UI.getInputInt();
+            switch (choice) {
+                case 0 -> running = false;
+                case 1 -> registerCompetitiveButterfly();
+                case 2 -> registerCompetitiveCrawl();
+                case 3 -> registerCompetitiveBackcrawl();
+                case 4 -> registerCompetitiveBreaststroke();
+            }
         }
     }
 
@@ -308,7 +381,7 @@ public class Controller {
         boolean running = true;
         while (running) {
             UI.printMessage("""
-                    Vælg funktion:
+                    Træning menu - Vælg funktion:
                     1. Registrer butterfly(Træning)
                     2. Registrer crawl(Træning)
                     3. Registrer rygcrawl(Træning)
