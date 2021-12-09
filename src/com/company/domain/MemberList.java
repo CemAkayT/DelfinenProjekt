@@ -20,12 +20,7 @@ public class MemberList {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             LocalDate dateOfBirth = LocalDate.parse(lineData[4], formatter);
             LocalDate dateOfMembership = LocalDate.parse(lineData[5], formatter);
-            boolean isCompetitive;
-            if (Objects.equals(lineData[6], "true")) {
-                isCompetitive = true;
-            } else {
-                isCompetitive = false;
-            }
+            boolean isCompetitive = Objects.equals(lineData[6], "true");
             String trainerName = lineData[7];
 
             Member member = new Member(name, middleName, lastName, idNum, dateOfBirth, dateOfMembership, isCompetitive, trainerName);
