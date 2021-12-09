@@ -7,14 +7,14 @@ public class TeamList {
     private ArrayList<Team> teams = new ArrayList<>();
 
     //@Martin Anberg @Cem Akay @Tobias Winkel
-    public void createTeam(String name, boolean isJunior, boolean isDeleteable) {
-        Team team = new Team(name, isJunior, isDeleteable);
+    public void createTeam(String name, boolean isJunior, boolean isDeletable) {
+        Team team = new Team(name, isJunior, isDeletable);
         teams.add(team);
     }
 
     // overload to recreate team list from file @Graham Heaven
-    public void createTeam(String name, boolean isJunior, boolean isDeleteable, ArrayList<Member> list) {
-        Team team = new Team(name, isJunior, isDeleteable, list);
+    public void createTeam(String name, boolean isJunior, boolean isDeletable, ArrayList<Member> list) {
+        Team team = new Team(name, isJunior, isDeletable, list);
         teams.add(team);
     }
 
@@ -22,7 +22,7 @@ public class TeamList {
     public String deleteTeam(String name) {
         for (Team team : teams)
             if (team.getTeamName().equals(name)) {
-                if (team.isDeleteable()) {
+                if (team.isDeletable()) {
                     teams.remove(team);
                     return team.getTeamName() + " er blevet slettet.";
                 } else {
@@ -89,7 +89,7 @@ public class TeamList {
             StringBuilder teamData = new StringBuilder();
             teamData.append(t.getTeamName()).append(";");
             teamData.append(t.isJunior()).append(";");
-            teamData.append(t.isDeleteable()).append(";");
+            teamData.append(t.isDeletable()).append(";");
             listOfTeamData = t.getListOfTeamMembersIds();
             for (String s : listOfTeamData) {
                 teamData.append(s).append(";");

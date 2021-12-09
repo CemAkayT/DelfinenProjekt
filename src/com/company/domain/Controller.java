@@ -98,7 +98,7 @@ public class Controller {
         boolean running = true;
         while (running) {
             UI.printMessage("""
-                    Meddlems menu - Vælg funktion:
+                    Medlems menu - Vælg funktion:
                     1. Opret medlem
                     2. Slet medlem
                     3. rediger medlem
@@ -213,12 +213,12 @@ public class Controller {
         boolean running = true;
         while (running) {
             UI.printMessage("""
-                    Træning menu - Vælg funktion:
+                    Hold menu - Vælg funktion:
                     1. Tilføj medlem til hold
                     2. Fjern medlem fra hold
                     3. Rediger hold navn
                                                                           
-                    0. Tilbage til hoved menu
+                    0. Tilbage til træning menu
                     """);
             choice = UI.getValidInt(3);
             switch (choice) {
@@ -284,7 +284,7 @@ public class Controller {
         boolean running = true;
         while (running) {
             UI.printMessage("""
-                    Træning menu - Vælg funktion:
+                    Top 5 svømmer menu - Vælg funktion:
                     1. Butterfly(Konkurence)
                     2. Crawl(Konkurence)
                     3. Backcrawl(Konkurence)
@@ -294,7 +294,7 @@ public class Controller {
                     7. Backcrawl(Træning)
                     8. Brystsvømning(Træning)
                                         
-                    0. Tilbage til tidligere menu
+                    0. Tilbage til træning menu
                     """);
             choice = UI.getValidInt(8);
             switch (choice) {
@@ -317,13 +317,13 @@ public class Controller {
         boolean running = true;
         while (running) {
             UI.printMessage("""
-                    Træning menu - Vælg funktion:
+                    Registrering(Konkurence) menu - Vælg funktion:
                     1. Registrer butterfly(Konkurence)
                     2. Registrer crawl(Konkurence)
                     3. Registrer rygcrawl(Konkurence)
                     4. Registrer brystsvømning(Konkurence)
                                                        
-                    0. Tilbage til hoved menu
+                    0. Tilbage til træning menu
                     """);
             choice = UI.getInputInt();
             switch (choice) {
@@ -439,13 +439,13 @@ public class Controller {
         boolean running = true;
         while (running) {
             UI.printMessage("""
-                    Træning menu - Vælg funktion:
+                    Registrering(Træning) menu - Vælg funktion:
                     1. Registrer butterfly(Træning)
                     2. Registrer crawl(Træning)
                     3. Registrer rygcrawl(Træning)
                     4. Registrer brystsvømning(Træning)
                                                         
-                    0. Tilbage til hoved menu
+                    0. Tilbage til træning menu
                     """);
             choice = UI.getValidInt(4);
             switch (choice) {
@@ -548,14 +548,13 @@ public class Controller {
 
     private void teamDeletion() {
         //@Martin Anberg
-        teamList.listOfTeams();
+        UI.printMessage(teamList.listOfTeams());
         UI.printMessage("Skriv navn på holdet");
         String teamName = UI.getInputString();
-        UI.getInputString();
         UI.printMessage("Er du sikker på at du vil slette " + teamName + "? ja eller nej");
         String choice = UI.getInputString();
         if (choice.equals("ja") || choice.equals("Ja") || choice.equals("JA") || choice.equals("J") || choice.equals("j")) {
-            teamList.deleteTeam(teamName);
+            UI.printMessage(teamList.deleteTeam(teamName));
         } else {
             UI.printMessage(teamName + " bliver IKKE slette");
         }
@@ -565,7 +564,6 @@ public class Controller {
         //@Martin Anberg
         UI.printMessage("Skriv navn på holdet");
         String teamName = UI.getInputString();
-        UI.getInputString();
         UI.printMessage("Er det et juniorhold?  ja eller nej");
         String choice = UI.getInputString();
         boolean isJunior;
@@ -574,7 +572,7 @@ public class Controller {
         } else {
             isJunior = false;
         }
-        teamList.createTeam(teamName, isJunior, false);
+        teamList.createTeam(teamName, isJunior, true);
 
     }
 
@@ -595,7 +593,7 @@ public class Controller {
                     6. Medlems træner(hvis medlem er konkurencesvømmer)
                     7. Ændre aktiv/passiv status
                                                         
-                    0. Tilbage til hoved menu
+                    0. Tilbage til medlems menu
                     """);
             int choice = UI.getValidInt(7);
             switch (choice) {
