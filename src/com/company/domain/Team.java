@@ -29,12 +29,6 @@ public class Team {
         teamMemberlist.remove(member);
     }
 
-    public void showTeamMemberList(Member member) {
-        for (Member member1 : teamMemberlist) {
-            System.out.println(member1.getName() + " " + member1.getMiddleName() + " " + member1.getLastName());
-        }
-    }
-
     public ArrayList<Member> getTeamMemberList() {
         return teamMemberlist;
     }
