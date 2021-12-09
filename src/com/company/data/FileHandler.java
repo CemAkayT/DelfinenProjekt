@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class FileHandler {
 
     UserInterface UI = new UserInterface();
-    private File membersList = new File("src/com/company/data/memberlisttest.csv");
+    private File membersList = new File("src/com/company/data/memberlist.csv");
     private File teamsList = new File("src/com/company/data/teamlist.csv");
     private ArrayList<String> listOfMembers = new ArrayList<>();
     private ArrayList<String> listOfTeams = new ArrayList<>();
@@ -40,7 +40,7 @@ public class FileHandler {
         PrintStream ps;
         {
             try {
-                ps = new PrintStream(new FileOutputStream("src/com/company/data/memberlisttest.csv", false));
+                ps = new PrintStream(new FileOutputStream("src/com/company/data/memberlist.csv", false));
                 if (list == null) {
                     UI.printMessage("No members to save");
                 } else {
@@ -76,7 +76,7 @@ public class FileHandler {
         PrintStream ps;
         {
             try {
-                ps = new PrintStream(new FileOutputStream("src/com/company/data/teamlisttest.csv", false));
+                ps = new PrintStream(new FileOutputStream("src/com/company/data/teamlist.csv", false));
                 if (list == null) {
                     UI.printMessage("No teams to save");
                 } else {
@@ -121,7 +121,7 @@ public class FileHandler {
         PrintStream ps;
         {
             try {
-                String fileName = "src/com/company/data/" + discipline + "_" + type + "_test.csv";
+                String fileName = "src/com/company/data/" + discipline + "_" + type + ".csv";
                 ps = new PrintStream(new FileOutputStream(fileName, false));
                 if (list == null) {
                     UI.printMessage("No results to save");
@@ -134,6 +134,5 @@ public class FileHandler {
                 e.printStackTrace();
             }
         }
-        UI.printMessage(discipline + " results list saved");
     }
 }

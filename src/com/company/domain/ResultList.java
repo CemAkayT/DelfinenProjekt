@@ -293,7 +293,7 @@ public class ResultList {
     }
 
     //@Graham Heaven
-    public ArrayList<CompetitionResult> getTCompetitiveBestResultListBackcrawl() {
+    public ArrayList<CompetitionResult> getCompetitiveBestResultListBackcrawl() {
         return competitiveBestResultListBackcrawl;
     }
 
