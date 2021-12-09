@@ -118,6 +118,7 @@ public class Controller {
             }
         }
     }
+
     //@Martin Anberg
     private void runSearchMemberByID() {
         UI.getInputString();
@@ -210,7 +211,7 @@ public class Controller {
         //@Martin Anberg
         int choice;
         boolean running = true;
-        while(running) {
+        while (running) {
             UI.printMessage("""
                     Træning menu - Vælg funktion:
                     1. Tilføj medlem til hold
@@ -241,12 +242,12 @@ public class Controller {
         UI.printMessage("Er du sikker på at du vil tilføje medlemmet");
         String choice = UI.getInputString();
         if (choice.equals("ja") || choice.equals("Ja") || choice.equals("JA") || choice.equals("J") || choice.equals("j")) {
-            teamList.addMemberToTeam(teamName,member);
-            UI.printMessage("medlem blev tilføjet til "+teamName);
+            teamList.addMemberToTeam(teamName, member);
+            UI.printMessage("medlem blev tilføjet til " + teamName);
         } else {
             UI.printMessage("medlem blev ikke tilføjet");
 
-    }
+        }
     }
 
     private void removeMemberFromTeam() {
@@ -261,7 +262,7 @@ public class Controller {
         UI.printMessage("Er du sikker på at du vil fjerne medlemmet");
         String choice = UI.getInputString();
         if (choice.equals("ja") || choice.equals("Ja") || choice.equals("JA") || choice.equals("J") || choice.equals("j")) {
-            teamList.removeMemberFromTeam(teamName,member);
+            teamList.removeMemberFromTeam(teamName, member);
         } else {
             UI.printMessage("medlem blev fjernet tilføjet");
 
@@ -274,7 +275,7 @@ public class Controller {
         String teamname = UI.getInputString();
         UI.printMessage("Skriv holdets nye navn");
         String newname = UI.getInputString();
-        teamList.editTeamName(teamname,newname);
+        teamList.editTeamName(teamname, newname);
     }
 
     private void top5Swimmers() {
@@ -314,7 +315,7 @@ public class Controller {
         //@Martin Anberg
         int choice;
         boolean running = true;
-        while(running) {
+        while (running) {
             UI.printMessage("""
                     Træning menu - Vælg funktion:
                     1. Registrer butterfly(Konkurence)
@@ -568,9 +569,11 @@ public class Controller {
         UI.printMessage("Er det et juniorhold?  ja eller nej");
         String choice = UI.getInputString();
         boolean isJunior;
-        if(choice.equals("ja") || choice.equals("Ja") || choice.equals("JA") || choice.equals("J") || choice.equals("j")) {
+        if (choice.equals("ja") || choice.equals("Ja") || choice.equals("JA") || choice.equals("J") || choice.equals("j")) {
             isJunior = true;
-        } else{isJunior = false;}
+        } else {
+            isJunior = false;
+        }
         teamList.createTeam(teamName, isJunior, false);
 
     }

@@ -10,28 +10,31 @@ public class Team {
 
     public Team(String teamName, boolean isJunior, boolean isDeleteable) {
         this.teamName = teamName;
-        this.isJunior=isJunior;
-        this.isDeleteable=isDeleteable;
+        this.isJunior = isJunior;
+        this.isDeleteable = isDeleteable;
     }
 
     public Team(String teamName, boolean isJunior, boolean isDeleteable, ArrayList<Member> list) {
         this.teamName = teamName;
-        this.isJunior=isJunior;
-        this.isDeleteable=isDeleteable;
+        this.isJunior = isJunior;
+        this.isDeleteable = isDeleteable;
         this.teamMemberlist = list;
     }
 
-    public void addMember(Member member){
+    public void addMember(Member member) {
         teamMemberlist.add(member);
     }
-    public void removeMember(Member member){
+
+    public void removeMember(Member member) {
         teamMemberlist.remove(member);
     }
-    public void showTeamMemberList(Member member){
-        for(Member member1 : teamMemberlist){
-            System.out.println(member1.getName()+" "+member1.getMiddleName()+" "+member1.getLastName());
+
+    public void showTeamMemberList(Member member) {
+        for (Member member1 : teamMemberlist) {
+            System.out.println(member1.getName() + " " + member1.getMiddleName() + " " + member1.getLastName());
         }
     }
+
     public ArrayList<Member> getTeamMemberList() {
         return teamMemberlist;
     }
@@ -58,6 +61,6 @@ public class Team {
         for (Member m : teamMemberlist) {
             listOfIds.add(m.getIdNum());
         }
-        return  listOfIds;
+        return listOfIds;
     }
 }

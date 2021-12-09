@@ -5,9 +5,10 @@ import java.util.Objects;
 
 public class TeamList {
     private ArrayList<Team> teams = new ArrayList<>();
+
     //@Martin Anberg @Cem Akay @Tobias Winkel
-    public void createTeam(String name, boolean isJunior, boolean isDeleteable){
-        Team team = new Team(name,isJunior,isDeleteable);
+    public void createTeam(String name, boolean isJunior, boolean isDeleteable) {
+        Team team = new Team(name, isJunior, isDeleteable);
         teams.add(team);
     }
 
@@ -18,57 +19,62 @@ public class TeamList {
     }
 
     //@Martin Anberg
-    public String deleteTeam(String name){
+    public String deleteTeam(String name) {
         for (Team team : teams)
-        if(team.getTeamName().equals(name)){
-            if(team.isDeleteable()) {
-                teams.remove(team);
-                return team.getTeamName()+" er blevet slettet.";
-            }else{
-                return "Dette hold kan ikke slettes";
+            if (team.getTeamName().equals(name)) {
+                if (team.isDeleteable()) {
+                    teams.remove(team);
+                    return team.getTeamName() + " er blevet slettet.";
+                } else {
+                    return "Dette hold kan ikke slettes";
+                }
             }
-        }
         return null;
     }
+
     //@Martin Anberg
     public String listOfTeams() {
-        String s ="";
+        String s = "";
         for (Team team : teams) {
-            s = s + "TEAM NAVN: " + team.getTeamName()+"\n";
+            s = s + "TEAM NAVN: " + team.getTeamName() + "\n";
         }
         return s;
     }
+
     //@Martin Anberg
-    public void editTeamName(String name,String newname){
+    public void editTeamName(String name, String newname) {
         for (Team team : teams) {
-            if(team.getTeamName().equals(name))
-            team.setTeamName(newname);
+            if (team.getTeamName().equals(name))
+                team.setTeamName(newname);
         }
 
     }
+
     //@Martin Anberg
-    public void addMemberToTeam(String teamName, Member member){
+    public void addMemberToTeam(String teamName, Member member) {
         for (Team team : teams) {
-            if(team.getTeamName().equals(teamName)) {
+            if (team.getTeamName().equals(teamName)) {
                 team.addMember(member);
             }
         }
 
     }
+
     //@Martin Anberg
-    public void removeMemberFromTeam(String teamName,Member member){
+    public void removeMemberFromTeam(String teamName, Member member) {
         for (Team team : teams) {
-            if(team.getTeamName().equals(teamName))
+            if (team.getTeamName().equals(teamName))
                 team.removeMember(member);
         }
     }
+
     //@Martin Anberg
-    public String seeMembersInTeam(String teamName){
+    public String seeMembersInTeam(String teamName) {
         String s = "";
         for (Team team : teams) {
-            if(team.getTeamName().equals(teamName)){
-                for(Member member : team.getTeamMemberList()){
-                    s = s + "   "+member.getName()+" "+member.getMiddleName()+" "+member.getLastName()+" "+member.getIdNum()+"\n";
+            if (team.getTeamName().equals(teamName)) {
+                for (Member member : team.getTeamMemberList()) {
+                    s = s + "   " + member.getName() + " " + member.getMiddleName() + " " + member.getLastName() + " " + member.getIdNum() + "\n";
                 }
             }
         }

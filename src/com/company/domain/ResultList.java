@@ -47,14 +47,16 @@ public class ResultList {
             competitiveBestResultListBreaststroke = createCompResult(resultTime, idNum, resultDate, tournament, competitiveBestResultListBreaststroke);
         }
     }
+
     //@Graham Heaven
     public ArrayList<CompetitionResult> createCompResultFromFile(double resultTime, String idNum, LocalDate resultDate, String comment, ArrayList<CompetitionResult> competitionResultList) {
         CompetitionResult competitionResult = new CompetitionResult(resultTime, idNum, resultDate, comment);
         competitionResultList.add(competitionResult);
         return competitionResultList;
     }
+
     //Create Competitive Result//@Martin Anberg
-    public ArrayList<CompetitionResult> createCompResult(double resultTime, String idNum, LocalDate resultDate,String tournament, ArrayList<CompetitionResult> competiveResultList) {
+    public ArrayList<CompetitionResult> createCompResult(double resultTime, String idNum, LocalDate resultDate, String tournament, ArrayList<CompetitionResult> competiveResultList) {
         boolean containsResult = false;
         for (CompetitionResult competitionResult : competiveResultList) {
             if ((competitionResult.getIdNum().equals(idNum))) {
@@ -63,7 +65,7 @@ public class ResultList {
                 containsResult = true;
             }
         }
-        if(!containsResult) {
+        if (!containsResult) {
             CompetitionResult competitionResult = new CompetitionResult(resultTime, idNum, resultDate, tournament);
             competiveResultList.add(competitionResult);
             System.out.println("YO RETARD WTF");
@@ -111,7 +113,8 @@ public class ResultList {
         trainingResultList.add(trainingResult);
         return trainingResultList;
     }
-//Create Training Result//@Martin Anberg
+
+    //Create Training Result//@Martin Anberg
     public ArrayList<TrainingResult> createTrainResult(double resultTime, String idNum, LocalDate resultDate, String comment, ArrayList<TrainingResult> trainingResultList) {
         boolean containsResult = false;
         for (TrainingResult trainingResult : trainingResultList) {
@@ -121,8 +124,8 @@ public class ResultList {
                 containsResult = true;
             }
         }
-        if(!containsResult) {
-            TrainingResult trainingResult = new TrainingResult(resultTime, idNum, resultDate,comment);
+        if (!containsResult) {
+            TrainingResult trainingResult = new TrainingResult(resultTime, idNum, resultDate, comment);
             trainingResultList.add(trainingResult);
         }
         return trainingResultList;
@@ -145,18 +148,21 @@ public class ResultList {
         return top5CompResults(competitiveBestResultListButterfly);
     }
 
-    
-    public String top5CompResults(ArrayList<CompetitionResult> competitionBestResultList){
-        String s ="";
+
+    public String top5CompResults(ArrayList<CompetitionResult> competitionBestResultList) {
+        String s = "";
         int i = 1;
         Collections.sort(competitionBestResultList);
-        for (CompetitionResult competitionResult : competitionBestResultList){
-            s = s+i+". BEDSTE TID ER   "+competitionResult.getResultTime()+"\nAF   "+competitionResult.getIdNum()+"\n";
+        for (CompetitionResult competitionResult : competitionBestResultList) {
+            s = s + i + ". BEDSTE TID ER   " + competitionResult.getResultTime() + "\nAF   " + competitionResult.getIdNum() + "\n";
             i++;
-            if (i == 5){return s;}
+            if (i == 5) {
+                return s;
+            }
         }
         return s;
     }
+
     //TOP 5 TRAINING
     public String showTop5TrainResultsButterfly() {
         return top5TrainResults(trainingBestResultListButterfly);
@@ -174,14 +180,16 @@ public class ResultList {
         return top5TrainResults(trainingBestResultListBreaststroke);
     }
 
-    public String top5TrainResults(ArrayList<TrainingResult> trainingBestResultList){
-        String s ="";
+    public String top5TrainResults(ArrayList<TrainingResult> trainingBestResultList) {
+        String s = "";
         int i = 1;
         Collections.sort(trainingBestResultList);
-        for (TrainingResult trainingResult : trainingBestResultList){
-            s = s+i+". BEDSTE TID ER   "+trainingResult.getResultTime()+"\nAF   "+trainingResult.getIdNum()+"\n";
+        for (TrainingResult trainingResult : trainingBestResultList) {
+            s = s + i + ". BEDSTE TID ER   " + trainingResult.getResultTime() + "\nAF   " + trainingResult.getIdNum() + "\n";
             i++;
-            if (i == 5){return s;}
+            if (i == 5) {
+                return s;
+            }
         }
         return s;
     }
