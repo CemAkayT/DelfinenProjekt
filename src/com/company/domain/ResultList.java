@@ -166,7 +166,7 @@ public class ResultList {
         return Top5TrainResults(trainingBestResultListBreaststroke);
     }
 
-    public String Top5TrainResults(ArrayList<TrainingResult> trainingResultList){
+    public String Top5TrainResults(ArrayList<TrainingResult> trainingBestResultList){
         String s ="";
         int i = 1;
         Collections.sort(trainingBestResultList);
