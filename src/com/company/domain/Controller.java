@@ -4,6 +4,7 @@ import com.company.UI.UserInterface;
 import com.company.data.FileHandler;
 
 import java.time.LocalDate;
+import java.time.Year;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -117,7 +118,7 @@ public class Controller {
             }
         }
     }
-
+    //@Martin Anberg
     private void runSearchMemberByID() {
         UI.getInputString();
         UI.printMessage("Skriv ID");
@@ -262,7 +263,7 @@ public class Controller {
         if (choice.equals("ja") || choice.equals("Ja") || choice.equals("JA") || choice.equals("J") || choice.equals("j")) {
             teamList.removeMemberFromTeam(teamName,member);
         } else {
-            UI.printMessage("medlem blev ikke tilføjet");
+            UI.printMessage("medlem blev fjernet tilføjet");
 
         }
     }
@@ -271,7 +272,7 @@ public class Controller {
         //@Martin Anberg
         UI.printMessage("Skriv navnet på holdet du vil ændre");
         String teamname = UI.getInputString();
-        UI.printMessage("Skriv holdet nye navn");
+        UI.printMessage("Skriv holdets nye navn");
         String newname = UI.getInputString();
         teamList.editTeamName(teamname,newname);
     }
@@ -348,10 +349,13 @@ public class Controller {
             UI.printMessage("Skriv stævne");
             String tournament = UI.getInputString();
             UI.printMessage("Skriv dato år/måned/dag");
-            LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
+            int year = UI.getValidYear();
+            int month = UI.getValidMonth();
+            int day = UI.getValidDay(month);
+            LocalDate resultDate = LocalDate.of(year, month, day);
             resultList.runCreateCompResultButterfly(false, time, idNum, resultDate, tournament);
         } else {
-            UI.printMessage("tiden blevet ikke ændret");
+            UI.printMessage("tiden blev ikke ændret");
         }
     }
 
@@ -361,7 +365,7 @@ public class Controller {
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
         UI.printMessage("Svømmerens nuværende bedste tid er: " + resultList.memberCompetitiveCrawl(idNum));
-        UI.printMessage("Vil du ændre den?");
+        UI.printMessage("Vil du ændre den? ja eller nej");
         String choice = UI.getInputString();
         if (choice.equals("ja") || choice.equals("Ja") || choice.equals("JA") || choice.equals("J") || choice.equals("j")) {
             UI.printMessage("Skriv ny tid");
@@ -369,10 +373,13 @@ public class Controller {
             UI.printMessage("Skriv stævne");
             String tournament = UI.getInputString();
             UI.printMessage("Skriv dato år/måned/dag");
-            LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
+            int year = UI.getValidYear();
+            int month = UI.getValidMonth();
+            int day = UI.getValidDay(month);
+            LocalDate resultDate = LocalDate.of(year, month, day);
             resultList.runCreateCompResultCrawl(false, time, idNum, resultDate, tournament);
         } else {
-            UI.printMessage("tiden blevet ikke ændret");
+            UI.printMessage("tiden blev ikke ændret");
         }
     }
 
@@ -382,7 +389,7 @@ public class Controller {
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
         UI.printMessage("Svømmerens nuværende bedste tid er: " + resultList.memberCompetitiveBackcrawl(idNum));
-        UI.printMessage("Vil du ændre den?");
+        UI.printMessage("Vil du ændre den? ja eller nej");
         String choice = UI.getInputString();
         if (choice.equals("ja") || choice.equals("Ja") || choice.equals("JA") || choice.equals("J") || choice.equals("j")) {
             UI.printMessage("Skriv ny tid");
@@ -390,10 +397,13 @@ public class Controller {
             UI.printMessage("Skriv stævne");
             String tournament = UI.getInputString();
             UI.printMessage("Skriv dato år/måned/dag");
-            LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
+            int year = UI.getValidYear();
+            int month = UI.getValidMonth();
+            int day = UI.getValidDay(month);
+            LocalDate resultDate = LocalDate.of(year, month, day);
             resultList.runCreateCompResultBackcrawl(false, time, idNum, resultDate, tournament);
         } else {
-            UI.printMessage("tiden blevet ikke ændret");
+            UI.printMessage("tiden blev ikke ændret");
         }
     }
 
@@ -403,7 +413,7 @@ public class Controller {
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
         UI.printMessage("Svømmerens nuværende bedste tid er: " + resultList.memberCompetitiveBreaststroke(idNum));
-        UI.printMessage("Vil du ændre den?");
+        UI.printMessage("Vil du ændre den? ja eller nej");
         String choice = UI.getInputString();
         if (choice.equals("ja") || choice.equals("Ja") || choice.equals("JA") || choice.equals("J") || choice.equals("j")) {
             UI.printMessage("Skriv ny tid");
@@ -411,10 +421,13 @@ public class Controller {
             UI.printMessage("Skriv stævne");
             String tournament = UI.getInputString();
             UI.printMessage("Skriv dato år/måned/dag");
-            LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
+            int year = UI.getValidYear();
+            int month = UI.getValidMonth();
+            int day = UI.getValidDay(month);
+            LocalDate resultDate = LocalDate.of(year, month, day);
             resultList.runCreateCompResultBreaststroke(false, time, idNum, resultDate, tournament);
         } else {
-            UI.printMessage("tiden blevet ikke ændret");
+            UI.printMessage("tiden blev ikke ændret");
         }
     }
 
@@ -450,16 +463,19 @@ public class Controller {
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
         UI.printMessage("Svømmerens nuværende bedste tid er: " + resultList.memberTrainingButterfly(idNum));
-        UI.printMessage("Vil du ændre den?");
+        UI.printMessage("Vil du ændre den? ja eller nej");
         String choice = UI.getInputString();
         if (choice.equals("ja") || choice.equals("Ja") || choice.equals("JA") || choice.equals("J") || choice.equals("j")) {
             UI.printMessage("Skriv ny tid");
             double time = UI.getInputDouble();
             UI.printMessage("Skriv dato år/måned/dag");
-            LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
+            int year = UI.getValidYear();
+            int month = UI.getValidMonth();
+            int day = UI.getValidDay(month);
+            LocalDate resultDate = LocalDate.of(year, month, day);
             resultList.runCreateTrainResultButterfly(false, time, idNum, resultDate, "");
         } else {
-            UI.printMessage("tiden blevet ikke ændret");
+            UI.printMessage("tiden blev ikke ændret");
         }
     }
 
@@ -469,16 +485,19 @@ public class Controller {
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
         UI.printMessage("Svømmerens nuværende bedste tid er: " + resultList.memberTrainingCrawl(idNum));
-        UI.printMessage("Vil du ændre den?");
+        UI.printMessage("Vil du ændre den? ja eller nej");
         String choice = UI.getInputString();
         if (choice.equals("ja") || choice.equals("Ja") || choice.equals("JA") || choice.equals("J") || choice.equals("j")) {
             UI.printMessage("Skriv ny tid");
             double time = UI.getInputDouble();
             UI.printMessage("Skriv dato år/måned/dag");
-            LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
+            int year = UI.getValidYear();
+            int month = UI.getValidMonth();
+            int day = UI.getValidDay(month);
+            LocalDate resultDate = LocalDate.of(year, month, day);
             resultList.runCreateTrainResultCrawl(false, time, idNum, resultDate, "");
         } else {
-            UI.printMessage("tiden blevet ikke ændret");
+            UI.printMessage("tiden blev ikke ændret");
         }
     }
 
@@ -488,16 +507,19 @@ public class Controller {
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
         UI.printMessage("Svømmerens nuværende bedste tid er: " + resultList.memberTrainingBackcrawl(idNum));
-        UI.printMessage("Vil du ændre den?");
+        UI.printMessage("Vil du ændre den? ja eller nej");
         String choice = UI.getInputString();
         if (choice.equals("ja") || choice.equals("Ja") || choice.equals("JA") || choice.equals("J") || choice.equals("j")) {
             UI.printMessage("Skriv ny tid");
             double time = UI.getInputDouble();
             UI.printMessage("Skriv dato år/måned/dag");
-            LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
+            int year = UI.getValidYear();
+            int month = UI.getValidMonth();
+            int day = UI.getValidDay(month);
+            LocalDate resultDate = LocalDate.of(year, month, day);
             resultList.runCreateTrainResultBackcrawl(false, time, idNum, resultDate, "");
         } else {
-            UI.printMessage("tiden blevet ikke ændret");
+            UI.printMessage("tiden blev ikke ændret");
         }
     }
 
@@ -507,25 +529,29 @@ public class Controller {
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
         UI.printMessage("Svømmerens nuværende bedste tid er: " + resultList.memberTrainingBreaststroke(idNum));
-        UI.printMessage("Vil du ændre den?");
+        UI.printMessage("Vil du ændre den? ja eller nej");
         String choice = UI.getInputString();
         if (choice.equals("ja") || choice.equals("Ja") || choice.equals("JA") || choice.equals("J") || choice.equals("j")) {
             UI.printMessage("Skriv ny tid");
             double time = UI.getInputDouble();
             UI.printMessage("Skriv dato år/måned/dag");
-            LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
+            int year = UI.getValidYear();
+            int month = UI.getValidMonth();
+            int day = UI.getValidDay(month);
+            LocalDate resultDate = LocalDate.of(year, month, day);
             resultList.runCreateTrainResultBreaststroke(false, time, idNum, resultDate, "");
         } else {
-            UI.printMessage("tiden blevet ikke ændret");
+            UI.printMessage("tiden blev ikke ændret");
         }
     }
 
     private void teamDeletion() {
+        //@Martin Anberg
         teamList.listOfTeams();
         UI.printMessage("Skriv navn på holdet");
         String teamName = UI.getInputString();
         UI.getInputString();
-        UI.printMessage("Er du sikker på at du vil slette " + teamName + "?");
+        UI.printMessage("Er du sikker på at du vil slette " + teamName + "? ja eller nej");
         String choice = UI.getInputString();
         if (choice.equals("ja") || choice.equals("Ja") || choice.equals("JA") || choice.equals("J") || choice.equals("j")) {
             teamList.deleteTeam(teamName);
@@ -535,10 +561,11 @@ public class Controller {
     }
 
     private void teamCreation() {
+        //@Martin Anberg
         UI.printMessage("Skriv navn på holdet");
         String teamName = UI.getInputString();
         UI.getInputString();
-        UI.printMessage("Er det et juniorhold?");
+        UI.printMessage("Er det et juniorhold?  ja eller nej");
         String choice = UI.getInputString();
         boolean isJunior;
         if(choice.equals("ja") || choice.equals("Ja") || choice.equals("JA") || choice.equals("J") || choice.equals("j")) {
@@ -549,7 +576,7 @@ public class Controller {
     }
 
     private void memberEditing() {
-        //@Martin Anberg
+        //@Martin Anberg @Cem Akay @Tobias Winkel
         UI.printMessage(memberList.showMembers());
         UI.printMessage("Skriv medlemmets ID for at redigere medlem: ");
         String idNumEdit = UI.getInputString();
@@ -620,7 +647,7 @@ public class Controller {
     }
 
     private void memberDeletion() {
-        //@Martin Anberg
+        //@Martin Anberg @Cem Akay @Tobias Winkel
         UI.printMessage(memberList.showMembers());
         UI.printMessage("Skriv medlemmets ID for at slette medlem");
         String idNumDelete = UI.getInputString();
@@ -630,7 +657,7 @@ public class Controller {
     }
 
     private void memberCreation() {
-        //@Martin Anberg
+        //@Martin Anberg @Cem Akay @Tobias Winkel
         UI.printMessage("Skriv fornavn: ");
         String name = UI.getInputString();
         UI.getInputString();
@@ -641,9 +668,12 @@ public class Controller {
         String idNum = UUID.randomUUID().toString();
         UI.printMessage("\n" + "Medlemmets ID er: " + idNum + "\n");
         UI.printMessage("Skriv fødselsdato år/måned/dag: ");
-        LocalDate dateOfBirth = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
+        int year = UI.getValidYear();
+        int month = UI.getValidMonth();
+        int day = UI.getValidDay(month);
+        LocalDate dateOfBirth = LocalDate.of(year, month, day);
         UI.printMessage("Medlemmets fødselsdato: " + dateOfBirth + "\n");
-        UI.printMessage("Vil medlem deltage i konkurrencer? ");
+        UI.printMessage("Vil medlem deltage i konkurrencer?  ja eller nej");
         String choice = UI.getInputString();
         if (choice.equals("ja") || choice.equals("Ja") || choice.equals("JA")) {
             UI.printMessage("Hvem bliver medlemmets træner? ");

@@ -60,11 +60,4 @@ public class Team {
         }
         return  listOfIds;
     }
-
-    enum Discipline{
-        BUTTERFLY,
-        CRAWL,
-        BACKCRAWL,
-        BREASTSTROKE;
-    }
 }

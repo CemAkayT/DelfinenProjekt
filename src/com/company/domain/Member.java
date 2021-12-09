@@ -19,6 +19,7 @@ public class Member {
     private boolean isJunior;
     private boolean active = true;
 
+    //@Martin Anberg @Cem Akay @Tobias Winkel
     public Member(String name,String middleName, String lastName, String idNum, LocalDate dateOfBirth, LocalDate dateOfMembership, boolean isCompetitive, String trainerName) {
         this.name = name;
         this.middleName = middleName;

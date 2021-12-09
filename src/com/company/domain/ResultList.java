@@ -124,30 +124,29 @@ public class ResultList {
         if(!containsResult) {
             TrainingResult trainingResult = new TrainingResult(resultTime, idNum, resultDate,comment);
             trainingResultList.add(trainingResult);
-            System.out.println("YO RETARD WTF");
         }
         return trainingResultList;
     }
     //TOP 5 COMPETITIVE //@Martin Anberg
 
     public String showTop5CompResultsButterfly() {
-        return Top5CompResults(competitiveBestResultListButterfly);
+        return top5CompResults(competitiveBestResultListButterfly);
     }
 
     public String showTop5CompResultsCrawl() {
-        return Top5CompResults(competitiveBestResultListButterfly);
+        return top5CompResults(competitiveBestResultListButterfly);
     }
 
     public String showTop5CompResultsBackcrawl() {
-        return Top5CompResults(competitiveBestResultListButterfly);
+        return top5CompResults(competitiveBestResultListButterfly);
     }
 
     public String showTop5CompResultsBreaststroke() {
-        return Top5CompResults(competitiveBestResultListButterfly);
+        return top5CompResults(competitiveBestResultListButterfly);
     }
 
     
-    public String Top5CompResults(ArrayList<CompetitionResult> competitionBestResultList){
+    public String top5CompResults(ArrayList<CompetitionResult> competitionBestResultList){
         String s ="";
         int i = 1;
         Collections.sort(competitionBestResultList);
@@ -160,22 +159,22 @@ public class ResultList {
     }
     //TOP 5 TRAINING
     public String showTop5TrainResultsButterfly() {
-        return Top5TrainResults(trainingBestResultListButterfly);
+        return top5TrainResults(trainingBestResultListButterfly);
     }
 
     public String showTop5TrainResultsCrawl() {
-        return Top5TrainResults(trainingBestResultListCrawl);
+        return top5TrainResults(trainingBestResultListCrawl);
     }
 
     public String showTop5TrainResultsBackcrawl() {
-        return Top5TrainResults(trainingBestResultListBackcrawl);
+        return top5TrainResults(trainingBestResultListBackcrawl);
     }
 
     public String showTop5TrainResultsBreaststroke() {
-        return Top5TrainResults(trainingBestResultListBreaststroke);
+        return top5TrainResults(trainingBestResultListBreaststroke);
     }
 
-    public String Top5TrainResults(ArrayList<TrainingResult> trainingBestResultList){
+    public String top5TrainResults(ArrayList<TrainingResult> trainingBestResultList){
         String s ="";
         int i = 1;
         Collections.sort(trainingBestResultList);
