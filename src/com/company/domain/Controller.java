@@ -234,6 +234,7 @@ public class Controller {
         UI.printMessage("Skriv navnet på holdet du vil tilføje medlem til");
         String teamName = UI.getInputString();
         UI.printMessage("Skriv ID på medlem du vil tilføje");
+        UI.printMessage(memberList.competitiveListShort());
         String idNum = UI.getInputString();
         Member member = memberList.getMemberFromUUID(idNum);
         UI.printMessage("Er du sikker på at du vil tilføje medlemmet");
