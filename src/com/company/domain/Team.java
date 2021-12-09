@@ -4,20 +4,20 @@ import java.util.ArrayList;
 
 public class Team {
     private String teamName;
-    private boolean isJunior;
+    private final boolean isJunior;
     private ArrayList<Member> teamMemberlist = new ArrayList<>();
-    private boolean isDeleteable;
+    private final boolean isDeletable;
 
-    public Team(String teamName, boolean isJunior, boolean isDeleteable) {
+    public Team(String teamName, boolean isJunior, boolean isDeletable) {
         this.teamName = teamName;
         this.isJunior = isJunior;
-        this.isDeleteable = isDeleteable;
+        this.isDeletable = isDeletable;
     }
 
-    public Team(String teamName, boolean isJunior, boolean isDeleteable, ArrayList<Member> list) {
+    public Team(String teamName, boolean isJunior, boolean isDeletable, ArrayList<Member> list) {
         this.teamName = teamName;
         this.isJunior = isJunior;
-        this.isDeleteable = isDeleteable;
+        this.isDeletable = isDeletable;
         this.teamMemberlist = list;
     }
 
@@ -27,12 +27,6 @@ public class Team {
 
     public void removeMember(Member member) {
         teamMemberlist.remove(member);
-    }
-
-    public void showTeamMemberList(Member member) {
-        for (Member member1 : teamMemberlist) {
-            System.out.println(member1.getName() + " " + member1.getMiddleName() + " " + member1.getLastName());
-        }
     }
 
     public ArrayList<Member> getTeamMemberList() {
@@ -47,8 +41,8 @@ public class Team {
         return teamName;
     }
 
-    public boolean isDeleteable() {
-        return isDeleteable;
+    public boolean isDeletable() {
+        return isDeletable;
     }
 
     public boolean isJunior() {
