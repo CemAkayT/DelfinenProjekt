@@ -156,10 +156,11 @@ public class Controller {
                     2. Slet hold
                     3. Redigere hold
                     4. Se liste af hold
-                    5. Registrering(Træning)
-                    6. Registrering(Konkurence)
-                    7. TOP 5 svømmere
-                    8. Søg efter medlem via ID
+                    5. Se medlemmer på hold
+                    6. Registrering(Træning)
+                    7. Registrering(Konkurence)
+                    8. TOP 5 svømmere
+                    9. Søg efter medlem via ID
                                         
                     0. Tilbage til hoved menu
                     """);
@@ -170,12 +171,19 @@ public class Controller {
                 case 2 -> teamDeletion();
                 case 3 -> teamEditing();
                 case 4 -> showListOfTeams();
-                case 5 -> registerTraining();
-                case 6 -> registerCompetitive();
-                case 7 -> top5Swimmers();
-                case 8 -> runSearchMemberByID();
+                case 5 -> showMemberOfATeam();
+                case 6 -> registerTraining();
+                case 7 -> registerCompetitive();
+                case 8 -> top5Swimmers();
+                case 9 -> runSearchMemberByID();
             }
         }
+    }
+
+    private void showMemberOfATeam() {
+        UI.printMessage("Skriv navn på hold");
+        String teamName = UI.getInputString();
+        UI.printMessage(teamList.seeMembersInTeam(teamName));
     }
 
     private void showListOfTeams() {
@@ -205,6 +213,7 @@ public class Controller {
     }
 
     private void addMemberToTeam() {
+        UI.printMessage(teamList.listOfTeams());
         UI.printMessage("Skriv navnet på holdet du vil tilføje medlem til");
         String teamName = UI.getInputString();
         UI.printMessage("Skriv ID på medlem du vil tilføje");
@@ -221,8 +230,10 @@ public class Controller {
     }
 
     private void removeMemberFromTeam() {
+        UI.printMessage(teamList.listOfTeams());
         UI.printMessage("Skriv navnet på holdet du vil fjerne medlem fra");
         String teamName = UI.getInputString();
+        UI.printMessage(teamList.seeMembersInTeam(teamName));
         UI.printMessage("Skriv ID på medlem du vil fjerne");
         String idNum = UI.getInputString();
         Member member = memberList.getMemberFromUUID(idNum);

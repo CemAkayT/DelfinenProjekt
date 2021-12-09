@@ -32,6 +32,9 @@ public class Team {
             System.out.println(member1.getName()+" "+member1.getMiddleName()+" "+member1.getLastName());
         }
     }
+    public ArrayList<Member> getTeamMemberList() {
+        return teamMemberlist;
+    }
 
     public void setTeamName(String teamName) {
         this.teamName = teamName;

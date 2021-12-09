@@ -61,12 +61,16 @@ public class TeamList {
                 team.removeMember(member);
         }
     }
-    public void seeMembersInTeam(String teamName){
+    public String seeMembersInTeam(String teamName){
+        String s = "";
         for (Team team : teams) {
             if(team.getTeamName().equals(teamName)){
-
+                for(Member member : team.getTeamMemberList()){
+                    s = s + member.getName()+" "+member.getMiddleName()+" "+member.getLastName()+" "+member.getIdNum();
+                }
             }
         }
+        return s;
     }
 
     // @Graham Heaven
