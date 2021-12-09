@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class Team {
     private String teamName;
-    private boolean isJunior;
+    private final boolean isJunior;
     private ArrayList<Member> teamMemberlist = new ArrayList<>();
-    private boolean isDeleteable;
+    private final boolean isDeleteable;
 
     public Team(String teamName, boolean isJunior, boolean isDeleteable) {
         this.teamName = teamName;
@@ -27,12 +27,6 @@ public class Team {
 
     public void removeMember(Member member) {
         teamMemberlist.remove(member);
-    }
-
-    public void showTeamMemberList(Member member) {
-        for (Member member1 : teamMemberlist) {
-            System.out.println(member1.getName() + " " + member1.getMiddleName() + " " + member1.getLastName());
-        }
     }
 
     public ArrayList<Member> getTeamMemberList() {
