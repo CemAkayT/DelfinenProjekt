@@ -20,7 +20,7 @@ public class Member {
     private boolean active = true;
 
     //@Martin Anberg @Cem Akay @Tobias Winkel
-    public Member(String name,String middleName, String lastName, String idNum, LocalDate dateOfBirth, LocalDate dateOfMembership, boolean isCompetitive, String trainerName) {
+    public Member(String name, String middleName, String lastName, String idNum, LocalDate dateOfBirth, LocalDate dateOfMembership, boolean isCompetitive, String trainerName) {
         this.name = name;
         this.middleName = middleName;
         this.lastName = lastName;
@@ -35,10 +35,12 @@ public class Member {
     public String getName() {
         return name;
     }
+
     public String getMiddleName() {
         return middleName;
     }
-    public String getLastName(){
+
+    public String getLastName() {
         return lastName;
     }
 
@@ -61,15 +63,16 @@ public class Member {
     public double getMembershipFee() {
         return membershipFee;
     }
-    public String getMembershipStatus(){
+
+    public String getMembershipStatus() {
         Period currentAge = Period.between(dateOfBirth, LocalDate.now());
-        if(currentAge.getYears() >= 18 && currentAge.getYears() < 60){
+        if (currentAge.getYears() >= 18 && currentAge.getYears() < 60) {
             return "senior";
         }
-        if(currentAge.getYears() > 60){
+        if (currentAge.getYears() > 60) {
             return "senior";
         }
-        if(currentAge.getYears() < 18){
+        if (currentAge.getYears() < 18) {
             return "junior";
         }
         return "";
@@ -86,11 +89,12 @@ public class Member {
     public void setName(String name) {
         this.name = name;
     }
+
     public void setMiddleName(String middleName) {
         this.middleName = middleName;
     }
 
-    public void setLastName(String newLastName){
+    public void setLastName(String newLastName) {
         this.lastName = newLastName;
     }
 
@@ -116,22 +120,22 @@ public class Member {
 
     public void setMembership() {
         Period currentAge = Period.between(dateOfBirth, LocalDate.now());
-        if(currentAge.getYears() >= 18 && currentAge.getYears() < 60){
+        if (currentAge.getYears() >= 18 && currentAge.getYears() < 60) {
             this.membershipFee = 1600;
             isJunior = false;
 
         }
-        if(currentAge.getYears() > 60){
-            this.membershipFee = 1600*0.75;
+        if (currentAge.getYears() > 60) {
+            this.membershipFee = 1600 * 0.75;
             isJunior = false;
 
         }
-        if(currentAge.getYears() < 18){
+        if (currentAge.getYears() < 18) {
             this.membershipFee = 1000;
             isJunior = true;
 
         }
-        if(!active){
+        if (!active) {
             this.membershipFee = 500;
         }
     }

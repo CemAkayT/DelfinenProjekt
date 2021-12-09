@@ -49,6 +49,7 @@ public class UserInterface {
         sc.nextLine();
         return choice;
     }
+
     public int getValidYear() {
         int choice;
         while (true) {
@@ -67,6 +68,7 @@ public class UserInterface {
         sc.nextLine();
         return choice;
     }
+
     public int getValidMonth() {
         int choice;
         while (true) {
@@ -85,10 +87,11 @@ public class UserInterface {
         sc.nextLine();
         return choice;
     }
+
     public int getValidDay(int month) {
         int choice;
         while (true) {
-            if(month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
+            if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
                 try {
                     choice = sc.nextInt();
                     if (choice <= 31 && choice >= 1) {
@@ -101,7 +104,7 @@ public class UserInterface {
                     sc.nextLine();
                 }
             }
-            if(month == 4 || month == 6 || month == 9 || month == 11) {
+            if (month == 4 || month == 6 || month == 9 || month == 11) {
                 try {
                     choice = sc.nextInt();
                     if (choice <= 30 && choice >= 1) {
@@ -114,7 +117,7 @@ public class UserInterface {
                     sc.nextLine();
                 }
             }
-            if(month == 2) {
+            if (month == 2) {
                 try {
                     choice = sc.nextInt();
                     if (choice <= 29 && choice >= 1) {
