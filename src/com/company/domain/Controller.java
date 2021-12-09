@@ -181,7 +181,9 @@ public class Controller {
     }
 
     private void showMemberOfATeam() {
+        //@Martin Anberg
         UI.printMessage("Skriv navn på hold");
+        UI.printMessage(teamList.listOfTeams());
         String teamName = UI.getInputString();
         UI.printMessage(teamList.seeMembersInTeam(teamName));
     }
@@ -191,6 +193,7 @@ public class Controller {
     }
 
     private void teamEditing() {
+        //@Martin Anberg
         int choice;
         boolean running = true;
         while(running) {
@@ -213,6 +216,7 @@ public class Controller {
     }
 
     private void addMemberToTeam() {
+        //@Martin Anberg
         UI.printMessage(teamList.listOfTeams());
         UI.printMessage("Skriv navnet på holdet du vil tilføje medlem til");
         String teamName = UI.getInputString();
@@ -221,8 +225,9 @@ public class Controller {
         Member member = memberList.getMemberFromUUID(idNum);
         UI.printMessage("Er du sikker på at du vil tilføje medlemmet");
         String choice = UI.getInputString();
-        if (choice.equals("ja") || choice.equals("Ja") || choice.equals("JA")) {
+        if (choice.equals("ja") || choice.equals("Ja") || choice.equals("JA") || choice.equals("J") || choice.equals("j")) {
             teamList.addMemberToTeam(teamName,member);
+            UI.printMessage("medlem blev tilføjet til "+teamName);
         } else {
             UI.printMessage("medlem blev ikke tilføjet");
 
@@ -230,6 +235,7 @@ public class Controller {
     }
 
     private void removeMemberFromTeam() {
+        //@Martin Anberg
         UI.printMessage(teamList.listOfTeams());
         UI.printMessage("Skriv navnet på holdet du vil fjerne medlem fra");
         String teamName = UI.getInputString();
@@ -239,8 +245,8 @@ public class Controller {
         Member member = memberList.getMemberFromUUID(idNum);
         UI.printMessage("Er du sikker på at du vil fjerne medlemmet");
         String choice = UI.getInputString();
-        if (choice.equals("ja") || choice.equals("Ja") || choice.equals("JA")) {
-            teamList.removeMemberToTeam(teamName,member);
+        if (choice.equals("ja") || choice.equals("Ja") || choice.equals("JA") || choice.equals("J") || choice.equals("j")) {
+            teamList.removeMemberFromTeam(teamName,member);
         } else {
             UI.printMessage("medlem blev ikke tilføjet");
 
@@ -248,6 +254,7 @@ public class Controller {
     }
 
     private void editTeamName() {
+        //@Martin Anberg
         UI.printMessage("Skriv navnet på holdet du vil ændre");
         String teamname = UI.getInputString();
         UI.printMessage("Skriv holdet nye navn");
@@ -289,6 +296,7 @@ public class Controller {
     }
 
     private void registerCompetitive() {
+        //@Martin Anberg
         int choice;
         boolean running = true;
         while(running) {
@@ -320,7 +328,7 @@ public class Controller {
         UI.printMessage("Svømmerens nuværende bedste tid er: " + resultList.memberCompetitiveButterfly(idNum));
         UI.printMessage("Vil du ændre den? skriv ja eller nej");
         String choice = UI.getInputString();
-        if (choice.equals("ja") || choice.equals("Ja") || choice.equals("JA")) {
+        if (choice.equals("ja") || choice.equals("Ja") || choice.equals("JA") || choice.equals("J") || choice.equals("j")) {
             UI.printMessage("Skriv ny tid");
             double time = UI.getInputDouble();
             UI.printMessage("Skriv stævne");
@@ -341,7 +349,7 @@ public class Controller {
         UI.printMessage("Svømmerens nuværende bedste tid er: " + resultList.memberCompetitiveCrawl(idNum));
         UI.printMessage("Vil du ændre den?");
         String choice = UI.getInputString();
-        if (choice.equals("ja") || choice.equals("Ja") || choice.equals("JA")) {
+        if (choice.equals("ja") || choice.equals("Ja") || choice.equals("JA") || choice.equals("J") || choice.equals("j")) {
             UI.printMessage("Skriv ny tid");
             double time = UI.getInputDouble();
             UI.printMessage("Skriv stævne");
@@ -362,7 +370,7 @@ public class Controller {
         UI.printMessage("Svømmerens nuværende bedste tid er: " + resultList.memberCompetitiveBackcrawl(idNum));
         UI.printMessage("Vil du ændre den?");
         String choice = UI.getInputString();
-        if (choice.equals("ja") || choice.equals("Ja") || choice.equals("JA")) {
+        if (choice.equals("ja") || choice.equals("Ja") || choice.equals("JA") || choice.equals("J") || choice.equals("j")) {
             UI.printMessage("Skriv ny tid");
             double time = UI.getInputDouble();
             UI.printMessage("Skriv stævne");
@@ -383,7 +391,7 @@ public class Controller {
         UI.printMessage("Svømmerens nuværende bedste tid er: " + resultList.memberCompetitiveBreaststroke(idNum));
         UI.printMessage("Vil du ændre den?");
         String choice = UI.getInputString();
-        if (choice.equals("ja") || choice.equals("Ja") || choice.equals("JA")) {
+        if (choice.equals("ja") || choice.equals("Ja") || choice.equals("JA") || choice.equals("J") || choice.equals("j")) {
             UI.printMessage("Skriv ny tid");
             double time = UI.getInputDouble();
             UI.printMessage("Skriv stævne");
@@ -398,6 +406,7 @@ public class Controller {
 
 
     private void registerTraining() {
+        //@Martin Anberg
         int choice;
         boolean running = true;
         while (running) {
@@ -429,7 +438,7 @@ public class Controller {
         UI.printMessage("Svømmerens nuværende bedste tid er: " + resultList.memberTrainingButterfly(idNum));
         UI.printMessage("Vil du ændre den?");
         String choice = UI.getInputString();
-        if (choice.equals("ja") || choice.equals("Ja") || choice.equals("JA")) {
+        if (choice.equals("ja") || choice.equals("Ja") || choice.equals("JA") || choice.equals("J") || choice.equals("j")) {
             UI.printMessage("Skriv ny tid");
             double time = UI.getInputDouble();
             UI.printMessage("Skriv dato år/måned/dag");
@@ -448,7 +457,7 @@ public class Controller {
         UI.printMessage("Svømmerens nuværende bedste tid er: " + resultList.memberTrainingCrawl(idNum));
         UI.printMessage("Vil du ændre den?");
         String choice = UI.getInputString();
-        if (choice.equals("ja") || choice.equals("Ja") || choice.equals("JA")) {
+        if (choice.equals("ja") || choice.equals("Ja") || choice.equals("JA") || choice.equals("J") || choice.equals("j")) {
             UI.printMessage("Skriv ny tid");
             double time = UI.getInputDouble();
             UI.printMessage("Skriv dato år/måned/dag");
@@ -467,7 +476,7 @@ public class Controller {
         UI.printMessage("Svømmerens nuværende bedste tid er: " + resultList.memberTrainingBackcrawl(idNum));
         UI.printMessage("Vil du ændre den?");
         String choice = UI.getInputString();
-        if (choice.equals("ja") || choice.equals("Ja") || choice.equals("JA")) {
+        if (choice.equals("ja") || choice.equals("Ja") || choice.equals("JA") || choice.equals("J") || choice.equals("j")) {
             UI.printMessage("Skriv ny tid");
             double time = UI.getInputDouble();
             UI.printMessage("Skriv dato år/måned/dag");
@@ -486,7 +495,7 @@ public class Controller {
         UI.printMessage("Svømmerens nuværende bedste tid er: " + resultList.memberTrainingBreaststroke(idNum));
         UI.printMessage("Vil du ændre den?");
         String choice = UI.getInputString();
-        if (choice.equals("ja") || choice.equals("Ja") || choice.equals("JA")) {
+        if (choice.equals("ja") || choice.equals("Ja") || choice.equals("JA") || choice.equals("J") || choice.equals("j")) {
             UI.printMessage("Skriv ny tid");
             double time = UI.getInputDouble();
             UI.printMessage("Skriv dato år/måned/dag");
@@ -504,7 +513,7 @@ public class Controller {
         UI.getInputString();
         UI.printMessage("Er du sikker på at du vil slette " + teamName + "?");
         String choice = UI.getInputString();
-        if (choice.equals("ja") || choice.equals("Ja") || choice.equals("JA")) {
+        if (choice.equals("ja") || choice.equals("Ja") || choice.equals("JA") || choice.equals("J") || choice.equals("j")) {
             teamList.deleteTeam(teamName);
         } else {
             UI.printMessage(teamName + " bliver IKKE slette");
@@ -518,9 +527,10 @@ public class Controller {
         UI.printMessage("Er det et juniorhold?");
         String choice = UI.getInputString();
         boolean isJunior;
-        isJunior = choice.equals("ja");
-        boolean isDeleteable = false;
-        teamList.createTeam(teamName, isJunior, isDeleteable);
+        if(choice.equals("ja") || choice.equals("Ja") || choice.equals("JA") || choice.equals("J") || choice.equals("j")) {
+            isJunior = true;
+        } else{isJunior = false;}
+        teamList.createTeam(teamName, isJunior, false);
 
     }
 

@@ -55,14 +55,18 @@ public class ResultList {
     }
     //Create Competitive Result//@Martin Anberg
     public ArrayList<CompetitionResult> createCompResult(double resultTime, String idNum, LocalDate resultDate,String tournament, ArrayList<CompetitionResult> competiveResultList) {
+        boolean containsResult = false;
         for (CompetitionResult competitionResult : competiveResultList) {
-            if ((competitionResult.getIdNum().equals(idNum) && competitionResult.getResultTime() > resultTime) || (competitionResult.getIdNum().equals(idNum) && competitionResult.getResultTime() != 0)) {
+            if ((competitionResult.getIdNum().equals(idNum))) {
                 competitionResult.setDateOfResult(resultDate);
                 competitionResult.setResultTime(resultTime);
-            } else {
-                CompetitionResult competitionResult2 = new CompetitionResult(resultTime, idNum, resultDate, tournament);
-                competiveResultList.add(competitionResult2);
+                containsResult = true;
             }
+        }
+        if(!containsResult) {
+            CompetitionResult competitionResult = new CompetitionResult(resultTime, idNum, resultDate, tournament);
+            competiveResultList.add(competitionResult);
+            System.out.println("YO RETARD WTF");
         }
         return competiveResultList;
     }
@@ -109,14 +113,18 @@ public class ResultList {
     }
 //Create Training Result//@Martin Anberg
     public ArrayList<TrainingResult> createTrainResult(double resultTime, String idNum, LocalDate resultDate, String comment, ArrayList<TrainingResult> trainingResultList) {
+        boolean containsResult = false;
         for (TrainingResult trainingResult : trainingResultList) {
-            if ((trainingResult.getIdNum().equals(idNum) && trainingResult.getResultTime() > resultTime) || (trainingResult.getIdNum().equals(idNum) && trainingResult.getResultTime() != 0)) {
+            if ((trainingResult.getIdNum().equals(idNum))) {
                 trainingResult.setDateOfResult(resultDate);
                 trainingResult.setResultTime(resultTime);
-            } else {
-                TrainingResult trainingResult2 = new TrainingResult(resultTime, idNum, resultDate, comment);
-                trainingResultList.add(trainingResult2);
+                containsResult = true;
             }
+        }
+        if(!containsResult) {
+            TrainingResult trainingResult = new TrainingResult(resultTime, idNum, resultDate,comment);
+            trainingResultList.add(trainingResult);
+            System.out.println("YO RETARD WTF");
         }
         return trainingResultList;
     }
@@ -146,6 +154,7 @@ public class ResultList {
         for (CompetitionResult competitionResult : competitionBestResultList){
             s = s+i+". BEDSTE TID ER   "+competitionResult.getResultTime()+"\nAF   "+competitionResult.getIdNum()+"\n";
             i++;
+            if (i == 5){return s;}
         }
         return s;
     }
@@ -173,6 +182,7 @@ public class ResultList {
         for (TrainingResult trainingResult : trainingBestResultList){
             s = s+i+". BEDSTE TID ER   "+trainingResult.getResultTime()+"\nAF   "+trainingResult.getIdNum()+"\n";
             i++;
+            if (i == 5){return s;}
         }
         return s;
     }

@@ -1,6 +1,7 @@
 package com.company.domain;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class CompetitionResult extends Result {
@@ -13,5 +14,13 @@ public class CompetitionResult extends Result {
 
     public String getTournament() {
         return tournament;
+    }
+    public Result getResultByID(String idNum, ArrayList<CompetitionResult> results){
+        for(Result result : results) {
+            if (idNum.equals(getIdNum())) {
+                return result;
+            }
+        }
+        return null;
     }
 }

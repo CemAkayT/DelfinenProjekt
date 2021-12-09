@@ -49,24 +49,26 @@ public class TeamList {
     //@Martin Anberg
     public void addMemberToTeam(String teamName, Member member){
         for (Team team : teams) {
-            if(team.getTeamName().equals(teamName))
+            if(team.getTeamName().equals(teamName)) {
                 team.addMember(member);
+            }
         }
 
     }
     //@Martin Anberg
-    public void removeMemberToTeam(String teamName,Member member){
+    public void removeMemberFromTeam(String teamName,Member member){
         for (Team team : teams) {
             if(team.getTeamName().equals(teamName))
                 team.removeMember(member);
         }
     }
+    //@Martin Anberg
     public String seeMembersInTeam(String teamName){
         String s = "";
         for (Team team : teams) {
             if(team.getTeamName().equals(teamName)){
                 for(Member member : team.getTeamMemberList()){
-                    s = s + member.getName()+" "+member.getMiddleName()+" "+member.getLastName()+" "+member.getIdNum();
+                    s = s + "   "+member.getName()+" "+member.getMiddleName()+" "+member.getLastName()+" "+member.getIdNum()+"\n";
                 }
             }
         }

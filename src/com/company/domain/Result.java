@@ -1,6 +1,7 @@
 package com.company.domain;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.UUID;
 //@Martin Anberg
 public class Result implements Comparable<Result> {
