@@ -1,4 +1,6 @@
-package com.company.domain;
+package com.company.domain.test;
+
+import com.company.domain.Member;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
