@@ -75,6 +75,19 @@ public class Controller {
         fh.writeRegisteredTimes(rList, "backcrawl", "training");
         rList = resultList.trainingResultsListToString(resultList.getTrainingBestResultListBreaststroke());
         fh.writeRegisteredTimes(rList, "breaststroke", "training");
+        UI.printMessage("Training results lists saved");
+
+        // Write contents of "competition best results" to CSV
+        rList = resultList.competitionResultsListToString(resultList.getCompetitiveBestResultListButterfly());
+        fh.writeRegisteredTimes(rList, "butterfly", "competition");
+        rList = resultList.competitionResultsListToString(resultList.getCompetitiveBestResultListCrawl());
+        fh.writeRegisteredTimes(rList, "crawl", "competition");
+        rList = resultList.competitionResultsListToString(resultList.getTCompetitiveBestResultListBackcrawl());
+        fh.writeRegisteredTimes(rList, "backcrawl", "competition");
+        rList = resultList.competitionResultsListToString(resultList.getCompetitiveBestResultListBreaststroke());
+        fh.writeRegisteredTimes(rList, "breaststroke", "competition");
+        UI.printMessage("Competition results lists saved");
+
         return false;
     }
 
@@ -303,7 +316,7 @@ public class Controller {
 
     private void registerCompetitiveButterfly() {
         //@Martin Anberg
-        UI.printMessage(memberList.CompetitiveList());
+        UI.printMessage(memberList.CompetitiveListShort());
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
         UI.printMessage("Svømmerens nuværende bedste tid er: " + resultList.memberCompetitiveButterfly(idNum));
@@ -324,7 +337,7 @@ public class Controller {
 
     private void registerCompetitiveCrawl() {
         //@Martin Anberg
-        UI.printMessage(memberList.CompetitiveList());
+        UI.printMessage(memberList.CompetitiveListShort());
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
         UI.printMessage("Svømmerens nuværende bedste tid er: " + resultList.memberCompetitiveCrawl(idNum));
@@ -345,7 +358,7 @@ public class Controller {
 
     private void registerCompetitiveBackcrawl() {
         //@Martin Anberg
-        UI.printMessage(memberList.CompetitiveList());
+        UI.printMessage(memberList.CompetitiveListShort());
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
         UI.printMessage("Svømmerens nuværende bedste tid er: " + resultList.memberCompetitiveBackcrawl(idNum));
@@ -366,7 +379,7 @@ public class Controller {
 
     private void registerCompetitiveBreaststroke() {
         //@Martin Anberg
-        UI.printMessage(memberList.CompetitiveList());
+        UI.printMessage(memberList.CompetitiveListShort());
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
         UI.printMessage("Svømmerens nuværende bedste tid er: " + resultList.memberCompetitiveBreaststroke(idNum));
@@ -431,7 +444,7 @@ public class Controller {
 
     private void registerTrainingCrawl() {
         //@Martin Anberg
-        UI.printMessage(memberList.CompetitiveList());
+        UI.printMessage(memberList.CompetitiveListShort());
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
         UI.printMessage("Svømmerens nuværende bedste tid er: " + resultList.memberTrainingCrawl(idNum));
@@ -450,7 +463,7 @@ public class Controller {
 
     private void registerTrainingBackcrawl() {
         //@Martin Anberg
-        UI.printMessage(memberList.CompetitiveList());
+        UI.printMessage(memberList.CompetitiveListShort());
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
         UI.printMessage("Svømmerens nuværende bedste tid er: " + resultList.memberTrainingBackcrawl(idNum));
@@ -469,7 +482,7 @@ public class Controller {
 
     private void registerTrainingBreaststroke() {
         //@Martin Anberg
-        UI.printMessage(memberList.CompetitiveList());
+        UI.printMessage(memberList.CompetitiveListShort());
         UI.printMessage("Skriv medlems ID");
         String idNum = UI.getInputString();
         UI.printMessage("Svømmerens nuværende bedste tid er: " + resultList.memberTrainingBreaststroke(idNum));
