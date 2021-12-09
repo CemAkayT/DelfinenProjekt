@@ -16,12 +16,4 @@ public class TrainingResult extends Result {
     public String getComment() {
         return comment;
     }
-    public Result getTrainingResultByID(String idNum, ArrayList<TrainingResult> results){
-        for(TrainingResult result : results) {
-            if (idNum.equals(getIdNum())) {
-                return result;
-            }
-        }
-        return null;
-    }
 }
