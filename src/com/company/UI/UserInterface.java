@@ -13,11 +13,6 @@ public class UserInterface {
         System.out.println(message);
     }
 
-    public void printDouble(double doub) {
-
-        System.out.println(doub);
-    }
-
     public String getInputString() {
 
         return sc.nextLine();

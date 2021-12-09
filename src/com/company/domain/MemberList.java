@@ -29,19 +29,19 @@ public class MemberList {
         membersListToString();
     }
 
-
+    //@Martin Anberg @Cem Akay @Tobias Winkel
     public void createMember(String name, String middleName, String lastName, String idNum, LocalDate dateOfBirth, LocalDate dateOfMembership, boolean isCompetitive, String trainerName) {
         Member member = new Member(name, middleName, lastName, idNum, dateOfBirth, dateOfMembership, isCompetitive, trainerName);
         members.add(member);
     }
-
+    //@Martin Anberg @Cem Akay @Tobias Winkel
     public void deleteMember(String idNumDelete) {
         for (int i = 0; i < members.size(); i++)
             if (members.get(i).getIdNum().equals(idNumDelete)) {
                 members.remove(i);
             }
     }
-
+    //@Martin Anberg @Cem Akay @Tobias Winkel
     public void editMemberName(String idNumEdit, String name) {
         for (Member member : members)
             if (member.getIdNum().equals(idNumEdit)) {
@@ -49,21 +49,21 @@ public class MemberList {
             }
 
     }
-
+    //@Martin Anberg @Cem Akay @Tobias Winkel
     public void editMemberMiddleName(String idNumEdit, String memberMiddleName) {
         for (Member member : members)
             if (member.getIdNum().equals(idNumEdit)) {
                 member.setMiddleName(memberMiddleName);
             }
     }
-
+    //@Martin Anberg @Cem Akay @Tobias Winkel
     public void editMemberLastName(String idNumEdit, String memberLastName) {
         for (int i = 0; i < members.size(); i++)
             if (members.get(i).getIdNum().equals(idNumEdit)) {
                 members.get(i).setLastName(memberLastName);
             }
     }
-
+    //@Martin Anberg @Cem Akay @Tobias Winkel
     public void editMemberArrears(String idNumEdit) {
         for (int i = 0; i < members.size(); i++)
             if (members.get(i).getIdNum().equals(idNumEdit)) {
@@ -72,14 +72,14 @@ public class MemberList {
                 } else members.get(i).setHasPaid(true);
             }
     }
-
+    //@Martin Anberg @Cem Akay @Tobias Winkel
     public void editMemberTrainer(String idNumEdit, String trainerName) {
         for (Member member : members)
             if (member.getIdNum().equals(idNumEdit)) {
                 member.setTrainerName(trainerName);
             }
     }
-
+    //@Martin Anberg @Cem Akay @Tobias Winkel
     public void editMemberStatus(String idNumEdit) {
         for (Member member : members)
             if (member.getIdNum().equals(idNumEdit)) {
@@ -89,7 +89,7 @@ public class MemberList {
                 } else member.setCompetitive(true);
             }
             }
-
+    //@Martin Anberg @Cem Akay @Tobias Winkel
     public String showMembers(){
         String s = "";
         for (Member member : members) {
@@ -148,6 +148,7 @@ public class MemberList {
         }
         return "Klubbens årlige indkomst er "+income+"\nKlubbens månedlige indkomst er "+income/12;
     }
+
     public void editActiveStatus(String idNumEdit){
         for (Member member : members)
             if (member.getIdNum().equals(idNumEdit)) {
@@ -162,24 +163,6 @@ public class MemberList {
         return false;
     }
 
-    // todo: remove, not used
-    //@MartinAnberg
-    public String CompetitiveList(){
-        String s ="";
-        for (Member member : members) {
-            if (member.isCompetitive()) {
-                s = s + "\nMEDLEMSNAVN: " + member.getName() + " " + member.getMiddleName() + " " + member.getLastName() +
-                        "\nID: " + member.getIdNum() +
-                        "\nFØDSELSDATO: " + member.getDateOfBirth() +
-                        "\nOPRETTELSESDATO: " + member.getDateOfMembership() +
-                        "\nTRÆNER: " + member.getTrainerName() +
-                        "\nMEDLEMSSTATUS: " + member.getMembershipStatus() +
-                        "\nAKTIVSTATUS: " + member.isActive() +
-                        "\n";
-            }
-        }
-        return s;
-    }
     //@Graham Heaven
     public String competitiveListShort(){
         StringBuilder s = new StringBuilder();

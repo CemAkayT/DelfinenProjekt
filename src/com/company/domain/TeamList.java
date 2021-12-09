@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class TeamList {
     private ArrayList<Team> teams = new ArrayList<>();
-
+    //@Martin Anberg @Cem Akay @Tobias Winkel
     public void createTeam(String name, boolean isJunior, boolean isDeleteable){
         Team team = new Team(name,isJunior,isDeleteable);
         teams.add(team);

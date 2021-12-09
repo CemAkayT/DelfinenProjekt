@@ -3,13 +3,13 @@ package com.company.domain;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.UUID;
-//@Martin Anberg
+
 public class Result implements Comparable<Result> {
     private double resultTime;
     private String idNum;
     private LocalDate dateOfResult;
 
-
+//@Martin Anberg
 
     public Result(double resultTime, String idNum, LocalDate dateOfResult) {
         this.resultTime = resultTime;
