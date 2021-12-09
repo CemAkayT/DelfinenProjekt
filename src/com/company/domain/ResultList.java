@@ -124,7 +124,6 @@ public class ResultList {
         if(!containsResult) {
             TrainingResult trainingResult = new TrainingResult(resultTime, idNum, resultDate,comment);
             trainingResultList.add(trainingResult);
-            System.out.println("YO RETARD WTF");
         }
         return trainingResultList;
     }

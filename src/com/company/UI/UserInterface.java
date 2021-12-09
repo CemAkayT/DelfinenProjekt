@@ -1,5 +1,6 @@
 package com.company.UI;
 
+import java.time.Year;
 import java.util.InputMismatchException;
 import java.util.Locale;
 import java.util.Scanner;
@@ -43,6 +44,88 @@ public class UserInterface {
             } catch (InputMismatchException e) {
                 System.out.println("Du kan kun taste et tal mellem 0 og " + max);
                 sc.nextLine();
+            }
+        }
+        sc.nextLine();
+        return choice;
+    }
+    public int getValidYear() {
+        int choice;
+        while (true) {
+            try {
+                choice = sc.nextInt();
+                if (choice <= Year.now().getValue() && choice >= 1) {
+                    break;
+                } else {
+                    System.out.println("Du kan kun taste et tal mellem 1 og " + Year.now().getValue());
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Du kan kun taste et tal mellem 1 og " + Year.now().getValue());
+                sc.nextLine();
+            }
+        }
+        sc.nextLine();
+        return choice;
+    }
+    public int getValidMonth() {
+        int choice;
+        while (true) {
+            try {
+                choice = sc.nextInt();
+                if (choice <= 12 && choice >= 1) {
+                    break;
+                } else {
+                    System.out.println("Du kan kun taste et tal mellem 1 og " + 12);
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Du kan kun taste et tal mellem 1 og " + 12);
+                sc.nextLine();
+            }
+        }
+        sc.nextLine();
+        return choice;
+    }
+    public int getValidDay(int month) {
+        int choice;
+        while (true) {
+            if(month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
+                try {
+                    choice = sc.nextInt();
+                    if (choice <= 31 && choice >= 1) {
+                        break;
+                    } else {
+                        System.out.println("Du kan kun taste et tal mellem 1 og " + 31);
+                    }
+                } catch (InputMismatchException e) {
+                    System.out.println("Du kan kun taste et tal mellem 1 og " + 31);
+                    sc.nextLine();
+                }
+            }
+            if(month == 4 || month == 6 || month == 9 || month == 11) {
+                try {
+                    choice = sc.nextInt();
+                    if (choice <= 30 && choice >= 1) {
+                        break;
+                    } else {
+                        System.out.println("Du kan kun taste et tal mellem 1 og " + 30);
+                    }
+                } catch (InputMismatchException e) {
+                    System.out.println("Du kan kun taste et tal mellem 1 og " + 30);
+                    sc.nextLine();
+                }
+            }
+            if(month == 2) {
+                try {
+                    choice = sc.nextInt();
+                    if (choice <= 29 && choice >= 1) {
+                        break;
+                    } else {
+                        System.out.println("Du kan kun taste et tal mellem 1 og " + 29);
+                    }
+                } catch (InputMismatchException e) {
+                    System.out.println("Du kan kun taste et tal mellem 1 og " + 29);
+                    sc.nextLine();
+                }
             }
         }
         sc.nextLine();

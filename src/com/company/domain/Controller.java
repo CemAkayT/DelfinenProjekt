@@ -4,6 +4,7 @@ import com.company.UI.UserInterface;
 import com.company.data.FileHandler;
 
 import java.time.LocalDate;
+import java.time.Year;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -347,7 +348,10 @@ public class Controller {
             UI.printMessage("Skriv stævne");
             String tournament = UI.getInputString();
             UI.printMessage("Skriv dato år/måned/dag");
-            LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
+            int year = UI.getValidYear();
+            int month = UI.getValidMonth();
+            int day = UI.getValidDay(month);
+            LocalDate resultDate = LocalDate.of(year, month, day);
             resultList.runCreateCompResultButterfly(false, time, idNum, resultDate, tournament);
         } else {
             UI.printMessage("tiden blev ikke ændret");
@@ -368,7 +372,10 @@ public class Controller {
             UI.printMessage("Skriv stævne");
             String tournament = UI.getInputString();
             UI.printMessage("Skriv dato år/måned/dag");
-            LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
+            int year = UI.getValidYear();
+            int month = UI.getValidMonth();
+            int day = UI.getValidDay(month);
+            LocalDate resultDate = LocalDate.of(year, month, day);
             resultList.runCreateCompResultCrawl(false, time, idNum, resultDate, tournament);
         } else {
             UI.printMessage("tiden blev ikke ændret");
@@ -389,7 +396,10 @@ public class Controller {
             UI.printMessage("Skriv stævne");
             String tournament = UI.getInputString();
             UI.printMessage("Skriv dato år/måned/dag");
-            LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
+            int year = UI.getValidYear();
+            int month = UI.getValidMonth();
+            int day = UI.getValidDay(month);
+            LocalDate resultDate = LocalDate.of(year, month, day);
             resultList.runCreateCompResultBackcrawl(false, time, idNum, resultDate, tournament);
         } else {
             UI.printMessage("tiden blev ikke ændret");
@@ -410,7 +420,10 @@ public class Controller {
             UI.printMessage("Skriv stævne");
             String tournament = UI.getInputString();
             UI.printMessage("Skriv dato år/måned/dag");
-            LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
+            int year = UI.getValidYear();
+            int month = UI.getValidMonth();
+            int day = UI.getValidDay(month);
+            LocalDate resultDate = LocalDate.of(year, month, day);
             resultList.runCreateCompResultBreaststroke(false, time, idNum, resultDate, tournament);
         } else {
             UI.printMessage("tiden blev ikke ændret");
@@ -455,7 +468,10 @@ public class Controller {
             UI.printMessage("Skriv ny tid");
             double time = UI.getInputDouble();
             UI.printMessage("Skriv dato år/måned/dag");
-            LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
+            int year = UI.getValidYear();
+            int month = UI.getValidMonth();
+            int day = UI.getValidDay(month);
+            LocalDate resultDate = LocalDate.of(year, month, day);
             resultList.runCreateTrainResultButterfly(false, time, idNum, resultDate, "");
         } else {
             UI.printMessage("tiden blev ikke ændret");
@@ -474,7 +490,10 @@ public class Controller {
             UI.printMessage("Skriv ny tid");
             double time = UI.getInputDouble();
             UI.printMessage("Skriv dato år/måned/dag");
-            LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
+            int year = UI.getValidYear();
+            int month = UI.getValidMonth();
+            int day = UI.getValidDay(month);
+            LocalDate resultDate = LocalDate.of(year, month, day);
             resultList.runCreateTrainResultCrawl(false, time, idNum, resultDate, "");
         } else {
             UI.printMessage("tiden blev ikke ændret");
@@ -493,7 +512,10 @@ public class Controller {
             UI.printMessage("Skriv ny tid");
             double time = UI.getInputDouble();
             UI.printMessage("Skriv dato år/måned/dag");
-            LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
+            int year = UI.getValidYear();
+            int month = UI.getValidMonth();
+            int day = UI.getValidDay(month);
+            LocalDate resultDate = LocalDate.of(year, month, day);
             resultList.runCreateTrainResultBackcrawl(false, time, idNum, resultDate, "");
         } else {
             UI.printMessage("tiden blev ikke ændret");
@@ -512,7 +534,10 @@ public class Controller {
             UI.printMessage("Skriv ny tid");
             double time = UI.getInputDouble();
             UI.printMessage("Skriv dato år/måned/dag");
-            LocalDate resultDate = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
+            int year = UI.getValidYear();
+            int month = UI.getValidMonth();
+            int day = UI.getValidDay(month);
+            LocalDate resultDate = LocalDate.of(year, month, day);
             resultList.runCreateTrainResultBreaststroke(false, time, idNum, resultDate, "");
         } else {
             UI.printMessage("tiden blev ikke ændret");
@@ -642,7 +667,10 @@ public class Controller {
         String idNum = UUID.randomUUID().toString();
         UI.printMessage("\n" + "Medlemmets ID er: " + idNum + "\n");
         UI.printMessage("Skriv fødselsdato år/måned/dag: ");
-        LocalDate dateOfBirth = LocalDate.of(UI.getInputInt(), UI.getInputInt(), UI.getInputInt());
+        int year = UI.getValidYear();
+        int month = UI.getValidMonth();
+        int day = UI.getValidDay(month);
+        LocalDate dateOfBirth = LocalDate.of(year, month, day);
         UI.printMessage("Medlemmets fødselsdato: " + dateOfBirth + "\n");
         UI.printMessage("Vil medlem deltage i konkurrencer?  ja eller nej");
         String choice = UI.getInputString();
