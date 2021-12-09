@@ -121,7 +121,6 @@ public class Controller {
 
     //@Martin Anberg
     private void runSearchMemberByID() {
-        UI.getInputString();
         UI.printMessage("Skriv ID");
         String idNum = UI.getInputString();
         UI.printMessage(memberList.searchMemberByIdNum(idNum));
