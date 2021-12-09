@@ -31,7 +31,7 @@ public class FileHandler {
         } catch (FileNotFoundException e) {
             UI.printMessage(membersList + " not found");
         }
-        UI.printMessage("Members List loaded");
+        UI.printMessage("Medlemsliste indlæst");
         return listOfMembers;
     }
 
@@ -52,7 +52,7 @@ public class FileHandler {
                 e.printStackTrace();
             }
         }
-        UI.printMessage("Members List saved");
+        UI.printMessage("Medlemsliste gemt");
     }
 
     //try to read list of teams file @Graham Heaven
@@ -67,7 +67,7 @@ public class FileHandler {
         } catch (FileNotFoundException e) {
             UI.printMessage(teamsList + " not found");
         }
-        UI.printMessage("Teams List loaded");
+        UI.printMessage("Holdliste indlæst");
         return listOfTeams;
     }
 
@@ -88,7 +88,7 @@ public class FileHandler {
                 e.printStackTrace();
             }
         }
-        UI.printMessage("Teams List saved");
+        UI.printMessage("Holdliste gemt");
     }
 
     // @Graham Heaven
