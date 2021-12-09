@@ -31,7 +31,7 @@ public class Controller {
             UI.printMessage("""
                     Hoved menu - Vælg funktion:
                     1. Medlemmer
-                    2. Kontigent
+                    2. Kontingent
                     3. Træning
                                         
                     0. Afslut
@@ -76,7 +76,7 @@ public class Controller {
         fh.writeRegisteredTimes(rList, "backcrawl", "training");
         rList = resultList.trainingResultsListToString(resultList.getTrainingBestResultListBreaststroke());
         fh.writeRegisteredTimes(rList, "breaststroke", "training");
-        UI.printMessage("Training results lists saved");
+        UI.printMessage("Træningsresultater gemt");
 
         // Write contents of "competition best results" to CSV
         rList = resultList.competitionResultsListToString(resultList.getCompetitiveBestResultListButterfly());
@@ -87,7 +87,7 @@ public class Controller {
         fh.writeRegisteredTimes(rList, "backcrawl", "competition");
         rList = resultList.competitionResultsListToString(resultList.getCompetitiveBestResultListBreaststroke());
         fh.writeRegisteredTimes(rList, "breaststroke", "competition");
-        UI.printMessage("Competition results lists saved");
+        UI.printMessage("Konkurrenceresultater gemt");
 
         return false;
     }
@@ -756,7 +756,7 @@ public class Controller {
                 }
             }
         }
-        UI.printMessage("Training results lists loaded");
-        UI.printMessage("Competition results lists loaded");
+        UI.printMessage("Træningsresultater indlæst");
+        UI.printMessage("Konkurrenceresultater indlæst");
     }
 }
