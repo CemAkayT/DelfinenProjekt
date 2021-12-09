@@ -166,6 +166,8 @@ public class MemberList {
             }
         return false;
     }
+
+    // todo: remove, not used
     //@MartinAnberg
     public String CompetitiveList(){
         String s ="";
@@ -184,7 +186,7 @@ public class MemberList {
         return s;
     }
     //@Graham Heaven
-    public String CompetitiveListShort(){
+    public String competitiveListShort(){
         StringBuilder s = new StringBuilder();
         for (Member member : members) {
             if (member.isCompetitive()) {
