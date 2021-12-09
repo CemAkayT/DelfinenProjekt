@@ -8,10 +8,10 @@ public class Team {
     private ArrayList<Member> teamMemberlist = new ArrayList<>();
     private boolean isDeleteable;
 
-    public Team(String teamName, boolean isJunior, boolean isDeleteable) {
+    public Team(String teamName, boolean isJunior, boolean isDeletable) {
         this.teamName = teamName;
         this.isJunior=isJunior;
-        this.isDeleteable=isDeleteable;
+        this.isDeleteable=isDeletable;
     }
 
     public Team(String teamName, boolean isJunior, boolean isDeleteable, ArrayList<Member> list) {

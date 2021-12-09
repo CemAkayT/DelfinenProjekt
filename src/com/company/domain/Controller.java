@@ -547,14 +547,13 @@ public class Controller {
 
     private void teamDeletion() {
         //@Martin Anberg
-        teamList.listOfTeams();
+        UI.printMessage(teamList.listOfTeams());
         UI.printMessage("Skriv navn på holdet");
         String teamName = UI.getInputString();
-        UI.getInputString();
         UI.printMessage("Er du sikker på at du vil slette " + teamName + "? ja eller nej");
         String choice = UI.getInputString();
         if (choice.equals("ja") || choice.equals("Ja") || choice.equals("JA") || choice.equals("J") || choice.equals("j")) {
-            teamList.deleteTeam(teamName);
+            UI.printMessage(teamList.deleteTeam(teamName));
         } else {
             UI.printMessage(teamName + " bliver IKKE slette");
         }
@@ -564,14 +563,13 @@ public class Controller {
         //@Martin Anberg
         UI.printMessage("Skriv navn på holdet");
         String teamName = UI.getInputString();
-        UI.getInputString();
         UI.printMessage("Er det et juniorhold?  ja eller nej");
         String choice = UI.getInputString();
         boolean isJunior;
         if(choice.equals("ja") || choice.equals("Ja") || choice.equals("JA") || choice.equals("J") || choice.equals("j")) {
             isJunior = true;
         } else{isJunior = false;}
-        teamList.createTeam(teamName, isJunior, false);
+        teamList.createTeam(teamName, isJunior, true);
 
     }
 
