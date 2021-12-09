@@ -127,11 +127,11 @@ public class ResultList {
 
     public String Top5TrainResults(ArrayList<TrainingResult> trainingBestResultList){
         String s ="";
-        int i = 5;
+        int i = 1;
         Collections.sort(trainingBestResultList);
         for (TrainingResult trainingResult : trainingBestResultList){
             s = s+i+". BEDSTE TID ER   "+trainingResult.getResultTime()+"\nAF   "+trainingResult.getIdNum()+"\n";
-            i--;
+            i++;
         }
         return s;
     }
